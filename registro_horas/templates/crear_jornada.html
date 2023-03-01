@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% csrf_token %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Crear Jornada</title>
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+              crossorigin="anonymous">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <br>
+        <h1>Nueva Transacción</h1>
+        {{ error }}
+    </head>
+    <body>
+    <form action="/crear/jornada/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button> Guardar</button>
+    </form>
+    </body>
+    </html>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <h2>Editar Empleado{{empleado.nombre}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>
+            Actualizar
+        </button>
+    </form>
+    
+</head>
+<body>
+
+</body>
+</html>

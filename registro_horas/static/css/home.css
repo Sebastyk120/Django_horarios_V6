@@ -1,0 +1,105 @@
+.html, body{
+    height: 100vh;
+}
+body{
+    background-image: url(../img/M2.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    font-family: 'Shadows Into Light', cursive;
+    justify-content: center;
+    height: 100vh;
+
+}   
+button{
+    position: relative;
+    padding: 20px 60px;
+    border: none;
+    background: transparent;
+    transition: .5s;
+    margin: 20px;
+    overflow: hidden;
+    
+}
+
+    
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Shadows Into Light', cursive;
+    
+}
+button:hover{
+    background-color: rgb(250, 229, 191);
+    cursor: pointer;
+}
+button span{
+    position: absolute;
+    background: rgb(253, 253, 253);
+    transition: .8s;    
+}
+
+button span:nth-child(1){
+    width: 100%;
+    height: 1px;
+    top: 0;
+    left: -100%;
+}
+button span:nth-child(2){
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    right: -100%;
+}
+button span:nth-child(3){
+    width: 1px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+}
+button span:nth-child(4){
+    width: 1px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+}
+button:hover span:nth-child(1){
+    left: 0;
+}
+button:hover span:nth-child(2){
+    right: 0;
+}
+button:hover span:nth-child(3){
+    bottom: 0;
+}
+button:hover span:nth-child(4){
+    top: 0;
+}
+a{  
+    text-decoration: none;
+    align-items: center;
+    display: block;
+    width: 100px;
+    font-family: sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    padding: 20px 60px;
+    color:black;
+    
+}
+    
+a:hover{
+    background-color: transparent;
+    
+   }
+img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid rgb(76, 13, 105);
+    position: relative;
+    bottom: 200px;
+    left: 220px;
+    
+}
