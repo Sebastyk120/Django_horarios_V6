@@ -25,21 +25,31 @@ class Horarios:
         self.extras_nocturnos_festivo_totales = 0
 
         def enteros():
-            inicio_dia_semana = datetime.strftime(self.inicio_jornada_global, "%A")
-            inicio_year = int(datetime.strftime(self.inicio_jornada_global, "%Y"))
-            inicio_mes = int(datetime.strftime(self.inicio_jornada_global, "%m"))
-            inicio_dia = int(datetime.strftime(self.inicio_jornada_global, "%d"))
-            salida_dia_semana = datetime.strftime(self.salida_jornada_global, "%A")
-            salida_year = int(datetime.strftime(self.salida_jornada_global, "%Y"))
-            salida_mes = int(datetime.strftime(self.salida_jornada_global, "%m"))
-            salida_dia = int(datetime.strftime(self.salida_jornada_global, "%d"))
+            inicio_dia_semana = datetime.strftime(
+                self.inicio_jornada_global, "%A")
+            inicio_year = int(datetime.strftime(
+                self.inicio_jornada_global, "%Y"))
+            inicio_mes = int(datetime.strftime(
+                self.inicio_jornada_global, "%m"))
+            inicio_dia = int(datetime.strftime(
+                self.inicio_jornada_global, "%d"))
+            salida_dia_semana = datetime.strftime(
+                self.salida_jornada_global, "%A")
+            salida_year = int(datetime.strftime(
+                self.salida_jornada_global, "%Y"))
+            salida_mes = int(datetime.strftime(
+                self.salida_jornada_global, "%m"))
+            salida_dia = int(datetime.strftime(
+                self.salida_jornada_global, "%d"))
             jornada_legal_minutos = self.jornada_legal * 60
 
             def calculohoras():
                 # ------------------------------------Lista De Festivos Colombia 2023 -------------------------------
                 def festivos():
-                    inicio_jornada_global_festivo = datetime.strftime(self.inicio_jornada_global, "%Y-%m-%d")
-                    salida_jornada_global_festivo = datetime.strftime(self.salida_jornada_global, "%Y-%m-%d")
+                    inicio_jornada_global_festivo = datetime.strftime(
+                        self.inicio_jornada_global, "%Y-%m-%d")
+                    salida_jornada_global_festivo = datetime.strftime(
+                        self.salida_jornada_global, "%Y-%m-%d")
                     festivos_lista = ["2023-01-01", "2023-01-09", "2023-03-20", "2023-04-02", "2023-04-06",
                                       "2023-04-07",
                                       "2023-04-09",
@@ -69,15 +79,19 @@ class Horarios:
                         minutos_nocturnos_festivo_dia1 = 0
                         minutos_extras_diurnos_festivo_dia1 = 0
                         minutos_extras_nocturnos_festivo_dia1 = 0
-                        diurno1 = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno1 = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
-                        salida_jornada = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        salida_jornada = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         while self.inicio_jornada_global <= salida_jornada:
                             self.inicio_jornada_global += timedelta(minutes=1)
                             minutos_totales_dia1 = minutos_totales_dia1 + 1
                             # ------------------------------Acumulador de Descansos --------------------------------
                             if self.inicio_descanso_global <= self.inicio_jornada_global <= self.salida_descanso_global:
-                                self.inicio_jornada_global += timedelta(minutes=1)
+                                self.inicio_jornada_global += timedelta(
+                                    minutes=1)
                                 minutos_totales_dia1 = minutos_totales_dia1 - 1
                                 continue
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
@@ -125,9 +139,12 @@ class Horarios:
                         minutos_nocturnos_festivo_dia2 = 0
                         minutos_extras_diurnos_festivo_dia2 = 0
                         minutos_extras_nocturnos_festivo_dia2 = 0
-                        diurno2 = datetime(salida_year, salida_mes, salida_dia, 6, 0)
-                        nocturno2 = datetime(salida_year, salida_mes, salida_dia, 21, 00)
-                        inicio_jornada2 = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 6, 0)
+                        nocturno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 21, 00)
+                        inicio_jornada2 = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         salida_jornada2 = self.salida_jornada_global
                         inicio_dia_semana2 = inicio_jornada2.strftime("%A")
                         while inicio_jornada2 <= salida_jornada2:
@@ -171,16 +188,21 @@ class Horarios:
                                         minutos_nocturnos_dia2 = minutos_nocturnos_dia2 + 1
                                     else:
                                         minutos_diurnos_dia2 = minutos_diurnos_dia2 + 1
-                        self.total_horas = round((minutos_totales_dia2 + consolidado_minutos) / 60, 1)
-                        self.diurnas_totales = round((minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
-                        self.nocturnas_totales = round((minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
+                        self.total_horas = round(
+                            (minutos_totales_dia2 + consolidado_minutos) / 60, 1)
+                        self.diurnas_totales = round(
+                            (minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
+                        self.nocturnas_totales = round(
+                            (minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
                         self.extras_diurnas_totales = round(
-                            (minutos_extras_diurnos_dia1 + minutos_extras_diurnos_dia2) / 60,
+                            (minutos_extras_diurnos_dia1 +
+                             minutos_extras_diurnos_dia2) / 60,
                             1)
                         self.extras_nocturnos_totales = round(
                             (minutos_extras_nocturnos_dia1 + minutos_extras_nocturnos_dia2) / 60, 1)
                         self.diurnos_festivo_totales = round(
-                            (minutos_diurnos_festivo_dia1 + minutos_diurnos_festivo_dia2) / 60,
+                            (minutos_diurnos_festivo_dia1 +
+                             minutos_diurnos_festivo_dia2) / 60,
                             1)
                         self.nocturnos_festivo_totales = round(
                             (minutos_nocturnos_festivo_dia1 + minutos_nocturnos_festivo_dia2) / 60, 1)
@@ -190,8 +212,10 @@ class Horarios:
                             (minutos_extras_nocturnos_festivo_dia1 + minutos_extras_nocturnos_festivo_dia2) / 60, 1)
                     # ------------------------------------- Jornada mismo día---- 1 Descanso ---------------
                     else:
-                        diurno = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        diurno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
                         minutos_totales = 0
                         minutos_diurnos = 0
                         minutos_nocturnos = 0
@@ -206,7 +230,8 @@ class Horarios:
                             minutos_totales = minutos_totales + 1
                             # ------------------------------Acumulador de Descansos --------------------------------
                             if self.inicio_descanso_global <= self.inicio_jornada_global <= self.salida_descanso_global:
-                                self.inicio_jornada_global += timedelta(minutes=1)
+                                self.inicio_jornada_global += timedelta(
+                                    minutes=1)
                                 minutos_totales = minutos_totales - 1
                                 continue
                                 # ---------------------------- Acumulador de Festivos----------
@@ -250,13 +275,20 @@ class Horarios:
 
                         self.total_horas = round(minutos_totales / 60, 1)
                         self.diurnas_totales = round(minutos_diurnos / 60, 1)
-                        self.nocturnas_totales = round(minutos_nocturnos / 60, 1)
-                        self.extras_diurnas_totales = round(minutos_extras_diurnos / 60, 1)
-                        self.extras_nocturnos_totales = round(minutos_extras_nocturnos / 60, 1)
-                        self.diurnos_festivo_totales = round(minutos_diurnos_festivo / 60, 1)
-                        self.nocturnos_festivo_totales = round(minutos_nocturnos_festivo / 60, 1)
-                        self.extras_diurnos_festivo_totales = round(minutos_extras_diurnos_festivo / 60, 1)
-                        self.extras_nocturnos_festivo_totales = round(minutos_extras_nocturnos_festivo / 60, 1)
+                        self.nocturnas_totales = round(
+                            minutos_nocturnos / 60, 1)
+                        self.extras_diurnas_totales = round(
+                            minutos_extras_diurnos / 60, 1)
+                        self.extras_nocturnos_totales = round(
+                            minutos_extras_nocturnos / 60, 1)
+                        self.diurnos_festivo_totales = round(
+                            minutos_diurnos_festivo / 60, 1)
+                        self.nocturnos_festivo_totales = round(
+                            minutos_nocturnos_festivo / 60, 1)
+                        self.extras_diurnos_festivo_totales = round(
+                            minutos_extras_diurnos_festivo / 60, 1)
+                        self.extras_nocturnos_festivo_totales = round(
+                            minutos_extras_nocturnos_festivo / 60, 1)
 
                 def jornada_dos_descansos():
                     # --------------- Jornada con Dia diferente ------------------------------------------
@@ -271,9 +303,12 @@ class Horarios:
                         minutos_nocturnos_festivo_dia1 = 0
                         minutos_extras_diurnos_festivo_dia1 = 0
                         minutos_extras_nocturnos_festivo_dia1 = 0
-                        diurno1 = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno1 = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
-                        salida_jornada = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        salida_jornada = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         while self.inicio_jornada_global <= salida_jornada:
                             self.inicio_jornada_global += timedelta(minutes=1)
                             minutos_totales_dia1 = minutos_totales_dia1 + 1
@@ -281,7 +316,8 @@ class Horarios:
                             if self.inicio_descanso_global <= self.inicio_jornada_global <= \
                                     self.salida_descanso_global or self.inicio_descanso_global2 <= \
                                     self.inicio_jornada_global <= self.salida_descanso_global2:
-                                self.inicio_jornada_global += timedelta(minutes=1)
+                                self.inicio_jornada_global += timedelta(
+                                    minutes=1)
                                 minutos_totales_dia1 = minutos_totales_dia1 - 1
                                 continue
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
@@ -329,9 +365,12 @@ class Horarios:
                         minutos_nocturnos_festivo_dia2 = 0
                         minutos_extras_diurnos_festivo_dia2 = 0
                         minutos_extras_nocturnos_festivo_dia2 = 0
-                        diurno2 = datetime(salida_year, salida_mes, salida_dia, 6, 0)
-                        nocturno2 = datetime(salida_year, salida_mes, salida_dia, 21, 00)
-                        inicio_jornada2 = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 6, 0)
+                        nocturno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 21, 00)
+                        inicio_jornada2 = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         salida_jornada2 = self.salida_jornada_global
                         inicio_dia_semana2 = inicio_jornada2.strftime("%A")
                         while inicio_jornada2 <= salida_jornada2:
@@ -376,16 +415,21 @@ class Horarios:
                                         minutos_nocturnos_dia2 = minutos_nocturnos_dia2 + 1
                                     else:
                                         minutos_diurnos_dia2 = minutos_diurnos_dia2 + 1
-                        self.total_horas = round((minutos_totales_dia2 + consolidado_minutos) / 60, 1)
-                        self.diurnas_totales = round((minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
-                        self.nocturnas_totales = round((minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
+                        self.total_horas = round(
+                            (minutos_totales_dia2 + consolidado_minutos) / 60, 1)
+                        self.diurnas_totales = round(
+                            (minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
+                        self.nocturnas_totales = round(
+                            (minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
                         self.extras_diurnas_totales = round(
-                            (minutos_extras_diurnos_dia1 + minutos_extras_diurnos_dia2) / 60,
+                            (minutos_extras_diurnos_dia1 +
+                             minutos_extras_diurnos_dia2) / 60,
                             1)
                         self.extras_nocturnos_totales = round(
                             (minutos_extras_nocturnos_dia1 + minutos_extras_nocturnos_dia2) / 60, 1)
                         self.diurnos_festivo_totales = round(
-                            (minutos_diurnos_festivo_dia1 + minutos_diurnos_festivo_dia2) / 60,
+                            (minutos_diurnos_festivo_dia1 +
+                             minutos_diurnos_festivo_dia2) / 60,
                             1)
                         self.nocturnos_festivo_totales = round(
                             (minutos_nocturnos_festivo_dia1 + minutos_nocturnos_festivo_dia2) / 60, 1)
@@ -395,8 +439,10 @@ class Horarios:
                             (minutos_extras_nocturnos_festivo_dia1 + minutos_extras_nocturnos_festivo_dia2) / 60, 1)
                         # ------------------------------------- Jornada mismo día ---- 2 Descansos ---------------
                     else:
-                        diurno = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        diurno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
                         minutos_totales = 1
                         minutos_diurnos = 0
                         minutos_nocturnos = 0
@@ -413,7 +459,8 @@ class Horarios:
                             if self.inicio_descanso_global <= self.inicio_jornada_global <= \
                                     self.salida_descanso_global or self.inicio_descanso_global2 <= \
                                     self.inicio_jornada_global <= self.salida_descanso_global2:
-                                self.inicio_jornada_global += timedelta(minutes=1)
+                                self.inicio_jornada_global += timedelta(
+                                    minutes=1)
                                 minutos_totales = minutos_totales - 1
                                 continue
                                 # ---------------------------- Acumulador de Festivos----------
@@ -457,13 +504,20 @@ class Horarios:
 
                         self.total_horas = round(minutos_totales / 60, 1)
                         self.diurnas_totales = round(minutos_diurnos / 60, 1)
-                        self.nocturnas_totales = round(minutos_nocturnos / 60, 1)
-                        self.extras_diurnas_totales = round(minutos_extras_diurnos / 60, 1)
-                        self.extras_nocturnos_totales = round(minutos_extras_nocturnos / 60, 1)
-                        self.diurnos_festivo_totales = round(minutos_diurnos_festivo / 60, 1)
-                        self.nocturnos_festivo_totales = round(minutos_nocturnos_festivo / 60, 1)
-                        self.extras_diurnos_festivo_totales = round(minutos_extras_diurnos_festivo / 60, 1)
-                        self.extras_nocturnos_festivo_totales = round(minutos_extras_nocturnos_festivo / 60, 1)
+                        self.nocturnas_totales = round(
+                            minutos_nocturnos / 60, 1)
+                        self.extras_diurnas_totales = round(
+                            minutos_extras_diurnos / 60, 1)
+                        self.extras_nocturnos_totales = round(
+                            minutos_extras_nocturnos / 60, 1)
+                        self.diurnos_festivo_totales = round(
+                            minutos_diurnos_festivo / 60, 1)
+                        self.nocturnos_festivo_totales = round(
+                            minutos_nocturnos_festivo / 60, 1)
+                        self.extras_diurnos_festivo_totales = round(
+                            minutos_extras_diurnos_festivo / 60, 1)
+                        self.extras_nocturnos_festivo_totales = round(
+                            minutos_extras_nocturnos_festivo / 60, 1)
 
                 # ----------------------------- Función Jornada Continua sin descanso
                 def jornada_sin_descanso():
@@ -479,9 +533,12 @@ class Horarios:
                         minutos_nocturnos_festivo_dia1 = 0
                         minutos_extras_diurnos_festivo_dia1 = 0
                         minutos_extras_nocturnos_festivo_dia1 = 0
-                        diurno1 = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno1 = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
-                        salida_jornada = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno1 = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        salida_jornada = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         while self.inicio_jornada_global <= salida_jornada:
                             self.inicio_jornada_global += timedelta(minutes=1)
                             minutos_totales_dia1 = minutos_totales_dia1 + 1
@@ -530,9 +587,12 @@ class Horarios:
                         minutos_nocturnos_festivo_dia2 = 0
                         minutos_extras_diurnos_festivo_dia2 = 0
                         minutos_extras_nocturnos_festivo_dia2 = 0
-                        diurno2 = datetime(salida_year, salida_mes, salida_dia, 6, 0)
-                        nocturno2 = datetime(salida_year, salida_mes, salida_dia, 21, 00)
-                        inicio_jornada2 = datetime(salida_year, salida_mes, salida_dia, 0, 0)
+                        diurno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 6, 0)
+                        nocturno2 = datetime(
+                            salida_year, salida_mes, salida_dia, 21, 00)
+                        inicio_jornada2 = datetime(
+                            salida_year, salida_mes, salida_dia, 0, 0)
                         salida_jornada2 = self.salida_jornada_global
                         inicio_dia_semana2 = inicio_jornada2.strftime("%A")
                         while inicio_jornada2 <= salida_jornada2:
@@ -571,16 +631,21 @@ class Horarios:
                                         minutos_nocturnos_dia2 = minutos_nocturnos_dia2 + 1
                                     else:
                                         minutos_diurnos_dia2 = minutos_diurnos_dia2 + 1
-                        self.total_horas = round((minutos_totales_dia2 + consolidado_minutos) / 60, 1)
-                        self.diurnas_totales = round((minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
-                        self.nocturnas_totales = round((minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
+                        self.total_horas = round(
+                            (minutos_totales_dia2 + consolidado_minutos) / 60, 1)
+                        self.diurnas_totales = round(
+                            (minutos_diurnos_dia1 + minutos_diurnos_dia2) / 60, 1)
+                        self.nocturnas_totales = round(
+                            (minutos_nocturnos_dia1 + minutos_nocturnos_dia2) / 60, 1)
                         self.extras_diurnas_totales = round(
-                            (minutos_extras_diurnos_dia1 + minutos_extras_diurnos_dia2) / 60,
+                            (minutos_extras_diurnos_dia1 +
+                             minutos_extras_diurnos_dia2) / 60,
                             1)
                         self.extras_nocturnos_totales = round(
                             (minutos_extras_nocturnos_dia1 + minutos_extras_nocturnos_dia2) / 60, 1)
                         self.diurnos_festivo_totales = round(
-                            (minutos_diurnos_festivo_dia1 + minutos_diurnos_festivo_dia2) / 60,
+                            (minutos_diurnos_festivo_dia1 +
+                             minutos_diurnos_festivo_dia2) / 60,
                             1)
                         self.nocturnos_festivo_totales = round(
                             (minutos_nocturnos_festivo_dia1 + minutos_nocturnos_festivo_dia2) / 60, 1)
@@ -590,8 +655,10 @@ class Horarios:
                             (minutos_extras_nocturnos_festivo_dia1 + minutos_extras_nocturnos_festivo_dia2) / 60, 1)
                         # ------------------------------------- Jornada mismo día-------------------------------------
                     else:
-                        diurno = datetime(inicio_year, inicio_mes, inicio_dia, 6, 0)
-                        nocturno = datetime(inicio_year, inicio_mes, inicio_dia, 21, 00)
+                        diurno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 6, 0)
+                        nocturno = datetime(
+                            inicio_year, inicio_mes, inicio_dia, 21, 00)
                         minutos_totales = -1
                         minutos_diurnos = 0
                         minutos_nocturnos = 0
@@ -640,13 +707,20 @@ class Horarios:
                                         minutos_diurnos = minutos_diurnos + 1
                         self.total_horas = round(minutos_totales / 60, 2)
                         self.diurnas_totales = round(minutos_diurnos / 60, 1)
-                        self.nocturnas_totales = round(minutos_nocturnos / 60, 1)
-                        self.extras_diurnas_totales = round(minutos_extras_diurnos / 60, 1)
-                        self.extras_nocturnos_totales = round(minutos_extras_nocturnos / 60, 1)
-                        self.diurnos_festivo_totales = round(minutos_diurnos_festivo / 60, 1)
-                        self.nocturnos_festivo_totales = round(minutos_nocturnos_festivo / 60, 2)
-                        self.extras_diurnos_festivo_totales = round(minutos_extras_diurnos_festivo / 60, 1)
-                        self.extras_nocturnos_festivo_totales = round(minutos_extras_nocturnos_festivo / 60, 1)
+                        self.nocturnas_totales = round(
+                            minutos_nocturnos / 60, 1)
+                        self.extras_diurnas_totales = round(
+                            minutos_extras_diurnos / 60, 1)
+                        self.extras_nocturnos_totales = round(
+                            minutos_extras_nocturnos / 60, 1)
+                        self.diurnos_festivo_totales = round(
+                            minutos_diurnos_festivo / 60, 1)
+                        self.nocturnos_festivo_totales = round(
+                            minutos_nocturnos_festivo / 60, 2)
+                        self.extras_diurnos_festivo_totales = round(
+                            minutos_extras_diurnos_festivo / 60, 1)
+                        self.extras_nocturnos_festivo_totales = round(
+                            minutos_extras_nocturnos_festivo / 60, 1)
 
                 if self.inicio_descanso_global is None and self.salida_descanso_global is None:
                     jornada_sin_descanso()
