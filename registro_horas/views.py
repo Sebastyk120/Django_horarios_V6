@@ -41,9 +41,37 @@ def jornadas(request):
 
 @login_required
 def list_jornadas(request):
-    todas_jornadas = list(Jornada.objects.values())
-    data = {'todas_jornadas': todas_jornadas}
-    return JsonResponse(data)
+    data = {}
+    try:
+        todas_jornadas = Jornada.objects.all()
+        data['todas_jornadas'] = []
+        for jornada in todas_jornadas:
+            jornada_dict = {
+                'id': jornada.id,
+                'inicio_jornada_global': jornada.inicio_jornada_global,
+                'salida_jornada_global': jornada.salida_jornada_global,
+                'inicio_descanso_global': jornada.inicio_descanso_global,
+                'salida_descanso_global': jornada.salida_descanso_global,
+                'inicio_descanso_global2': jornada.inicio_descanso_global2,
+                'salida_descanso_global2': jornada.salida_descanso_global2,
+                'jornada_legal': jornada.jornada_legal,
+                'total_horas': jornada.total_horas,
+                'diurnas_totales': jornada.diurnas_totales,
+                'nocturnas_totales': jornada.nocturnas_totales,
+                'extras_diurnas_totales': jornada.extras_diurnas_totales,
+                'extras_nocturnos_totales': jornada.extras_nocturnos_totales,
+                'diurnos_festivo_totales': jornada.diurnos_festivo_totales,
+                'nocturnos_festivo_totales': jornada.nocturnos_festivo_totales,
+                'extras_diurnos_festivo_totales': jornada.extras_diurnos_festivo_totales,
+                'extras_nocturnos_festivo_totales': jornada.extras_nocturnos_festivo_totales,
+                'fh_transaccion': jornada.fh_transaccion,
+                'empleado_nombre': jornada.empleado.nombre,
+                'user_id': jornada.user.username,
+            }
+            data['todas_jornadas'].append(jornada_dict)
+        return JsonResponse(data)
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
 
 
 @login_required()
