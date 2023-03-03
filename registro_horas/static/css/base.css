@@ -1,0 +1,15 @@
+nav{
+    background-image: url("https://img.freepik.com/foto-gratis/concepto-fondo-estudio-fondo-purpura-sitio-estudio-pendiente-ligera-vacia-abstracta-producto_1258-67534.jpg?w=1380&t=st=1677806807~exp=1677807407~hmac=f7cc058dbd49142802bee6d551403efef9d8ead7ef12203ce560252f3bbabfec");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a.navbar-brand{
+    color: aliceblue;
+}
+
+nav .nav-link{
+    color: white ;
+    }
+
