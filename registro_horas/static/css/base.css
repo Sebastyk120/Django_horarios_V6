@@ -1,0 +1,13 @@
+nav{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+a.navbar-brand{
+    color: aliceblue;
+}
+
+nav .nav-link{
+    color: white;
+}
+

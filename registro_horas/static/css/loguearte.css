@@ -1,15 +1,23 @@
 body{
-    margin: 0;
-    padding: 0;
-    background: url(../img/M2.jpg) no-repeat center top ;
-    background-size: cover;
-    font-family: sans-serif;
-    height: 100vh;
+	background: url(../img/fondojornadas.png);
+	background-size: 150% 150%;
+	animation: gradient 60s ease infinite;
+	height: 100vh;
 }
-
-.contenedor {
-    width: 620px;
-    height: 400px;
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.container {
+    width: 450px;
+    height: 350px;
     background: rgba(0, 0, 0, .5) ;
     top: 50%;
     left: 50%;
@@ -18,77 +26,45 @@ body{
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 10%;
-    border: 3px solid rgb(0, 0, 0);
-    
-    
+    border: 1px solid rgb(0, 0, 0);
 }
-
-.log {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-    border: 3px solid rgb(76, 13, 105);
-}   
-
-.contenedor h1{
-    
+.container h3{
     color: #fff;
-    margin: 0;
-    padding: 0 0 20px;
+    margin: 20px 50px;
+    padding: 0 0 0px;
     text-align: center;
     font-size: 22px;
     font-family: 'Shadows Into Light', cursive;
 }   
-.contenedor label{
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    display: block;
-    color: #fff;
-    font-family: 'Shadows Into Light', cursive;
-   
+img.small{
+    width: 110px;
+    height: 110px;
+	border-radius: 50%;
+    position: absolute;
+    top: -80px;
+    left: calc(50% - 50px);
+    border: 3px solid rgb(76, 13, 105);
   }
-.contenedor input{
+.container input{
     width: 100%;
-    margin: 5px;
+    margin-bottom: 10px;
+    border: none;
+      
 }
-.contenedor input[type="text"],
-.contenedor input[type="password"]{
-
-border: none;
-border-bottom: 1px solid #fff;
-background: transparent;
-outline: none;
-height: 30px;
-color: #000000;
-font-size: 16px;
-}
-.contenedor input[type="submit"]{
+  .container input[type="submit"]{
     margin: 10px;
-    font-family: 'Shadows Into Light', cursive;
     border:none;
     outline: none;
     height: 40px;
-    background-color: rgb(230, 218, 152);
+    background-image: url(../img/BlueNav.jpeg);
     color: #000;
-    font-size: 19px;
+    font-size: 17px;
     border-radius: 20px;
-    
+	width: 100%;
+	transition: 1s;
+	
 }
-.contenedor a{
-    
-    font-family: 'Shadows Into Light', cursive;
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 20px;
-    color: darkgray;
-    margin: 10px;
-    
-}
-.contenedor input[type="submit"]:hover{
+.container input[type="submit"]:hover{
     color: #f7f7f7;
-    background-color: rgba(0, 0, 0, .2) ;
+    background-image: url(../img/BlueNav.jpeg);
 }

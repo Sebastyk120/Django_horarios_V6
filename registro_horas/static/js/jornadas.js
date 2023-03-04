@@ -50,7 +50,7 @@ const listjornadas = async () => {
                     <td>${todas_jornadas.extras_diurnos_festivo_totales}</td>
                     <td>${todas_jornadas.extras_nocturnos_festivo_totales}</td>
                     <td>${todas_jornadas.fh_transaccion}</td>            
-                    <td>${todas_jornadas.empleado_id}</td>
+                    <td>${todas_jornadas.empleado_nombre}</td>
                     <td>${todas_jornadas.user_id}</td>
                     <td>${todas_jornadas.total_horas > 10
                 ? "<i class='fa-solid fa-xmark' style ='color: red;'></i>"

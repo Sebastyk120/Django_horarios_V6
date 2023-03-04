@@ -4,11 +4,16 @@
 }
 .html, body{
     height: 100vh;
-    background-image: url(../img/M2.jpg);
+    background-image: url(../img/fondojornadas.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
     font-family: sans-serif;
     justify-content: center;
+    font-size:15px ;
+}
+h1{
+    font-family: 'Montserrat';
+    font-weight: bold;;
 }
