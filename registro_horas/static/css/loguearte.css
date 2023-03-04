@@ -1,10 +1,9 @@
 body{
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 10s ease infinite;
+	background: url(../img/fondojornadas.png);
+	background-size: 150% 150%;
+	animation: gradient 60s ease infinite;
 	height: 100vh;
 }
-
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -16,27 +15,56 @@ body{
 		background-position: 0% 50%;
 	}
 }
-
-
+.container {
+    width: 450px;
+    height: 350px;
+    background: rgba(0, 0, 0, .5) ;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10%;
+    border: 1px solid rgb(0, 0, 0);
+}
+.container h3{
+    color: #fff;
+    margin: 20px 50px;
+    padding: 0 0 0px;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Shadows Into Light', cursive;
+}   
 img.small{
-    width: 160px;
-    height: 125px;
+    width: 110px;
+    height: 110px;
+	border-radius: 50%;
+    position: absolute;
+    top: -80px;
+    left: calc(50% - 50px);
+    border: 3px solid rgb(76, 13, 105);
   }
-
+.container input{
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+      
+}
   .container input[type="submit"]{
     margin: 10px;
     border:none;
     outline: none;
     height: 40px;
-    background-color: rgb(247, 230, 0);
+    background-image: url(../img/BlueNav.jpeg);
     color: #000;
     font-size: 17px;
-    border-radius: 5px;
-	position: relative;
-	left: 120px;
-    
+    border-radius: 20px;
+	width: 100%;
+	transition: 1s;
+	
 }
 .container input[type="submit"]:hover{
     color: #f7f7f7;
-    background-color: rgb(255, 244, 89) ;
+    background-image: url(../img/BlueNav.jpeg);
 }
