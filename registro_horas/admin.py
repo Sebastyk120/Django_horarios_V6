@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Empleados, Jornada
+from .models import Empleados, Jornada, Cargos
 
 
 class JornadaAdmin(admin.ModelAdmin):
@@ -7,7 +7,8 @@ class JornadaAdmin(admin.ModelAdmin):
 
 
 # Registrando Modelos de Heavens
-admin.site.register(Empleados, )
+admin.site.register(Empleados)
 admin.site.register(Jornada, JornadaAdmin)
+admin.site.register(Cargos)
 
 

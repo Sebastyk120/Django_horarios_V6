@@ -33,6 +33,8 @@ const listjornadas = async () => {
             content += `
                 <tr>
                     <td>${index + 1}</td>
+                    <td>${todas_jornadas.empleado_nombre}</td>
+                    <td>${todas_jornadas.empleado_cedula}</td>
                     <td>${todas_jornadas.inicio_jornada_global}</td>
                     <td>${todas_jornadas.salida_jornada_global}</td>
                     <td>${todas_jornadas.inicio_descanso_global}</td>
@@ -50,14 +52,10 @@ const listjornadas = async () => {
                     <td>${todas_jornadas.extras_diurnos_festivo_totales}</td>
                     <td>${todas_jornadas.extras_nocturnos_festivo_totales}</td>
                     <td>${todas_jornadas.fh_transaccion}</td>            
-                    <td>${todas_jornadas.empleado_nombre}</td>
                     <td>${todas_jornadas.user_id}</td>
-                    <td>${todas_jornadas.total_horas > 10
-                ? "<i class='fa-solid fa-xmark' style ='color: red;'></i>"
-                : "<i class='fa-solid fa check' style ='color: green;'></i>"}</td>
                     <td>
                     <a href="actualizar/${todas_jornadas.id}/"> <button class='btn btn-sm btn-primary'><i class='fa-solid fa-pencil' id="Editar"></i></button></a>
-                        <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can'></i></button>
+                    <a href="eliminar/${todas_jornadas.id}/">  <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can' id="Eliminar"></i></button></a>
                     </td>
                 </tr>
             `;

@@ -1,61 +1,67 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    {% csrf_token %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <br>
-        <title>Ver Jornadas</title>
-        <!-------Datatable-------->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-        <!-------Font Awesome-------->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-        <!-------Css Sebas-------->
-        <link rel="stylesheet" href="{% static 'css/jornadas.css' %}">
-    </head>
-    <body>     
-    <h1 style="text-align: center;">Ver Jornadas</h1>
-    <div class="container-fluid ">
-        <div class="row"></div>
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="table-responsive">
-                <table id="datatable_jornadas" class="table table-sm table-light table-striped table-hover table-responsive table-bordered">
-                    <caption>
-                        Todas las Jornadas
-                    </caption>
-                    <thead class="table-dark" >
-                    <tr>
-                        <th class="centered">Id</th>
-                        <th class="centered">Inicio Jornada</th>
-                        <th class="centered">Salida Jornada</th>
-                        <th class="centered">I Descanso</th>
-                        <th class="centered">S Descanso</th>
-                        <th class="centered">I Descanso 2</th>
-                        <th class="centered">S Descanso 2</th>
-                        <th class="centered">J Legal</th>
-                        <th class="centered">Total H</th>
-                        <th class="centered">HD</th>
-                        <th class="centered">HN</th>
-                        <th class="centered">HED</th>
-                        <th class="centered">HEN</th>
-                        <th class="centered">HDF</th>
-                        <th class="centered">HNF</th>
-                        <th class="centered">EDF</th>
-                        <th class="centered">ENF</th>
-                        <th class="centered">Creación</th>
-                        <th class="centered">Empleado</th>
-                        <th class="centered">Usuario</th>
-                        <th class="centered">Comprobador</th>
-                        <th class="centered">Opciones</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tableBody_jornadas"></tbody>
-                </table>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <br />
+    <title>Ver Jornadas</title>
+    <!-------Datatable-------->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css"
+    />
+    <!-------Font Awesome-------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <!-------Css Sebas-------->
+    <link rel="stylesheet" href="{% static 'css/jornadas.css' %}" />
+  </head>
+  <body>
+    <h1 style="text-align: center">Ver Jornadas</h1>
+    <div class="container-fluid">
+      <div class="row"></div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="table-responsive">
+          <table
+            id="datatable_jornadas"
+            class="table table-sm table-light table-striped table-hover table-responsive table-bordered"
+          >
+            <caption>
+              Todas las Jornadas
+            </caption>
+            <thead class="table-dark">
+              <tr>
+                <th class="centered">No.</th>
+                <th class="centered">Empleado</th>
+                <th class="centered">Documento</th>
+                <th class="centered">Inicio Jornada</th>
+                <th class="centered">Salida Jornada</th>
+                <th class="centered">Inicio Descan 1</th>
+                <th class="centered">Salida Descan 1</th>
+                <th class="centered">Inicio Descan 2</th>
+                <th class="centered">Salida Descan 2</th>
+                <th class="centered">Jor Legal</th>
+                <th class="centered">Total H</th>
+                <th class="centered">Hor Diu</th>
+                <th class="centered">Hor Noc</th>
+                <th class="centered">Hor Ex Diu</th>
+                <th class="centered">Hor Ex Noc</th>
+                <th class="centered">Hor Diu Fes</th>
+                <th class="centered">Hor Noc Fes</th>
+                <th class="centered">Ex Diu Fes</th>
+                <th class="centered">Ex Noc Fes</th>
+                <th class="centered">Creación</th>
+                <th class="centered">Usuario</th>
+                <th class="centered">Opciones</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody_jornadas"></tbody>
+          </table>
         </div>
+      </div>
     </div>
     <!-------Jquery-------->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -64,6 +70,6 @@
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <!-------Js Sebas-------->
     <script src="{% static 'js/jornadas.js' %}"></script>
-    </body>
-    </html>
+  </body>
+</html>
 {% endblock %}
