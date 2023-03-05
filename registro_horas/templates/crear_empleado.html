@@ -1,20 +1,21 @@
-{% extends 'base.html' %}
-{% block content %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Crear Empleado</title>
-        <h1>Crear Empleado</h1>
-        {{ error }}
-    </head>
-    <body>
-    <form action="/crear/empleado/" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Guardar</button>
-    </form>
-
-    </body>
-    </html>
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crear Empleado</title>
+  </head>
+  <main class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-5">
+        <form action="/empleados/crear/" method="post" class="card card-body">
+          <h1 class="text-center">Crear Empleado</h1>
+          {{ error }} {% csrf_token %} {{ form.as_p }}
+          <button class="btn btn-primary" >Guardar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  </body>
+</html>
 {% endblock %}
