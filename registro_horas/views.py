@@ -136,6 +136,47 @@ def actualizar_jornada(request, jornada_id):
 
 
 @login_required
+def eliminar_jornada(request, jornada_id):
+    if request.method == 'GET':
+        jornada = get_object_or_404(Jornada, pk=jornada_id)
+        form = CrearjornadaForm(instance=jornada)
+        return render(request, 'eliminar_jornada.html', {'jornada': jornada, 'form': form})
+    else:
+        try:
+            empleado = get_object_or_404(Jornada, pk=jornada_id)
+            form = CrearjornadaForm(request.POST, instance=empleado)
+            if form.is_valid():
+                inicio_jornada_globalf = form.cleaned_data['inicio_jornada_global']
+                salida_jornada_globalf = form.cleaned_data['salida_jornada_global']
+                inicio_descanso_globalf = form.cleaned_data['inicio_descanso_global']
+                salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
+                inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
+                salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
+                jornada_legalf = form.cleaned_data['jornada_legal']
+                horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
+                                    salida_descanso_globalf,
+                                    inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
+                nueva_jornada = form.save(commit=False)
+                nueva_jornada.total_horas = horarioo.total_horas
+                nueva_jornada.diurnas_totales = horarioo.diurnas_totales
+                nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
+                nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
+                nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
+                nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
+                nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
+                nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
+                nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
+                nueva_jornada.user = request.user
+                nueva_jornada.delete()
+            return redirect('jornadas')
+        except ValueError:
+            jornada = get_object_or_404(Jornada, pk=jornada_id)
+            form = CrearjornadaForm(request.POST, instance=jornada)
+            return render(request, 'eliminar_jornada.html', {'jornada': jornada, 'form': form,
+                                                               'error': "Error De Datos"})
+
+
+@login_required
 def list_jornadas(request):
     data = {}
     try:

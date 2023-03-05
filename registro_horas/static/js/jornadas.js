@@ -55,7 +55,7 @@ const listjornadas = async () => {
                     <td>${todas_jornadas.user_id}</td>
                     <td>
                     <a href="actualizar/${todas_jornadas.id}/"> <button class='btn btn-sm btn-primary'><i class='fa-solid fa-pencil' id="Editar"></i></button></a>
-                        <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can'></i></button>
+                    <a href="eliminar/${todas_jornadas.id}/">  <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can' id="Eliminar"></i></button></a>
                     </td>
                 </tr>
             `;

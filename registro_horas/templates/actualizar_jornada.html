@@ -1,13 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
-    <h2>Editar Jornada Para El Empleado > {{jornada.empleado.nombre}}</h2>
-    <form method="post">
-      {% csrf_token %} {{form.as_p}}
-      <button>Actualizar</button>
-    </form>
+    <title>Actualizar Jornada</title>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <br />
   </head>
-  <body></body>
+  <body>
+    <main class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+          <form method="post" class="card card-body">
+            <h1 class="text-center text-info">Editar Jornada <br> {{jornada.empleado.nombre}}</h1>
+            {{ error }} {% csrf_token %} {{ form.as_p }}
+            <button class="btn btn-primary">Actualizar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
+{% endblock %}
+

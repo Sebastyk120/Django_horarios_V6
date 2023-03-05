@@ -45,7 +45,6 @@ const listempleados = async () => {
                     <td>${todas_empleados.retiro}</td>
                     <td>
                         <a href="actualizar/${todas_empleados.id}/"> <button class='btn btn-sm btn-primary'><i class='fa-solid fa-pencil' id="Editar"></i></button></a>
-                        <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can' id="Eliminar"></i></button>
                     </td>
                 </tr>
             `;

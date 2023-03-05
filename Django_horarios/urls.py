@@ -26,6 +26,7 @@ urlpatterns = [
     path('lista/jornadas/', views.list_jornadas, name='lista_jornadas'),
     path('jornadas/crear/', views.crear_jornada, name='crear_jornada'),
     path('jornadas/actualizar/<int:jornada_id>/', views.actualizar_jornada, name='actualizar_jornada'),
+    path('jornadas/eliminar/<int:jornada_id>/', views.eliminar_jornada, name='eliminar_jornada'),
     path('empleados/', views.empleados, name='empleados'),
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
