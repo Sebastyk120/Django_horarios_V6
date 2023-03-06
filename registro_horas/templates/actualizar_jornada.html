@@ -20,7 +20,7 @@
         <div class="col-md-6 offset-md-3 mt-5">
           <form method="post" class="card card-body">
             <h1 class="text-center text-info">Editar Jornada <br> {{jornada.empleado.nombre}}</h1>
-            {{ error }} {% csrf_token %} {{ form.as_p }}
+            {{ error }} {% csrf_token %} {{ form.as_p }} {{ Invalido }}
             <button class="btn btn-primary">Actualizar</button>
           </form>
         </div>

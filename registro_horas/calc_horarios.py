@@ -6,7 +6,7 @@ locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
 
 class Horarios:
     def __init__(self, inicio_jornada_global, salida_jornada_global, inicio_descanso_global, salida_descanso_global,
-                 inicio_descanso_global2, salida_descanso_global2, jornada_legal):
+                inicio_descanso_global2, salida_descanso_global2, jornada_legal):
         self.inicio_jornada_global = inicio_jornada_global
         self.salida_jornada_global = salida_jornada_global
         self.inicio_descanso_global = inicio_descanso_global
@@ -93,15 +93,13 @@ class Horarios:
                                 self.inicio_jornada_global += timedelta(
                                     minutes=1)
                                 minutos_totales_dia1 = minutos_totales_dia1 - 1
-                                continue
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
                                 if minutos_totales_dia1 > jornada_legal_minutos:
                                     if self.inicio_jornada_global < diurno1:
                                         minutos_extras_nocturnos_festivo_dia1 = \
                                             minutos_extras_nocturnos_festivo_dia1 + 1
                                     elif self.inicio_jornada_global > nocturno1:
-                                        minutos_extras_nocturnos_festivo_dia1 = \
-                                            minutos_extras_nocturnos_festivo_dia1 + 1
+                                        minutos_extras_nocturnos_festivo_dia1 = minutos_extras_nocturnos_festivo_dia1 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia1 = minutos_extras_diurnos_festivo_dia1 + 1
                                 else:
@@ -155,15 +153,14 @@ class Horarios:
                             if self.inicio_descanso_global <= inicio_jornada2 <= self.salida_descanso_global:
                                 inicio_jornada2 += timedelta(minutes=1)
                                 minutos_totales_dia2 = minutos_totales_dia2 - 1
-                                continue
+
                             elif inicio_dia_semana2 == "domingo" or festivo_salida == "festivo":
                                 if consolidado2 > jornada_legal_minutos:
                                     if inicio_jornada2 < diurno2:
                                         minutos_extras_nocturnos_festivo_dia2 = \
                                             minutos_extras_nocturnos_festivo_dia2 + 1
                                     elif inicio_jornada2 > nocturno2:
-                                        minutos_extras_nocturnos_festivo_dia2 = \
-                                            minutos_extras_nocturnos_festivo_dia2 + 1
+                                        minutos_extras_nocturnos_festivo_dia2 = minutos_extras_nocturnos_festivo_dia2 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia2 = minutos_extras_diurnos_festivo_dia2 + 1
                                 else:
@@ -233,7 +230,7 @@ class Horarios:
                                 self.inicio_jornada_global += timedelta(
                                     minutes=1)
                                 minutos_totales = minutos_totales - 1
-                                continue
+
                                 # ---------------------------- Acumulador de Festivos----------
                                 # --------------------------------
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
@@ -316,18 +313,15 @@ class Horarios:
                             if self.inicio_descanso_global <= self.inicio_jornada_global <= \
                                     self.salida_descanso_global or self.inicio_descanso_global2 <= \
                                     self.inicio_jornada_global <= self.salida_descanso_global2:
-                                self.inicio_jornada_global += timedelta(
-                                    minutes=1)
+                                self.inicio_jornada_global += timedelta(minutes=1)
                                 minutos_totales_dia1 = minutos_totales_dia1 - 1
-                                continue
+
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
                                 if minutos_totales_dia1 > jornada_legal_minutos:
                                     if self.inicio_jornada_global < diurno1:
-                                        minutos_extras_nocturnos_festivo_dia1 = \
-                                            minutos_extras_nocturnos_festivo_dia1 + 1
+                                        minutos_extras_nocturnos_festivo_dia1 = minutos_extras_nocturnos_festivo_dia1 + 1
                                     elif self.inicio_jornada_global > nocturno1:
-                                        minutos_extras_nocturnos_festivo_dia1 = \
-                                            minutos_extras_nocturnos_festivo_dia1 + 1
+                                        minutos_extras_nocturnos_festivo_dia1 = minutos_extras_nocturnos_festivo_dia1 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia1 = minutos_extras_diurnos_festivo_dia1 + 1
                                 else:
@@ -382,15 +376,13 @@ class Horarios:
                                     self.inicio_descanso_global2 <= inicio_jornada2 <= self.salida_descanso_global2:
                                 inicio_jornada2 += timedelta(minutes=1)
                                 minutos_totales_dia2 = minutos_totales_dia2 - 1
-                                continue
+
                             elif inicio_dia_semana2 == "domingo" or festivo_salida == "festivo":
                                 if consolidado2 > jornada_legal_minutos:
                                     if inicio_jornada2 < diurno2:
-                                        minutos_extras_nocturnos_festivo_dia2 = \
-                                            minutos_extras_nocturnos_festivo_dia2 + 1
+                                        minutos_extras_nocturnos_festivo_dia2 = minutos_extras_nocturnos_festivo_dia2 + 1
                                     elif inicio_jornada2 > nocturno2:
-                                        minutos_extras_nocturnos_festivo_dia2 = \
-                                            minutos_extras_nocturnos_festivo_dia2 + 1
+                                        minutos_extras_nocturnos_festivo_dia2 = minutos_extras_nocturnos_festivo_dia2 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia2 = minutos_extras_diurnos_festivo_dia2 + 1
                                 else:
@@ -462,7 +454,7 @@ class Horarios:
                                 self.inicio_jornada_global += timedelta(
                                     minutes=1)
                                 minutos_totales = minutos_totales - 1
-                                continue
+
                                 # ---------------------------- Acumulador de Festivos----------
                                 # --------------------------------
                             elif inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
@@ -545,11 +537,9 @@ class Horarios:
                             if inicio_dia_semana == "domingo" or festivo_inicio == "festivo":
                                 if minutos_totales_dia1 > jornada_legal_minutos:
                                     if self.inicio_jornada_global < diurno1:
-                                        minutos_extras_nocturnos_festivo_dia1 = \
-                                            minutos_extras_nocturnos_festivo_dia1 + 1
+                                        minutos_extras_nocturnos_festivo_dia1 = minutos_extras_nocturnos_festivo_dia1 + 1
                                     elif self.inicio_jornada_global > nocturno1:
-                                        minutos_extras_nocturnos_festivo_dia1 = \
-                                            minutos_extras_nocturnos_festivo_dia1 + 1
+                                        minutos_extras_nocturnos_festivo_dia1 = minutos_extras_nocturnos_festivo_dia1 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia1 = minutos_extras_diurnos_festivo_dia1 + 1
                                 else:
@@ -605,8 +595,7 @@ class Horarios:
                                         minutos_extras_nocturnos_festivo_dia2 = \
                                             minutos_extras_nocturnos_festivo_dia2 + 1
                                     elif inicio_jornada2 > nocturno2:
-                                        minutos_extras_nocturnos_festivo_dia2 = \
-                                            minutos_extras_nocturnos_festivo_dia2 + 1
+                                        minutos_extras_nocturnos_festivo_dia2 = minutos_extras_nocturnos_festivo_dia2 + 1
                                     else:
                                         minutos_extras_diurnos_festivo_dia2 = minutos_extras_diurnos_festivo_dia2 + 1
                                 else:
@@ -651,7 +640,7 @@ class Horarios:
                             (minutos_nocturnos_festivo_dia1 + minutos_nocturnos_festivo_dia2) / 60, 1)
                         self.extras_diurnos_festivo_totales = round(
                             (minutos_extras_diurnos_festivo_dia1 + minutos_extras_diurnos_festivo_dia2) / 60, 1)
-                        self.extras_nocturnos_festivo_totales = (
+                        self.extras_nocturnos_festivo_totales = round(
                             (minutos_extras_nocturnos_festivo_dia1 + minutos_extras_nocturnos_festivo_dia2) / 60, 1)
                         # ------------------------------------- Jornada mismo día-------------------------------------
                     else:
