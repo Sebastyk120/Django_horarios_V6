@@ -1,10 +1,8 @@
-.html, body{
+body {
     height: 100vh;
-}
-body{
     background-image: url(../img/fondojornadas.png);
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
 }
+

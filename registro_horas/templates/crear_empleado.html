@@ -1,15 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/Cempleado.css' %}"/>
     <title>Crear Empleado</title>
   </head>
+  <body>
   <main class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3 mt-1">
-        <form action="/empleados/crear/" method="post" class="card card-body">
+      <div class="col-md-6 offset-md-3 mt-1" >
+        <form action="/empleados/crear/" method="post" class="card card-body h-100 border-primary">
           <h1 class="text-center">Crear Empleado</h1>
           {{ error }} {% csrf_token %} {{ form|crispy }}
           <button class="btn btn-primary mt-2" >Guardar</button>

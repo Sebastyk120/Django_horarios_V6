@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
+  {% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
         <div class="table-responsive-empleados">
           <table
             id="datatable_empleados"
-            class="table table-light table-striped table-hover table-sm"
+            class="table table-light table-striped table-hover table-sm table-bordered"
           >
             <caption>
               Todos Los Empleados
