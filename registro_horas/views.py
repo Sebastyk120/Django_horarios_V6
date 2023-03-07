@@ -232,7 +232,7 @@ def eliminar_jornada(request, jornada_id):
             jornada = get_object_or_404(Jornada, pk=jornada_id)
             form = CrearjornadaForm(request.POST, instance=jornada)
             return render(request, 'eliminar_jornada.html', {'jornada': jornada, 'form': form,
-                                                               'error': "Error De Datos"})
+                                                             'error': "Error De Datos"})
 
 
 @login_required
@@ -246,12 +246,12 @@ def list_jornadas(request):
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
                 'empleado_cedula': jornada.empleado.cedula,
-                'inicio_jornada_global': jornada.inicio_jornada_global,
-                'salida_jornada_global': jornada.salida_jornada_global,
-                'inicio_descanso_global': jornada.inicio_descanso_global,
-                'salida_descanso_global': jornada.salida_descanso_global,
-                'inicio_descanso_global2': jornada.inicio_descanso_global2,
-                'salida_descanso_global2': jornada.salida_descanso_global2,
+                'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
+                'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
+                'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
+                'salida_descanso_global': jornada.salida_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
+                'inicio_descanso_global2': jornada.inicio_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global2 else "-",
+                'salida_descanso_global2': jornada.salida_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global2 else "-",
                 'jornada_legal': jornada.jornada_legal,
                 'total_horas': jornada.total_horas,
                 'diurnas_totales': jornada.diurnas_totales,
@@ -262,7 +262,7 @@ def list_jornadas(request):
                 'nocturnos_festivo_totales': jornada.nocturnos_festivo_totales,
                 'extras_diurnos_festivo_totales': jornada.extras_diurnos_festivo_totales,
                 'extras_nocturnos_festivo_totales': jornada.extras_nocturnos_festivo_totales,
-                'fh_transaccion': jornada.fh_transaccion,
+                'fh_transaccion': jornada.fh_transaccion.strftime('%d/%m/%Y  Hora:%H:%M'),
                 'user_id': jornada.user.username,
             }
             data['todas_jornadas'].append(jornada_dict)
