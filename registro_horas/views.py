@@ -291,7 +291,7 @@ def list_empleados(request):
                 'estado': empleado.estado,
                 'area': empleado.area,
                 'cargo': empleado.cargo.cargo,
-                'salario': empleado.salario,
+                'salario': '{:,}'.format(empleado.salario) if empleado.salario else None,
                 'generaextras': empleado.generaextras,
                 'ingreso': empleado.ingreso,
                 'retiro': empleado.retiro,
