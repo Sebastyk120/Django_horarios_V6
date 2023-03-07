@@ -2,21 +2,9 @@
     height: 100vh;
 }
 body{
-    background-image: url(../img/M2.jpg);
+    background-image: url(../img/fondojornadas.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    font-family: sans-serif;
-    justify-content: center;
     height: 100vh;
-}
-form{
-    background: rgba(0, 0, 0, .5);
-    text-align: center;
-    color: aliceblue;
-    align-items: center;
-    padding: 50px 50px;
-    top: 200px;
 }

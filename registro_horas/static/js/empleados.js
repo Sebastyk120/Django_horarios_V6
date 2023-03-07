@@ -7,8 +7,8 @@ const dataTableOptions = {
             className: "centered",
             targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         },
-        {orderable: false, targets: [6]},
-        {searchable: false, targets: [0, 2, 4, 5, 6]}
+        {orderable: false, targets: [7, 11]},
+        {searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11]}
     ],
     pageLength: 10,
     destroy: true

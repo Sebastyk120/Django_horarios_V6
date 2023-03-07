@@ -40,14 +40,14 @@
           <form action="/iniciar_sesion/" method="post">
             {% csrf_token %}
             <form class="form-signin" method="POST" action="/iniciar_sesion/">
-              <div class="card-body border-primary mb-3">
+              <div class="card-body border-primary mb-3 text-center">
                 <div class="form-floating mb-3">
                   <input
                     style="font-family: 'Montserrat'"
                     type="text"
                     placeholder="Usuario"
                     name="username"
-                    class="form-control"
+                    class="form-control "
                   />
                   <label style="font-family: 'Montserrat'" for="floatingInput"
                     >Usuario</label
@@ -65,6 +65,7 @@
                     >Contraseña</label
                   >
                 </div>
+                <br>
                 <input
                   href="/"
                   type="submit"
