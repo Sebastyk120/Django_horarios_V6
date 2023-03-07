@@ -11,7 +11,7 @@
   <body>
   <main class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3 mt-1" >
+      <div class="col-md-6 offset-md-3 mt-2" >
         <form action="/empleados/crear/" method="post" class="card card-body h-100 border-primary">
           <h1 class="text-center">Crear Empleado</h1>
           {{ error }} {% csrf_token %} {{ form|crispy }}
