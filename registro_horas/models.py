@@ -39,8 +39,7 @@ class Empleados(models.Model):
     area = models.CharField(max_length=33, choices=area, verbose_name="Area")
     cargo = models.ForeignKey(
         Cargos, on_delete=models.CASCADE, verbose_name="Cargo")
-    salario = models.DecimalField(max_digits=15, decimal_places=2,
-                                  verbose_name="Salario", null=True, blank=True)
+    salario = models.IntegerField(verbose_name="Salario")
     generaextras = models.CharField(
         max_length=2, choices=extras, default='No', verbose_name="Genera Extras")
     ingreso = models.DateField(

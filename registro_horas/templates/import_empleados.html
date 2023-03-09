@@ -1,0 +1,6 @@
+<h1>Importacion De Empleados Excel</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="mi_archivo"/>
+    <button type="submit">Cargar</button>
+</form>
