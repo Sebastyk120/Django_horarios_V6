@@ -416,8 +416,8 @@ def list_empleados(request):
                 'cargo': empleado.cargo.cargo,
                 'salario': '{:,}'.format(empleado.salario) if empleado.salario else None,
                 'generaextras': empleado.generaextras,
-                'ingreso': empleado.ingreso,
-                'retiro': empleado.retiro,
+                'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
+                'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
             }
             data['todas_empleados'].append(empleado_dict)
         return JsonResponse(data)

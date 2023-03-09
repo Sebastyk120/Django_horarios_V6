@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'registro_horas',
     'crispy_forms',
     'crispy_bootstrap5',
+    'import_export',
 ]
 
 MIDDLEWARE = [
