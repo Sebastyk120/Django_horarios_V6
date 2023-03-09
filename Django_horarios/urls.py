@@ -32,5 +32,7 @@ urlpatterns = [
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
     path('logout/', views.salir, name='logout'),
+    path('empleados/importar/', views.importarExcel, name='import_empleado'),
+    
     
 ]

@@ -17,8 +17,34 @@ from django.contrib import messages
 def home(request):
     return render(request, 'home.html')
 
+<<<<<<< HEAD
+def importarExcel(request):
+    if request.method =='POST':
+        empleados_resource = EmpleadosResource()
+        dataset = Dataset()
+        new_empleados = request.FILES['mi_archivo']
+        imported_data = dataset.load(new_empleados.read(), format='xlsx')
+        for data in imported_data:
+            valor = Empleados(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                data[5],
+                data[6],
+                data[7],
+                data[8],
+                data[9],
+                data[10]
+            )
+            valor.save()
+        
+    return render(request, 'import_empleados.html')    
+=======
 
 
+>>>>>>> 742597bfd1cd36e6988617da9eef16eb65a83810
 
 
 def iniciar_sesion(request):
