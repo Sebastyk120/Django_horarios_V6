@@ -11,13 +11,13 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import timedelta, datetime
 from tablib import Dataset
 from .resources import EmpleadosResource
-
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
-def
+
 
 
 
@@ -29,8 +29,7 @@ def iniciar_sesion(request):
             request, username=request.POST['username'], password=request.POST['password'])
         print(request.POST)
         if user is None:
-            return render(request, 'iniciar_sesion.html',
-                          {'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
+            return render(request, 'iniciar_sesion.html',{'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
         else:
             print(request.POST)
             login(request, user)
@@ -49,6 +48,7 @@ def signup(request):
                 user = User.objects.create_user(
                     username=request.POST['username'], password=request.POST['password1'])
                 user.save()
+                messages.success(request,"usuario creado correctamente")
                 login(request, user)
                 return redirect('jornadas')
             except IntegrityError:
@@ -181,6 +181,7 @@ def crear_jornada(request):
                     nueva_jornada.user = request.user
                     print(request.POST)
                     nueva_jornada.save()
+                    messages.success(request,"Jornada creada exitosamente")
                     return redirect('crear_jornada')
             else:
                 return render(request, 'crear_jornada.html',
@@ -247,6 +248,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
+                        messages.success(request,"Jornada actualizada correctamente")
                         return redirect('jornadas')                                            
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -355,6 +357,7 @@ def eliminar_jornada(request, jornada_id):
                 nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
+                messages.success(request,"Jornada eliminada correctamente")
             return redirect('jornadas')
         except ValueError:
             jornada = get_object_or_404(Jornada, pk=jornada_id)
@@ -441,6 +444,7 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
+            messages.success(request,"Registro actualizado correctamente")
             return redirect('empleados')
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
@@ -458,6 +462,7 @@ def crear_empleado(request):
             form = CrearempleadoForm(request.POST)
             nuevo_empleado = form.save(commit=False)
             nuevo_empleado.save()
+            messages.success(request,"El empleado fue creado correctamente")
             return redirect('crear_empleado')
         except ValueError:
             return render(request, 'crear_empleado.html',
