@@ -11,6 +11,7 @@ body{
     font-family: sans-serif;
     justify-content: center;
     height: 100vh;
+    background-attachment: fixed;
 }
 form{
     background: rgba(0, 0, 0, .5);
