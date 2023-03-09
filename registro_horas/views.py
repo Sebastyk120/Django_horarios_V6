@@ -9,11 +9,16 @@ from .forms import CrearjornadaForm, CrearempleadoForm
 from .calc_horarios import Horarios
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import timedelta, datetime
+from tablib import Dataset
+from .resources import EmpleadosResource
 
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+def
+
 
 
 def iniciar_sesion(request):
