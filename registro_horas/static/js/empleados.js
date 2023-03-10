@@ -5,10 +5,10 @@ const dataTableOptions = {
     columnDefs: [
         {
             className: "centered",
-            targets: [0, 1, 2, 3, 4, 5, 6]
+            targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         },
-        {orderable: false, targets: [6]},
-        {searchable: false, targets: [0, 2, 4, 5, 6]}
+        {orderable: false, targets: [7, 11]},
+        {searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11]}
     ],
     pageLength: 10,
     destroy: true
@@ -37,12 +37,14 @@ const listempleados = async () => {
                     <td>${todas_empleados.cedula}</td>
                     <td>${todas_empleados.empresa}</td>
                     <td>${todas_empleados.estado}</td>
-                    <td>${todas_empleados.estado === 'Inactivo'
-                ? "<i class='fa-solid fa-xmark' style ='color: red;'></i>"
-                : "<i class='fa-solid fa-check' style ='color: green;'></i>"}</td>
+                    <td>${todas_empleados.area}</td>
+                    <td>${todas_empleados.cargo}</td>
+                    <td>${todas_empleados.salario}</td>
+                    <td>${todas_empleados.generaextras}</td>
+                    <td>${todas_empleados.ingreso}</td>
+                    <td>${todas_empleados.retiro}</td>
                     <td>
                         <a href="actualizar/${todas_empleados.id}/"> <button class='btn btn-sm btn-primary'><i class='fa-solid fa-pencil' id="Editar"></i></button></a>
-                        <button class='btn btn-sm btn-danger'><i class='fa-solid fa-trash-can' id="Eliminar"></i></button>
                     </td>
                 </tr>
             `;

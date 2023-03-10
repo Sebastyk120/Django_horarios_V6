@@ -20,15 +20,19 @@ from registro_horas import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('iniciar_sesion/', views.iniciar_sesion, name='iniciar_sesion'),
     path('signup/', views.signup, name='signup'),
     path('jornadas/', views.jornadas, name='jornadas'),
     path('lista/jornadas/', views.list_jornadas, name='lista_jornadas'),
-    path('crear/jornada/', views.crear_jornada, name='crear_jornada'),
+    path('jornadas/crear/', views.crear_jornada, name='crear_jornada'),
     path('jornadas/actualizar/<int:jornada_id>/', views.actualizar_jornada, name='actualizar_jornada'),
+    path('jornadas/eliminar/<int:jornada_id>/', views.eliminar_jornada, name='eliminar_jornada'),
     path('empleados/', views.empleados, name='empleados'),
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
-    path('crear/empleado/', views.crear_empleado, name='crear_empleado'),
+    path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
     path('logout/', views.salir, name='logout'),
-    path('loguearte/', views.loguearte, name='loguearte'),
+    path('empleados/importar/', views.importarExcel, name='import_empleado'),
+    
+    
 ]

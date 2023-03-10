@@ -1,0 +1,13 @@
+body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html{
+    font-size: 14.5px;
+}
+

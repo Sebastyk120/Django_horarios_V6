@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGES_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,7 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registro_horas'
+    'registro_horas',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -112,9 +116,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_URL = '/loguearte'
+LOGIN_URL = '/iniciar_sesion'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

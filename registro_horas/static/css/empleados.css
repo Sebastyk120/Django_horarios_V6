@@ -2,18 +2,22 @@
     text-align: center !important;
     vertical-align: middle !important;
 }
-.html, body{
+
+.html,
+body {
     height: 100vh;
     background-image: url(../img/fondojornadas.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
-    font-family: sans-serif;
     justify-content: center;
-    font-size:15px ;
+    font-size: 15px;
+    background-attachment: fixed;
 }
-h1{
+
+h1 {
     font-family: 'Montserrat';
-    font-weight: bold;;
+    font-weight: bold;
+    ;
 }

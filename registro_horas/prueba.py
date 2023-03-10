@@ -4,12 +4,12 @@ from datetime import datetime
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
 
-inicio_jornada_globalf = datetime(2023, 2, 19, 22, 00)
-salida_jornada_globalf = datetime(2023, 2, 20, 12, 00)
-inicio_descanso_globalf = datetime(2023, 2, 20, 5, 00)
-salida_descanso_globalf = datetime(2023, 2, 20, 5, 45)
-inicio_descanso_global2f = datetime(2023, 2, 20, 5, 45)
-salida_descanso_global2f = datetime(2023, 2, 20, 6, 00)
+inicio_jornada_globalf = datetime(2023, 3, 1, 22, 0)
+salida_jornada_globalf = datetime(2023, 3, 2, 22, 0)
+inicio_descanso_globalf = None #datetime(2023, 2, 19, 13, 00)
+salida_descanso_globalf = None #datetime(2023, 2, 19, 14, 00)
+inicio_descanso_global2f = None #datetime(2023, 2, 19, 14, 00)
+salida_descanso_global2f = None #datetime(2023, 2, 19, 14, 00)
 jornada_legalf = 8
 
 horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf, salida_descanso_globalf,

@@ -1,47 +1,59 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    {% csrf_token %}
+  {% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ver Empleados</title>
-        <!-------Datatable-------->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-        <!-------Font Awesome-------->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-        <!-------Css Sebas-------->
-        <link rel="stylesheet" href="{% static 'css/empleados.css' %}">
-    </head>
-    <body><br>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ver Empleados</title>
+    <!-------Datatable-------->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css"
+    />
+    <!-------Font Awesome-------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <!-------Css Sebas-------->
+    <link rel="stylesheet" href="{% static 'css/empleados.css' %}" />
+  </head>
+  <body>
+    <br />
 
-    <h1 style="text-align: center; ">Ver Empleados</h1>
+    <h1 style="text-align: center">Ver Empleados</h1>
 
     <div class="container-fluid">
-        <div class="row"></div>
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="table-responsive-empleados ">
-                <table id="datatable_empleados" class="table table-light table-striped table-hover table-sm">
-                    <caption>
-                        Todos Los Empleados
-                    </caption>
-                    <thead class= "table table-dark">
-                    <tr>
-                        <th class="centered">Id</th>
-                        <th class="centered">Nombre</th>
-                        <th class="centered">Cedula</th>
-                        <th class="centered">Empresa</th>
-                        <th class="centered">Estado</th>
-                        <th class="centered">Validador</th>
-                        <th class="centered">Opciones</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tableBody_empleados"></tbody>
-                </table>
-            </div>
+      <div class="row"></div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="table-responsive-empleados">
+          <table
+            id="datatable_empleados"
+            class="table table-light table-striped table-hover table-sm table-bordered"
+          >
+            <caption>
+              Todos Los Empleados
+            </caption>
+            <thead class="table table-dark">
+              <tr>
+                <th class="centered">No</th>
+                <th class="centered">Nombre</th>
+                <th class="centered">Cedula</th>
+                <th class="centered">Empresa</th>
+                <th class="centered">Estado</th>
+                <th class="centered">Area</th>
+                <th class="centered">Cargo</th>
+                <th class="centered">Salario</th>
+                <th class="centered">Genera Extras</th>
+                <th class="centered">Fecha Ingreso</th>
+                <th class="centered">Fecha Retiro</th>
+                <th class="centered">Opciones</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody_empleados"></tbody>
+          </table>
         </div>
+      </div>
     </div>
     <!-------Jquery-------->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -50,7 +62,7 @@
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <!-------Js Sebas-------->
     <script src="{% static 'js/empleados.js' %}"></script>
-    </body>
-    </html>
+  </body>
+</html>
 
 {% endblock %}
