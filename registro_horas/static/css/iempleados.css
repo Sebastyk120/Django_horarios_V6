@@ -1,0 +1,21 @@
+body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container{
+
+    position: absolute;
+    top: 35%;
+    left: 32%;
+}
+
+h1{
+
+    color: aliceblue;
+
+}
