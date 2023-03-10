@@ -37,53 +37,63 @@
                 <a class="nav-link active" aria-current="page" href="/empleados/crear/"><p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/personas.png"
                         aling="center"> <br><br>Crear Empleado</p>
             </div>
-            <button class="card-button">Ver</button></a>
+            <button class="card-button">Crear Empleado</button></a>
         </div>
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/jornadas/crear/"><p class="text-title " style='text-align:center'> <img class="crearempleado"
                         src="../static/img/calendario.png" aling="center"> <br><br>Ingresar jornada</p>
             </div>
-            <button class="card-button">Ver</button></a>
+            <button class="card-button">Ingresar jornada</button></a>
         </div>
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/jornadas"><p class="text-title " style='text-align:center'> <img class="crearempleado"
                         src="../static/img/vercalendario.png" aling="center"> <br><br>Ver jornada</p>
             </div>
-            <button class="card-button">Ver</button></a>
+            <button class="card-button">Ver jornada</button></a>
         </div>
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/empleados"><p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/buscar.png"
                     aling="center"> <br><br>Ver Empleado</p>
             </div>
-            <button class="card-button">Ver</button></a>
+            <button class="card-button">Ver Empleado</button></a>
         </div>
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true"><p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/log-out.png"
                     aling="center"> <br><br>Cerrar Sesión</p>
             </div>
-            <button class="card-button">Ver</button></a>
+            <button class="card-button">Cerrar Sesión</button></a>
         </div>
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/signup"> <p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/register.png"
                     aling="center"> <br><br>Registrar Usuario</p></a>
             </div>
-            <button class="card-button">Ver</button>
+            <button class="card-button">Registrar Usuario</button>
         </div>
     </div>
 </div>
 {% else %}
-    <button>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <a class="nav-link" href="/iniciar_sesion"><h4>Iniciar Sesión</h4></a>
-    </button>
+        
+    <div class="containers">
+        <div class="grids">
+        <div class="cards">
+            <div class="cards-details">
+        <a class="nav-link" href="/iniciar_sesion"> <p class="texts-title " style='texts-align:center'> <img class="crearempleados" src="../static/img/equipo.png">
+            <br><br>Talento humano</p></a>
+        </div>
+    </div> 
+        <div class="cards">
+            <div class="cards-details">
+        <a class="nav-link" href="/Operaciones"> <p class="texts-title " style='texts-align:center'> <img class="crearempleados" src="../static/img/apoyo.png" >
+            <br><br>Operaciones</p></a>
+        </div>
+    </div>
+        </div>
+    </div> 
 {% endif %}
 
 </body>
