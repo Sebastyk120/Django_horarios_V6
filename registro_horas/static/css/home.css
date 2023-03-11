@@ -1,3 +1,6 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+/*Home con opciones*/
+
 .card {
     width: 320px;
     height: 220px;
@@ -86,6 +89,7 @@ body {
     background-attachment: fixed;
 }
 
+/*Inicio para escoger roles*/
 
 .cards {
     width: 320px;
@@ -124,7 +128,7 @@ body {
 }
 
 .texts-body {
-    color: rgb(134, 134, 134);
+    color: rgb(126, 124, 124);
 }
 
 /*Texto*/
@@ -148,13 +152,13 @@ body {
 
 .grids {
     display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 300px 300px 300px;
+    grid-template-columns: 500px 400px 400px;
+    grid-template-rows: 20px 300px 300px;
 }
 
-.containers  {
+.containers {
     position: absolute;
-    top: 85%;
+    top: 149%;
     left: 63%;
     transform: translate(-50%, -50%);
 
@@ -164,4 +168,265 @@ img.crearempleados {
 
     width: 70px;
     height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+/*Animación de home*/
+
+
+body {
+  margin:0;
+}
+
+h1 {
+  font-family: 'Montserrat';
+  font-size:48px;
+  padding-right:160px;
+}
+
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgb(58, 127, 183) 0%, rgb(122, 0, 193) 100%);
+  color:white;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px;
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animacion menu hamburguesa */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+
+.logo {
+    width: 170px;
+    fill:white;
+    display:inline-block;
+    vertical-align: middle;
+    padding-right:0px;
+  }
+
+h5{
+
+    font-size: 14px;
+    font-family: 'Montserrat';
+    vertical-align: middle;
+
+}
+
+*,
+*:before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.menu {
+    background: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #fff, 0 0 0 0 #fff;
+    transition: box-shadow 1.1s cubic-bezier(.19, 1, .22, 1);
+}
+
+.menu:hover {
+    box-shadow: 0 0 0 8px #030303, 0 0 0 8px #0e0c0c;
+}
+
+.hamburguer {
+    position: relative;
+    display: block;
+    background: #000;
+    width: 30px;
+    height: 2px;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer::before,
+.hamburguer::after {
+    background: #000;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer::before {
+    top: -10px;
+}
+
+.hamburguer::after {
+    bottom: -10px;
+}
+
+input {
+    display: none;
+}
+
+input:checked~ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+input:checked~label .menu {
+    box-shadow: 0 0 0 130vw #fff, 0 0 0 100vh #fff;
+}
+
+input:checked~label .hamburguer {
+    transform: rotate(45deg);
+}
+
+input:checked~label .hamburguer::before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+input:checked~label .hamburguer::after {
+    transform: rotate(90deg);
+    bottom: 0;
+}
+
+
+
+/*Menu hamburguesa animacion de texto*/
+
+ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  opacity: 0;
+  transition: .25s .1s cubic-bezier(0, 1.07, 0, 1.02);
+  visibility: hidden;
+}
+
+a.salir {
+  color: #a00c7b;
+  font-size: 48px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 40px;
+}
+.svg-wrapper {
+  height: 60px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+}
+
+.shape {
+  fill: transparent;
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -474;
+  stroke-width: 8px;
+  stroke: #a41cff;
+}
+
+.text {
+  color: #000000;
+  font-family: 'Roboto Condensed';
+  font-size: 22px;
+  letter-spacing: 8px;
+  line-height: 32px;
+  position: relative;
+  top: -48px;
+  right: -38px;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 8px;
+  }
+  100% {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 0;
+    stroke-width: 2px;
+  }
+}
+
+.svg-wrapper:hover .shape {
+  -webkit-animation: 0.5s draw linear forwards;
+  animation: 0.5s draw linear forwards;
 }

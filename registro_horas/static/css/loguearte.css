@@ -52,30 +52,34 @@ img.small {
     border: 3px solid rgb(39, 39, 39);
 }
 
-.container input {
-    width: 100%;
-    margin-bottom: 10px;
-    border: none;
-
-}
-
-.container input[type="submit"] {
-    margin: 10px;
-    border: none;
-    outline: none;
-    height: 40px;
-    background: rgb(239,180,1);
-background: linear-gradient(127deg, rgba(239,180,1,1) 37%, rgba(120,24,63,1) 100%);
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
     color: #000;
-    font-size: 17px;
+    background-color: #eaf7a0;
+    border: none;
     border-radius: 10px;
-    width: 50%;
-    transition: 1s;
-
-}
-
-.container input[type="submit"]:hover {
-    color: #f7f7f7;
-    background: rgb(239,180,1);
-background: linear-gradient(127deg, rgba(239,180,1,1) 37%, rgba(120,24,63,1) 100%);
-}
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    }
+  
+  .button:hover {
+    background-color: #e5d92e;
+    box-shadow: 0px 15px 20px rgba(229, 186, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
