@@ -2,15 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Jornada, Empleados
+from .models import Jornada, Empleados, Cargos
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
 from .forms import CrearjornadaForm, CrearempleadoForm
 from .calc_horarios import Horarios
 from django.contrib.auth.decorators import login_required, user_passes_test
-from datetime import timedelta, datetime
+from datetime import timedelta
 from tablib import Dataset
-from .resources import EmpleadosResource
+from .resources import EmpleadosResource, JornadasResource, CargosResource
 from django.contrib import messages
 
 # Create your views here.
@@ -20,11 +20,11 @@ def home(request):
     return render(request, 'home.html')
 
 
-def importarExcel(request):
+def importar_excel_emp(request):
     if request.method == 'POST':
         empleados_resource = EmpleadosResource()
         dataset = Dataset()
-        new_empleados = request.FILES['mi_archivo']
+        new_empleados = request.FILES['empleados']
         imported_data = dataset.load(new_empleados.read(), format='xlsx')
         for data in imported_data:
             valor = Empleados(
@@ -38,11 +38,64 @@ def importarExcel(request):
                 data[7],
                 data[8],
                 data[9],
-                data[10]
+                data[10],
+                data[11],
+                data[12],
             )
             valor.save()
 
     return render(request, 'import_empleados.html')
+
+
+def importar_excel_jor(request):
+    if request.method == 'POST':
+        jornadas_resource = JornadasResource()
+        dataset = Dataset()
+        new_jornada = request.FILES['jornadas']
+        imported_data = dataset.load(new_jornada.read(), format='xlsx')
+        for data in imported_data:
+            horarioo = Horarios(data[1], data[2], data[3], data[4], data[5], data[6], data[7])
+            valor = Jornada(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                data[5],
+                data[6],
+                data[7],
+                data[8],
+                data[9],
+                user = request.user,
+                total_horas = horarioo.total_horas,
+                diurnas_totales = horarioo.diurnas_totales,
+                nocturnas_totales = horarioo.nocturnas_totales,
+                extras_diurnas_totales = horarioo.extras_diurnas_totales,
+                extras_nocturnos_totales = horarioo.extras_nocturnos_totales,
+                diurnos_festivo_totales = horarioo.diurnos_festivo_totales,
+                nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales,
+                extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales,
+                extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales,
+            )
+            valor.save()
+
+    return render(request, 'import_jornadas.html')
+
+
+def importar_excel_cargo(request):
+    if request.method == 'POST':
+        cargos_resource = CargosResource()
+        dataset = Dataset()
+        new_cargos = request.FILES['cargos']
+        imported_data = dataset.load(new_cargos.read(), format='xlsx')
+        for data in imported_data:
+            valor = Cargos(
+                data[0],
+                data[1],
+            )
+            valor.save()
+
+    return render(request, 'import_cargos.html')
 
 
 def iniciar_sesion(request):
@@ -401,7 +454,7 @@ def list_jornadas(request):
             jornada_dict = {
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
-                'empleado_cedula': jornada.empleado.cedula,
+                'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',', '.') if jornada.empleado.cedula else None,
                 'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
                 'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
                 'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
@@ -442,12 +495,14 @@ def list_empleados(request):
             empleado_dict = {
                 'id': empleado.id,
                 'nombre': empleado.nombre,
-                'cedula': empleado.cedula,
+                'tdoc': empleado.tdoc,
+                'cedula': format(empleado.cedula, ',d').replace(',', '.') if empleado.cedula else None,
                 'empresa': empleado.empresa,
                 'estado': empleado.estado,
+                'contrato': empleado.contrato,
                 'area': empleado.area,
                 'cargo': empleado.cargo.cargo,
-                'salario': '{:,}'.format(empleado.salario) if empleado.salario else None,
+                'salario': format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
                 'generaextras': empleado.generaextras,
                 'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
                 'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",

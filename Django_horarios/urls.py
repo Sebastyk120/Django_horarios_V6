@@ -27,11 +27,13 @@ urlpatterns = [
     path('jornadas/crear/', views.crear_jornada, name='crear_jornada'),
     path('jornadas/actualizar/<int:jornada_id>/', views.actualizar_jornada, name='actualizar_jornada'),
     path('jornadas/eliminar/<int:jornada_id>/', views.eliminar_jornada, name='eliminar_jornada'),
+    path('jornadas/importar/', views.importar_excel_jor, name='import_jornada'),
     path('empleados/', views.empleados, name='empleados'),
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
-    path('empleados/importar/', views.importarExcel, name='import_empleado'),
+    path('empleados/importar/', views.importar_excel_emp, name='import_empleado'),
+    path('cargos/importar/', views.importar_excel_cargo, name='import_cargo'),
     path('logout/', views.salir, name='logout'),   
     
 ]

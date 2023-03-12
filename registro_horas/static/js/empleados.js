@@ -5,7 +5,7 @@ const dataTableOptions = {
     columnDefs: [
         {
             className: "centered",
-            targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+            targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         },
         {orderable: false, targets: [7, 11]},
         {searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11]}
@@ -34,9 +34,11 @@ const listempleados = async () => {
                 <tr>
                     <td>${index + 1}</td>
                     <td>${todas_empleados.nombre}</td>
+                    <td>${todas_empleados.tdoc}</td>
                     <td>${todas_empleados.cedula}</td>
                     <td>${todas_empleados.empresa}</td>
                     <td>${todas_empleados.estado}</td>
+                    <td>${todas_empleados.contrato}</td>
                     <td>${todas_empleados.area}</td>
                     <td>${todas_empleados.cargo}</td>
                     <td>${todas_empleados.salario}</td>

@@ -21,3 +21,18 @@ extras =(
     ('Si', 'Si'),
     ('No', 'No')
 )
+
+contrato =(
+    ('Aprendizaje', 'Aprendizaje'),
+    ('Fijo', 'Fijo'),
+    ('Indefinido', 'Indefinido'),
+    ('Labor Contrada', 'Labor Contrada'),
+    ('Obra Labor', 'Obra Labor')
+)
+
+tipo_doc =(
+    ('CC', 'CC'),
+    ('PEP', 'PEP'),
+    ('PPT', 'PPT'),
+    ('TI', 'TI')
+)

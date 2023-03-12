@@ -19,11 +19,10 @@
   <body>
     <main class="container">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div>
           <form action="/jornadas/crear/" method="post" class="card card-body border-primary">
-            <h2 class="text-center">Nueva Transacción</h2>
-            {{ error }} {% csrf_token %} {{ form|crispy }} {{ Invalido }}
-            <button class="btn btn-primary">Guardar</button>
+            <h2 class="text-center mb-5">Ingresar Nueva Jornada</h2>
+            {{ error }} {% csrf_token %} {% crispy form %} {{ Invalido }}
           </form>
         </div>
       </div>

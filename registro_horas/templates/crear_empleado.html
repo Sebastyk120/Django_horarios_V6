@@ -9,16 +9,13 @@
     <title>Crear Empleado</title>
   </head>
   <body>
-  <main class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-2" >
+  <main class="container mt-4">
+      <div>
         <form action="/empleados/crear/" method="post" class="card card-body h-100 border-primary">
-          <h1 class="text-center">Crear Empleado</h1>
-          {{ error }} {% csrf_token %} {{ form|crispy }}
-          <button class="btn btn-primary mt-2" >Guardar</button>
+          <h1 class="text-center mb-4">Crear Un Empleado</h1>
+          {{ error }} {% csrf_token %} {% crispy form %}
         </form>
       </div>
-    </div>
   </main>
   </body>
 </html>
