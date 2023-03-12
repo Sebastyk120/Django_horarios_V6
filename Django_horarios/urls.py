@@ -31,8 +31,7 @@ urlpatterns = [
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
-    path('logout/', views.salir, name='logout'),
     path('empleados/importar/', views.importarExcel, name='import_empleado'),
-    
+    path('logout/', views.salir, name='logout'),   
     
 ]
