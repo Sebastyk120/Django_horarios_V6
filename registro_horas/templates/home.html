@@ -30,6 +30,7 @@
 
 
 {% if user.is_authenticated %}
+
 <div class="container">
     <div class="grid">
         <div class="card">
@@ -76,24 +77,74 @@
         </div>
     </div>
 </div>
-{% else %}
-        
-    <div class="containers">
-        <div class="grids">
-        <div class="cards">
-            <div class="cards-details">
-        <a class="nav-link" href="/iniciar_sesion"> <p class="texts-title " style='texts-align:center'> <img class="crearempleados" src="../static/img/equipo.png">
-            <br><br>Talento humano</p></a>
-        </div>
-    </div> 
-        <div class="cards">
-            <div class="cards-details">
-        <a class="nav-link" href="/Operaciones"> <p class="texts-title " style='texts-align:center'> <img class="crearempleados" src="../static/img/apoyo.png" >
-            <br><br>Operaciones</p></a>
-        </div>
+
+<!--------Menu Hamburguesa-------->
+
+<input type="checkbox" id="menu-hamburguer">
+
+<label for="menu-hamburguer">
+    <div class="menu">
+        <span class="hamburguer"></span>
     </div>
+</label>
+
+<ul>
+    <div class="svg-wrapper">
+        <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+          <rect class="shape" height="60" width="320" />
+        </svg>
+        <a href="/logout" class="salir"><div class="text">CERRAR SESION</div></a>
+    </div>
+</ul>
+
+{% else %}
+        <header>
+    <div class="header">
+        <!--Contenido antes de las olas-->
+        <div class="inner-header flex">
+        <h1><img class="logo" src="../static/img/logowhite.png">Heavens Fruit</h1>
         </div>
-    </div> 
+        <h5>Desliza el scroll hacia abajo para escoger el rol</h5>
+        
+        <!--Container de Olas-->
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+        </div>
+        <!--Fin de olas--> 
+        </div>
+    </header>
+        <!-------Cards para escoger el Rol------>
+        <main>
+        <div class="containers">
+            <div class="grids">
+            <div class="cards">
+                <div class="cards-details">
+            <a class="nav-link" href="/iniciar_sesion"> <p class="texts-title " style='texts-aling:center'> <img class="crearempleados" src="../static/img/equipo.png">
+                <br><br>Talento humano</p></a>
+            </div>
+        </div> 
+            <div class="cards">
+                <div class="cards-details">
+            <a class="nav-link" href="/Operaciones"> <p class="texts-title " style='texts-aling:center'> <img class="crearempleados" src="../static/img/apoyo.png" >
+                <br><br>Operaciones</p></a>
+            </div>
+        </div>
+            </div>
+        </div> 
+    </main>
+
+
 {% endif %}
 
 </body>
