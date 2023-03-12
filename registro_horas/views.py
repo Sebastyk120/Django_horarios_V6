@@ -304,7 +304,7 @@ def actualizar_jornada(request, jornada_id):
                         invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
                         return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
                     else:
-                        jornada_legalf = form.cleaned_data['jornadas']
+                        jornada_legalf = form.cleaned_data['jornada_legal']
                         horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
                                             salida_descanso_globalf,
                                             inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
@@ -323,7 +323,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.save()
                         return redirect('jornadas')
                 else:
-                    jornada_legalf = form.cleaned_data['jornadas']
+                    jornada_legalf = form.cleaned_data['jornada_legal']
                     horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
                                         salida_descanso_globalf,
                                         inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
