@@ -1,9 +1,9 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Empleados, Jornada, Cargos
-from datetime import datetime, timedelta
+from datetime import datetime
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit, Field
+from crispy_forms.layout import Layout, Div, Submit
 
 
 class CrearempleadoForm(ModelForm):

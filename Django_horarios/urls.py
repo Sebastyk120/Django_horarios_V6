@@ -28,12 +28,16 @@ urlpatterns = [
     path('jornadas/actualizar/<int:jornada_id>/', views.actualizar_jornada, name='actualizar_jornada'),
     path('jornadas/eliminar/<int:jornada_id>/', views.eliminar_jornada, name='eliminar_jornada'),
     path('jornadas/importar/', views.importar_excel_jor, name='import_jornada'),
+    path('jornadas/exportar/', views.export_jor_excel, name='export_jornada'),
     path('empleados/', views.empleados, name='empleados'),
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
     path('empleados/importar/', views.importar_excel_emp, name='import_empleado'),
+    path('empleados/exportar/', views.export_emp_excel, name='export_empleado'),
     path('cargos/importar/', views.importar_excel_cargo, name='import_cargo'),
+    path('cargos/exportar/', views.export_cargos_excel, name='export_cargo'),
+    path('cargos/imprimir/', views.imprimir_cargos, name='imprimir_cargo'),
     path('logout/', views.salir, name='logout'),   
     
 ]

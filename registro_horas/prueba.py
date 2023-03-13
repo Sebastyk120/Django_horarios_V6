@@ -1,6 +1,7 @@
 import locale
 from calc_horarios import Horarios
 from datetime import datetime
+from models import Cargos
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
 
@@ -24,3 +25,9 @@ print(f"Horas Totales: {horarioo.total_horas}\n"
       f"Horas Nocturnas Festivas: {horarioo.nocturnos_festivo_totales}\n"
       f"Horas Extras Diurnas Festivas: {horarioo.extras_diurnos_festivo_totales}\n"
       f"Horas Extras Nocturnas Festivas: {horarioo.extras_nocturnos_festivo_totales}")
+
+cargos = Cargos.objects.all()
+cargo2 = "Operario"
+if cargo2 in cargos:
+      print("Si")
+    

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Jornada, Empleados, Cargos
@@ -12,6 +12,7 @@ from datetime import timedelta
 from tablib import Dataset
 from .resources import EmpleadosResource, JornadasResource, CargosResource
 from django.contrib import messages
+from openpyxl import Workbook
 
 # Create your views here.
 
@@ -19,6 +20,35 @@ from django.contrib import messages
 def home(request):
     return render(request, 'home.html')
 
+def imprimir_cargos(request):
+    cargos = []
+    objetos_cargo = Cargos.objects.all()
+    for cargo in objetos_cargo:
+        cargos.append(cargo.cargo)
+    print(cargos)       
+    return HttpResponse(cargos)
+        
+        
+def export_emp_excel(request):
+    empleados_resource = EmpleadosResource()
+    dataset = empleados_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xls"'
+    return response
+
+def export_jor_excel(request):
+    jornada_resource = JornadasResource()
+    dataset = jornada_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xls"'
+    return response
+
+def export_cargos_excel(request):
+    cargos_resource = CargosResource()
+    dataset = cargos_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xls"'
+    return response
 
 def importar_excel_emp(request):
     if request.method == 'POST':
@@ -455,7 +485,7 @@ def list_jornadas(request):
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
                 'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',', '.') if jornada.empleado.cedula else None,
-                'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
+                'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y'),
                 'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
                 'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
                 'salida_descanso_global': jornada.salida_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
