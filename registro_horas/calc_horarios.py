@@ -1,9 +1,13 @@
 from datetime import datetime, timedelta
 import locale
-from .models import Cargos
+from .models import Festivos
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
 
+festivos_lista = []
+objetos_festivo = Festivos.objects.all()
+for festivo in objetos_festivo:
+    festivos_lista.append(festivo.festivo.strftime('%Y-%m-%d'))
 
 class Horarios:
     def __init__(self, inicio_jornada_global, salida_jornada_global, inicio_descanso_global, salida_descanso_global,
@@ -51,10 +55,6 @@ class Horarios:
                         self.inicio_jornada_global, "%Y-%m-%d")
                     salida_jornada_global_festivo = datetime.strftime(
                         self.salida_jornada_global, "%Y-%m-%d")
-                    festivos_lista = ["2023-01-01", "2023-01-09", "2023-03-20", "2023-04-02", "2023-04-06",
-                                      "2023-04-07",
-                                      "2023-04-09",
-                                      "2023-05-01", "2023-05-22", "2023-06-12", "2023-06-19"]
                     if inicio_jornada_global_festivo in festivos_lista:
                         inicio_dia_festivo = "festivo"
                     else:
