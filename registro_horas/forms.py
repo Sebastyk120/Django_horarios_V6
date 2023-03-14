@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Empleados, Jornada, Cargos
+from .models import Empleados, Jornada, Cargos, Festivos
 from datetime import datetime
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
@@ -95,3 +95,12 @@ class CrearcargoForm(ModelForm):
     class Meta:
         model = Cargos
         fields = ["cargo"]
+        
+
+class CrearfestivoForm(ModelForm):
+    class Meta:
+        model = Festivos
+        widgets = {
+            'festivo': forms.DateInput(attrs={'type': 'date'}),
+        }
+        fields = ["festivo"]

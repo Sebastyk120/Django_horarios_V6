@@ -33,6 +33,7 @@ urlpatterns = [
     path('lista/empleados/', views.list_empleados, name='lista_empleados'),
     path('empleados/crear/', views.crear_empleado, name='crear_empleado'),
     path('empleados/actualizar/<int:empleado_id>/', views.actualizar_empleado, name='actualizar_empleado'),
+    path('festivos/crear/', views.crear_festivo, name='crear_festivo'),
     path('empleados/importar/', views.importar_excel_emp, name='import_empleado'),
     path('empleados/exportar/', views.export_emp_excel, name='export_empleado'),
     path('cargos/importar/', views.importar_excel_cargo, name='import_cargo'),

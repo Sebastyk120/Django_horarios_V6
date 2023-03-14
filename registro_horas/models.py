@@ -15,6 +15,15 @@ class Cargos(models.Model):
 
     def __str__(self):
         return str(self.cargo)
+    
+class Festivos(models.Model):
+    festivo = models.DateField(max_length=10, verbose_name="Festivo")
+
+    class Meta:
+        ordering = ['festivo']
+
+    def __str__(self):
+        return str(self.festivo)
 
 
 class Empleados(models.Model):

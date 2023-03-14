@@ -2,17 +2,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Jornada, Empleados, Cargos
+from .models import Jornada, Empleados, Cargos, Festivos
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
-from .forms import CrearjornadaForm, CrearempleadoForm
+from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm
 from .calc_horarios import Horarios
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import timedelta
 from tablib import Dataset
 from .resources import EmpleadosResource, JornadasResource, CargosResource
 from django.contrib import messages
-from openpyxl import Workbook
 
 # Create your views here.
 
@@ -485,7 +484,7 @@ def list_jornadas(request):
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
                 'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',', '.') if jornada.empleado.cedula else None,
-                'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y'),
+                'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y Hora:%H:%M'),
                 'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
                 'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
                 'salida_descanso_global': jornada.salida_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
@@ -577,6 +576,22 @@ def crear_empleado(request):
         except ValueError:
             return render(request, 'crear_empleado.html',
                           {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
+
+@login_required
+def crear_festivo(request):
+    if request.method == 'GET':
+        festivos_nombre = Festivos.objects.values_list('festivo', flat=True)
+        return render(request, 'crear_festivo.html', {'form': CrearfestivoForm, 'festivos_nombre': festivos_nombre})
+    else:
+        try:
+            form = CrearfestivoForm(request.POST)
+            nuevo_festivo = form.save(commit=False)
+            nuevo_festivo.save()
+            messages.success(request, "El día festivo fue creado correctamente")
+            return redirect('crear_festivo')
+        except ValueError:
+            return render(request, 'crear_festivo.html',
+                          {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
 @login_required

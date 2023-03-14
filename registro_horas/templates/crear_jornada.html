@@ -32,11 +32,16 @@
       var fecha2 = document.getElementById("id_salida_jornada_global");
       var fecha3 = document.getElementById("id_inicio_descanso_global");
       var fecha4 = document.getElementById("id_salida_descanso_global");
+      var fecha5 = document.getElementById("id_inicio_descanso_global2");
+      var fecha6 = document.getElementById("id_salida_descanso_global2");
 
       fecha1.addEventListener("change", function () {
         fecha2.value = fecha1.value;
         fecha3.value = fecha1.value;
         fecha4.value = fecha1.value;
+      });
+      fecha5.addEventListener("change", function () {
+        fecha6.value = fecha5.value;
       });
     </script>
   </body>

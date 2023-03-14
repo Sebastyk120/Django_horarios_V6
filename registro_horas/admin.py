@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Empleados, Jornada, Cargos
+from .models import Empleados, Jornada, Cargos, Festivos
 
 
 class JornadaAdmin(admin.ModelAdmin):
@@ -10,5 +10,6 @@ class JornadaAdmin(admin.ModelAdmin):
 admin.site.register(Empleados)
 admin.site.register(Jornada, JornadaAdmin)
 admin.site.register(Cargos)
+admin.site.register(Festivos)
 
 

@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import locale
+from .models import Cargos
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
 
