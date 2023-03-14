@@ -20,6 +20,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"
 ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!--custom css-->
 <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
 <!--Googlefonts-->
@@ -30,7 +31,9 @@
 
 
 {% if user.is_authenticated %}
-
+<body style="overflow-y:hidden">
+    <body style="overflow-x:hidden">
+    <body scroll=no>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a class="nav-link" href="/cargos/importar/"><button class="button btn btn-success";>Importar cargos xlsx</button></a>
     <a class="nav-link" href="/cargos/exportar/"><button class="button btn btn-success";>Exportar cargos xlsx</button></a>
@@ -54,10 +57,10 @@
         </div>
         <div class="card">
             <div class="card-details">
-                <a class="nav-link" href="/jornadas"><p class="text-title " style='text-align:center'> <img class="crearempleado"
-                        src="../static/img/vercalendario.png" aling="center"> <br><br>Ver jornada</p>
+                <a class="nav-link" href="/festivos/crear"><p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/festivos.png"
+                    aling="center"> <br><br>Festivos</p>
             </div>
-            <button class="card-button">Ver jornada</button></a>
+            <button class="card-button">Festivos</button></a>
         </div>
         <div class="card">
             <div class="card-details">
@@ -65,6 +68,20 @@
                     aling="center"> <br><br>Ver Empleado</p>
             </div>
             <button class="card-button">Ver Empleado</button></a>
+        </div>
+        <div class="card">
+            <div class="card-details">
+                <a class="nav-link" href="/jornadas"><p class="text-title " style='text-align:center'> <img class="crearempleado"
+                        src="../static/img/vercalendario.png" aling="center"> <br><br>Ver jornada</p>
+            </div>
+            <button class="card-button">Ver jornada</button></a>
+        </div>
+        <div class="card">
+            <div class="card-details">
+                <a class="nav-link" href="/festivos/crear" tabindex="-1" aria-disabled="true"><p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/ocupacion.png"
+                    aling="center"> <br><br>Cargos</p>
+            </div>
+            <button class="card-button">Cargos</button></a>
         </div>
         <div class="card">
             <div class="card-details">
@@ -76,10 +93,11 @@
         <div class="card">
             <div class="card-details">
                 <a class="nav-link" href="/signup"> <p class="text-title " style='text-align:center'> <img class="crearempleado" src="../static/img/register.png"
-                    aling="center"> <br><br>Registrar Usuario</p></a>
+                    aling="center"> <br><br>Registrar Usuario</p>
             </div>
-            <button class="card-button">Registrar Usuario</button>
+            <button class="card-button">Registrar Usuario</button></a>
         </div>
+        
     </div>
 </div>
 
