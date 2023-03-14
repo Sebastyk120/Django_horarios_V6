@@ -69,7 +69,7 @@ img.crearempleado {
 .grid {
     display: grid;
     grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 300px 300px 300px;
+    grid-template-rows: 300px 300px 600px;
 }
 
 .container {
@@ -363,8 +363,6 @@ input:checked~label .hamburguer::after {
     bottom: 0;
 }
 
-
-
 /*Menu hamburguesa animacion de texto*/
 
 ul {
@@ -430,3 +428,5 @@ a.salir {
   -webkit-animation: 0.5s draw linear forwards;
   animation: 0.5s draw linear forwards;
 }
+
+/*spinner*/
