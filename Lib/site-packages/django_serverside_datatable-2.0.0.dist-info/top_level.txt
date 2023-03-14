@@ -1,0 +1,1 @@
+django_serverside_datatable
