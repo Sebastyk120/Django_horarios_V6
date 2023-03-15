@@ -38,7 +38,7 @@ urlpatterns = [
     path('empleados/exportar/', views.export_emp_excel, name='export_empleado'),
     path('cargos/importar/', views.importar_excel_cargo, name='import_cargo'),
     path('cargos/exportar/', views.export_cargos_excel, name='export_cargo'),
-    path('cargos/imprimir/', views.imprimir_cargos, name='imprimir_cargo'),
+    path('cargos/crear/', views.crear_cargo, name='crear_cargo'),
     path('logout/', views.salir, name='logout'),  
     
 ]

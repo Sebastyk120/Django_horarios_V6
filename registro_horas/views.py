@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .models import Jornada, Empleados, Cargos, Festivos
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
-from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm
+from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm
 from .calc_horarios import Horarios
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import timedelta
@@ -19,18 +19,8 @@ from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html')
-                
 
 
-def imprimir_cargos(request):
-    cargos = []
-    objetos_cargo = Cargos.objects.all()
-    for cargo in objetos_cargo:
-        cargos.append(cargo.cargo)
-    print(cargos)       
-    return HttpResponse(cargos)
-        
-        
 def export_emp_excel(request):
     empleados_resource = EmpleadosResource()
     dataset = empleados_resource.export()
@@ -224,6 +214,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
+                        messages.success(request, "Jornada creada exitosamente")
                         return redirect('crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -271,6 +262,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
+                        messages.success(request, "Jornada creada exitosamente")
                         return redirect('crear_jornada')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -355,10 +347,8 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
-                        print(request.POST)
                         nueva_jornada.save()
-                        messages.success(
-                            request, "Jornada actualizada correctamente")
+                        messages.success(request, "Jornada creada exitosamente")
                         return redirect('jornadas')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -404,8 +394,8 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
-                        print(request.POST)
                         nueva_jornada.save()
+                        messages.success(request, "Jornada creada exitosamente")
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -423,8 +413,8 @@ def actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
-                    print(request.POST)
                     nueva_jornada.save()
+                    messages.success(request, "Jornada creada exitosamente")
                     return redirect('jornadas')
             return redirect('jornadas')
         except ValueError:
@@ -595,6 +585,22 @@ def crear_festivo(request):
         except ValueError:
             return render(request, 'crear_festivo.html',
                           {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
+            
+@login_required
+def crear_cargo(request):
+    if request.method == 'GET':
+        cargos_nombre = Cargos.objects.values_list('cargo', flat=True)
+        return render(request, 'crear_cargo.html', {'form': CrearcargoForm, 'cargos_nombre': cargos_nombre})
+    else:
+        try:
+            form = CrearcargoForm(request.POST)
+            nuevo_cargo = form.save(commit=False)
+            nuevo_cargo.save()
+            messages.success(request, "El día festivo fue creado correctamente")
+            return redirect('crear_cargo')
+        except ValueError:
+            return render(request, 'crear_cargo.html',
+                          {'form': CrearcargoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
 @login_required

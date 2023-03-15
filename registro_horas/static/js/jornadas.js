@@ -2,6 +2,7 @@ let dataTable;
 let dataTableInitialized = false;
 
 const dataTableOptions = {
+    serverSide: true,
     columnDefs: [
         {
             className: "centered",
@@ -10,7 +11,7 @@ const dataTableOptions = {
         {orderable: false, targets: [21]},
         {searchable: false, targets: [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21]}
     ],
-    pageLength: 10,
+    pageLength: 50,
     destroy: true
 };
 const initDatatable = async () => {
@@ -21,6 +22,9 @@ const initDatatable = async () => {
     dataTable = $('#datatable_jornadas').DataTable(dataTableOptions);
 
     dataTableInitialized = true;
+
+
+    dataTable.page.len(50).draw();
 
 };
 
