@@ -10,7 +10,7 @@ const dataTableOptions = {
         {orderable: false, targets: [7, 11]},
         {searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11]}
     ],
-    pageLength: 100,
+    pageLength: 25,
     destroy: true
 };
 const initDatatable = async () => {
