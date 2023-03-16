@@ -432,7 +432,7 @@ a.salir {
 /*responsive*/
 
 @media screen and (max-width: 1366px), 
-       screen and (max-height: 768px){ 
+       screen and (max-height: 900px){ 
 
   .card {
     width: 270px;
