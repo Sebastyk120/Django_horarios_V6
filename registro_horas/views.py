@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -10,8 +11,9 @@ from .calc_horarios import Horarios
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import timedelta
 from tablib import Dataset
-from .resources import EmpleadosResource, JornadasResource, CargosResource
+from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse
 from django.contrib import messages
+
 
 
 # Create your views here.
@@ -24,22 +26,29 @@ def home(request):
 def export_emp_excel(request):
     empleados_resource = EmpleadosResource()
     dataset = empleados_resource.export()
-    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xls"'
+    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xlsx"'
     return response
 
 def export_jor_excel(request):
     jornada_resource = JornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xls"'
+    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xlsx"'
     return response
 
 def export_cargos_excel(request):
     cargos_resource = CargosResource()
     dataset = cargos_resource.export()
-    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xls"'
+    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xlsx"'
+    return response
+
+def export_festivos_excel(request):
+    festivos_resource = FestivosResourse()
+    dataset = festivos_resource.export()
+    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xlsx"'
     return response
 
 def importar_excel_emp(request):
@@ -118,6 +127,22 @@ def importar_excel_cargo(request):
             valor.save()
 
     return render(request, 'import_cargos.html')
+
+
+def importar_excel_festivos(request):
+    if request.method == 'POST':
+        festivos_resource = FestivosResourse()
+        dataset = Dataset()
+        new_festivos = request.FILES['festivos']
+        imported_data = dataset.load(new_festivos.read(), format='xlsx')
+        for data in imported_data:
+            valor = Festivos(
+                data[0],
+                data[1],
+            )
+            valor.save()
+
+    return render(request, 'import_festivos.html')
 
 
 def iniciar_sesion(request):
@@ -471,8 +496,11 @@ def list_jornadas(request):
     data = {}
     try:
         todas_jornadas = Jornada.objects.all()
+        paginator = Paginator(todas_jornadas, 10000)  # mostrar 10 elementos por página
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         data['todas_jornadas'] = []
-        for jornada in todas_jornadas:
+        for jornada in page_obj:
             jornada_dict = {
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
@@ -512,8 +540,11 @@ def list_empleados(request):
     data = {}
     try:
         todas_empleados = Empleados.objects.all()
+        paginator = Paginator(todas_empleados, 1000) # Pagina de 10 elementos por defecto
+        page = request.GET.get('page')
+        empleados = paginator.get_page(page)
         data['todas_empleados'] = []
-        for empleado in todas_empleados:
+        for empleado in empleados:
             empleado_dict = {
                 'id': empleado.id,
                 'nombre': empleado.nombre,

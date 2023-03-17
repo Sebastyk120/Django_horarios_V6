@@ -1,5 +1,5 @@
 from import_export import resources, fields
-from .models import Empleados, Jornada, Cargos
+from .models import Empleados, Jornada, Cargos, Festivos
 
 
 class EmpleadosResource(resources.ModelResource):
@@ -28,3 +28,8 @@ class JornadasResource(resources.ModelResource):
 class CargosResource(resources.ModelResource):
     class Meta:
         model = Cargos
+        
+        
+class FestivosResourse(resources.ModelResource):
+    class Meta:
+        model = Festivos

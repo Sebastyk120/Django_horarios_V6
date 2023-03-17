@@ -12,7 +12,7 @@
     <div class="container">
     <div class="card w-50 bg-dark">
         <div class="card-body">
-    <h1>Importacion De Cargos Excel</h1>
+    <h1 class="text text-center">Importacion De Cargos Excel</h1>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" class="form-control" name="cargos"/>
@@ -20,7 +20,7 @@
     <button type="submit" class="button btn btn-success">Cargar</button>
 </form>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-<a class="nav-link" href="/"><button type="submit" class="button btn btn-danger">Volver</button></a>
+<a class="nav-link" href="/cargos/crear/"><button type="submit" class="button btn btn-danger">Volver</button></a>
 </div>
 </div>
 </div>
