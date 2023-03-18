@@ -496,7 +496,7 @@ def list_jornadas(request):
     data = {}
     try:
         todas_jornadas = Jornada.objects.all()
-        paginator = Paginator(todas_jornadas, 10000)  # mostrar 10 elementos por página
+        paginator = Paginator(todas_jornadas, 1000)  # mostrar 10 elementos por página
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         data['todas_jornadas'] = []
