@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'css/Cempleado.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/ccargo.css' %}"/>
     <title>Crear Festivo</title>
   </head>
   <body>
@@ -16,15 +16,19 @@
     </div>
       <div class="col-md-6 offset-md-3 mt-5">
         <form action="/cargos/crear/" method="post" class="card card-body h-100 border-primary">
+          <div class="card-header">
           <h1 class="text-center mb-4">Crear Un Cargo</h1>
           {{ error }} {% csrf_token %} {{ form|crispy }}
           <button class="btn btn-primary"> Guardar</button>
-          <ul class="col-md-9 offset-md-2 list-group-horizontal">
+          </div>
+          <div class="card-body">
+          <ul class="col-md-9 list-group-horizontal">
             <br>
             {% for cargo_nombre in cargos_nombre %}
                 <li>{{ cargo_nombre }}</li>
             {% endfor %}
           </ul>
+        </div>
         </form>
       </div>
   </main>

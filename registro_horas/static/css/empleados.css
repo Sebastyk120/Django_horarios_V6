@@ -17,10 +17,20 @@ body {
 }
 
 h1 {
-    font-family: 'Montserrat';
+    font-family: 'Alegreya Sans';
     font-weight: bold;
-    ;
 }
+
+thead{
+    font-family: 'Alegreya Sans';
+}
+
+td{
+
+    font-family: 'Alegreya Sans';
+
+}
+
 
 /*spinner*/
 

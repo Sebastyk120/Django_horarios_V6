@@ -43,9 +43,9 @@
 
 /*Texto*/
 .text-title {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: 'Alegreya Sans';
 }
 
 
@@ -133,9 +133,9 @@ body {
 
 /*Texto*/
 .texts-title {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: 'Alegreya Sans';
 }
 
 
@@ -190,7 +190,7 @@ body {
 }
 
 h1 {
-  font-family: 'Montserrat';
+  font-family: 'Alegreya Sans';
   font-size:48px;
   padding-right:160px;
 }
@@ -274,7 +274,7 @@ h1 {
 h5{
 
     font-size: 14px;
-    font-family: 'Montserrat';
+    font-family: 'Alegreya Sans';
     vertical-align: middle;
 
 }
@@ -402,7 +402,7 @@ a.salir {
 
 .text {
   color: #000000;
-  font-family: 'Roboto Condensed';
+  font-family: 'Alegreya Sans';
   font-size: 22px;
   letter-spacing: 8px;
   line-height: 32px;
@@ -478,7 +478,7 @@ a.salir {
 .text-title {
     font-size: 1em;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: 'Alegreya Sans';
 }
 
 

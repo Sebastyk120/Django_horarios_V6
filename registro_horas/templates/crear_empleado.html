@@ -12,8 +12,12 @@
   <main class="container mt-4">
       <div>
         <form action="/empleados/crear/" method="post" class="card card-body h-100 border-primary">
+          <div class="card-header">
           <h1 class="text-center mb-4">Crear Un Empleado</h1>
+          </div>
+          <div class="card-body">
           {{ error }} {% csrf_token %} {% crispy form %}
+          </div>
         </form>
       </div>
   </main>
