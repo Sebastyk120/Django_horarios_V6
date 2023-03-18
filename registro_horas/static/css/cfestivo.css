@@ -1,0 +1,24 @@
+ul {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    column-count: 2;
+    column-gap:130px;
+    -webkit-column-count: 2;
+    -webkit-column-gap:130px;
+    -moz-column-count: 2;
+    -moz-column-gap: 130px;
+    -o-column-count: 2;
+    -o-column-gap: 130px;
+    -ms-column-count: 2;
+    -ms-column-gap: 130px;
+  }
+
+body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Alegreya Sans'
+}

@@ -5,26 +5,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'css/Cempleado.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/cfestivo.css' %}"/>
     <title>Crear Festivo</title>
   </head>
   <body>
   <main class="container mt-4">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="nav-link" href="/festivos/importar/"><button class="button btn btn-success";>Importar festivos xlsx</button></a>
-      <a class="nav-link" href="/festivos/exportar/"><button class="button btn btn-success";>Exportar festivos xlsx</button></a>
-    </div>
       <div class="col-md-6 offset-md-3 mt-5">
         <form action="/festivos/crear/" method="post" class="card card-body h-100 border-primary">
+          <div class="card-header">
           <h1 class="text-center mb-4">Crear Un Festivo</h1>
           {{ error }} {% csrf_token %} {{ form|crispy }}
           <button class="btn btn-primary"> Guardar</button>
-          <ul class="col-md-5 offset-md-4 list-group-horizontal">
+          </div>
+          <div class="card-body">
+          <ul class="col-md-5  list-group-horizontal">
             <br>
             {% for festivo_nombre in festivos_nombre %}
-                <li>{{ festivo_nombre }}</li>
+                <li id="columnas">{{ festivo_nombre }}</li>
             {% endfor %}
           </ul>
+        </div>
         </form>
       </div>
   </main>

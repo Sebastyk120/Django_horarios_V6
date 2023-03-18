@@ -1,5 +1,6 @@
 .html, body{
     height: 100vh;
+    font-family: 'Alegreya Sans';
 }
 body{
     background-image: url(../img/fondojornadas.png);
@@ -8,3 +9,8 @@ body{
     background-repeat: no-repeat;
     height: 100vh;
 }
+
+form{
+    font-family:'Alegreya Sans';
+}
+
