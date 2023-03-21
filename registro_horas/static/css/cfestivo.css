@@ -1,6 +1,6 @@
 ul {
     display: grid;
-    grid-template-columns: 200px 200px;
+    grid-template-columns: 210px 200px;
     column-count: 2;
     column-gap:130px;
     -webkit-column-count: 2;

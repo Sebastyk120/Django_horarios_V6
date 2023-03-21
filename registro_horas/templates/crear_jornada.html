@@ -49,6 +49,16 @@
         fecha6.value = fecha5.value;
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {%if messages%}{% for m in messages%}
+    <script>
+      Swal.fire({
+        title: "JORNADA CREADA CORRECTAMENTE",
+        text: "{{m}}",
+        icon: "success",
+      });
+    </script>
+    {% endfor %}{%endif%}
   </body>
 </html>
 {% endblock %}
