@@ -18,12 +18,7 @@
           <button class="btn btn-primary"> Guardar</button>
           </div>
           <div class="card-body">
-          <ul class="col-md-5  list-group-horizontal">
-<<<<<<< HEAD
-            <br>
           <ul class="col-md-5 list-group-horizontal">
-=======
->>>>>>> 8208b79e33031afacda0a74b6711ef9484aca87d
             <br>
             {% for festivo_nombre in festivos_nombre %}
                 <li id="columnas">{{ festivo_nombre }}</li>
@@ -33,6 +28,16 @@
         </form>
       </div>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {%if messages%}{% for m in messages%}
+    <script>
+      Swal.fire({
+        title: "DÍA FESTIVO CREADO CORRECTAMENTE",
+        text: "El festivo {{m}} ha sido creado correctamente",
+        icon: "success",
+      });
+    </script>
+    {% endfor %}{%endif%}
   </body>
 </html>
 {% endblock %}  
