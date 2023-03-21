@@ -1,37 +1,57 @@
-{% extends 'base.html' %} {% block content %}
-{% load crispy_forms_tags %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'css/ccargo.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/ccargo.css' %}" />
     <title>Crear Festivo</title>
   </head>
   <body>
-  <main class="container mt-4">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <a class="nav-link" href="/cargos/importar/"><button class="button btn btn-success";>Importar cargos xlsx</button></a>
-      <a class="nav-link" href="/cargos/exportar/"><button class="button btn btn-success";>Exportar cargos xlsx</button></a>
-    </div>
+    <main class="container mt-4">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="nav-link" href="/cargos/importar/"
+          ><button class="button btn btn-success" ;>
+            Importar cargos xlsx
+          </button></a
+        >
+        <a class="nav-link" href="/cargos/exportar/"
+          ><button class="button btn btn-success" ;>
+            Exportar cargos xlsx
+          </button></a
+        >
+      </div>
       <div class="col-md-6 offset-md-3 mt-5">
-        <form action="/cargos/crear/" method="post" class="card card-body h-100 border-primary">
+        <form
+          action="/cargos/crear/"
+          method="post"
+          class="card card-body h-100 border-primary"
+        >
           <div class="card-header">
-          <h1 class="text-center mb-4">Crear Un Cargo</h1>
-          {{ error }} {% csrf_token %} {{ form|crispy }}
-          <button class="btn btn-primary"> Guardar</button>
+            <h1 class="text-center mb-4">Crear Un Cargo</h1>
+            {{ error }} {% csrf_token %} {{ form|crispy }}
+            <button class="btn btn-primary">Guardar</button>
           </div>
           <div class="card-body">
-          <ul class="col-md-9 list-group-horizontal">
-            <br>
-            {% for cargo_nombre in cargos_nombre %}
-                <li>{{ cargo_nombre }}</li>
-            {% endfor %}
-          </ul>
-        </div>
+            <ul class="col-md-9 list-group-horizontal">
+              <br />
+              {% for cargo_nombre in cargos_nombre %}
+              <li>{{ cargo_nombre }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </form>
       </div>
-  </main>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {%if messages%}{% for m in messages%}
+    <script>
+      Swal.fire({
+        title: "Cargo Creado Correctamente",
+        text: "Usted creo: {{m}}",
+        icon: "warning",
+      });
+    </script>
+    {% endfor %}{%endif%}
   </body>
 </html>
 {% endblock %}

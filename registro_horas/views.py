@@ -540,7 +540,8 @@ def list_empleados(request):
     data = {}
     try:
         todas_empleados = Empleados.objects.all()
-        paginator = Paginator(todas_empleados, 1000) # Pagina de 10 elementos por defecto
+        registros = todas_empleados.count()
+        paginator = Paginator(todas_empleados, registros)  # Cambiar el número de elementos por página a 25
         page = request.GET.get('page')
         empleados = paginator.get_page(page)
         data['todas_empleados'] = []
@@ -561,9 +562,13 @@ def list_empleados(request):
                 'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
             }
             data['todas_empleados'].append(empleado_dict)
+        data['empleados_count'] = todas_empleados.count()
+        data['pages_count'] = paginator.num_pages
+        data['current_page'] = empleados.number
         return JsonResponse(data)
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
 
 
 @login_required
@@ -627,7 +632,7 @@ def crear_cargo(request):
             form = CrearcargoForm(request.POST)
             nuevo_cargo = form.save(commit=False)
             nuevo_cargo.save()
-            messages.success(request, "El día festivo fue creado correctamente")
+            messages.warning(request, f"{nuevo_cargo.cargo}")
             return redirect('crear_cargo')
         except ValueError:
             return render(request, 'crear_cargo.html',
