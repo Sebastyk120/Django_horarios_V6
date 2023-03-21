@@ -1,6 +1,6 @@
 .html, body{
     height: 100vh;
-    font-family: 'Alegreya Sans';
+    font-family: 'Franklin Gothic Book';
 }
 body{
     background-image: url(../img/fondojornadas.png);
@@ -11,6 +11,6 @@ body{
 }
 
 form{
-    font-family:'Alegreya Sans';
+    font-family:'Franklin Gothic Book';
 }
 

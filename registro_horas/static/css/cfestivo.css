@@ -1,6 +1,5 @@
 ul {
     display: grid;
-<<<<<<< HEAD
     grid-template-columns: 200px 200px;
     column-count: 2;
     column-gap:130px;
@@ -13,20 +12,6 @@ ul {
     -ms-column-count: 2;
     -ms-column-gap: 130px;
   }
-=======
-    grid-template-columns: 220px 200px;
-    column-count: 2;
-    column-gap:100px;
-    -webkit-column-count: 2;
-    -webkit-column-gap:100px;
-    -moz-column-count: 2;
-    -moz-column-gap: 100px;
-    -o-column-count: 2;
-    -o-column-gap: 100px;
-    -ms-column-count: 2;
-    -ms-column-gap: 100px;
-}
->>>>>>> a15e696277afb4b8d50f5e0c47dc0e75dea8938a
 
 body {
     height: 100vh;
@@ -35,11 +20,5 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-<<<<<<< HEAD
-    font-family: 'Alegreya Sans'
+    font-family: 'Franklin Gothic Book'
 }
-=======
-    font-family: 'Montserrat';
-}
-
->>>>>>> a15e696277afb4b8d50f5e0c47dc0e75dea8938a
