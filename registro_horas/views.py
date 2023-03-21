@@ -239,7 +239,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, "Jornada creada exitosamente")
+                        messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -287,7 +287,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, "Jornada creada exitosamente")
+                        messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -307,7 +307,7 @@ def crear_jornada(request):
                     nueva_jornada.user = request.user
                     print(request.POST)
                     nueva_jornada.save()
-                    messages.success(request, "Jornada creada exitosamente")
+                    messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
                     return redirect('crear_jornada')
             else:
                 return render(request, 'crear_jornada.html',
@@ -373,7 +373,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-                        messages.success(request, "Jornada creada exitosamente")
+                        
                         return redirect('jornadas')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -420,7 +420,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-                        messages.success(request, "Jornada creada exitosamente")
+                        
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -439,7 +439,7 @@ def actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
                     nueva_jornada.save()
-                    messages.success(request, "Jornada creada exitosamente")
+                    
                     return redirect('jornadas')
             return redirect('jornadas')
         except ValueError:
@@ -582,7 +582,7 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
-            messages.success(request, "Registro actualizado correctamente")
+            
             return redirect('empleados')
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
@@ -600,11 +600,11 @@ def crear_empleado(request):
             form = CrearempleadoForm(request.POST)
             nuevo_empleado = form.save(commit=False)
             nuevo_empleado.save()
-            messages.success(request, "El empleado fue creado correctamente")
+            messages.success(request, f"{nuevo_empleado.nombre}")
             return redirect('crear_empleado')
         except ValueError:
             return render(request, 'crear_empleado.html',
-                          {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
+                        {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 @login_required
 def crear_festivo(request):
@@ -616,11 +616,11 @@ def crear_festivo(request):
             form = CrearfestivoForm(request.POST)
             nuevo_festivo = form.save(commit=False)
             nuevo_festivo.save()
-            messages.success(request, "El día festivo fue creado correctamente")
+            messages.success(request, f"{nuevo_festivo.festivo}")
             return redirect('crear_festivo')
         except ValueError:
             return render(request, 'crear_festivo.html',
-                          {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
+                        {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
             
 @login_required
 def crear_cargo(request):
@@ -632,11 +632,11 @@ def crear_cargo(request):
             form = CrearcargoForm(request.POST)
             nuevo_cargo = form.save(commit=False)
             nuevo_cargo.save()
-            messages.warning(request, f"{nuevo_cargo.cargo}")
+            messages.success(request, f"{nuevo_cargo.cargo}")
             return redirect('crear_cargo')
         except ValueError:
             return render(request, 'crear_cargo.html',
-                          {'form': CrearcargoForm, 'error': 'Por Favor Escriba Datos Validos'})
+                        {'form': CrearcargoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
 @login_required
