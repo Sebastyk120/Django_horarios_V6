@@ -13,12 +13,12 @@
     background-attachment: fixed;
 }
 h1 {
-    font-family: 'Alegreya Sans';
+    font-family: 'Franklin Gothic Book';
     font-weight: bold;
   }
 
 th{
-    font-family: 'Alegreya Sans';
+    font-family: 'Franklin Gothic Book';
     font-size: 16px;
 }
 
@@ -33,9 +33,15 @@ thead{
 }
 
 tbody{
-    font-family: 'Alegreya Sans';
+    font-family: 'Franklin Gothic Book';
     font-size: 14px;
 }
 
+
+.btn{
+
+    font-family: 'Franklin Gothic Book';
+
+}
 /*Spinner*/
 
