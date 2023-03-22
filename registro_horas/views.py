@@ -556,7 +556,7 @@ def list_empleados(request):
                 'contrato': empleado.contrato,
                 'area': empleado.area,
                 'cargo': empleado.cargo.cargo,
-                'salario': format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
+                'salario': str("$") + format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
                 'generaextras': empleado.generaextras,
                 'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
                 'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",

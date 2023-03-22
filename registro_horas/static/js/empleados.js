@@ -1,15 +1,30 @@
 const dataTableOptions = {
+  processing: true,
+  processingIndicator: '<div class="loading-spinner"></div>',
   columnDefs: [
     {
       className: "centered",
-      targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+      targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
     },
     { orderable: false, targets: [7, 11] },
-    { searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11] }
+    { searchable: false, targets: [0, 4, 5, 6, 7, 8, 9, 10, 11] },
   ],
-  pagin: true,
+  paging: true,
   pageLength: 50,
-  destroy: true
+  destroy: true,
+  language: {
+    search: "Buscar:",
+    lengthMenu: "Mostrar _MENU_ registros",
+    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+    infoEmpty: "Mostrando 0 a 0 de 0 registros",
+    infoFiltered: "(filtrado de _MAX_ registros en total)",
+    paginate: {
+      first: "Primero",
+      last: "Último",
+      next: "Siguiente",
+      previous: "Anterior",
+    },
+  },
 };
 
 const initDatatable = async () => {
@@ -19,7 +34,8 @@ const initDatatable = async () => {
     const params = Object.fromEntries(urlSearchParams.entries());
     const page = params.page || 1; // Si no hay valor para la página, se muestra la primera
     const data = await listempleados(page);
-    const rows = data.todas_empleados.map((todas_empleados, index) => `
+    const rows = data.todas_empleados.map(
+      (todas_empleados, index) => `
       <tr>
         <td>${index + 1}</td>
         <td>${todas_empleados.nombre}</td>
@@ -42,9 +58,11 @@ const initDatatable = async () => {
           </a>
         </td>
       </tr>
-    `);
+    `
+    );
     tableBody_empleados.innerHTML = rows.join("");
     const dataTable = $("#datatable_empleados").DataTable(dataTableOptions);
+    $('.dataTables_filter input[type="search"]').addClass("form-control");
   } catch (ex) {
     console.error(ex);
     alert("Error al cargar los datos.");
@@ -52,13 +70,12 @@ const initDatatable = async () => {
 };
 
 const listempleados = async (page) => {
-  const response = await fetch(`http://127.0.0.1:8000/lista/empleados/?page=${page}`);
+  const response = await fetch(
+    `http://127.0.0.1:8000/lista/empleados/?page=${page}`
+  );
   return response.json();
 };
 
 window.addEventListener("load", async () => {
   await initDatatable();
 });
-``
-
-

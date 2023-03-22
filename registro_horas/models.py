@@ -72,4 +72,4 @@ class Jornada(models.Model):
         ordering = ['empleado']
 
     def __str__(self):
-        return str(self.empleado.nombre) + ' -Fecha Liquidada: ' + str(self.inicio_descanso_global)
+        return str("Nombre:  ") + str(self.empleado.nombre) + ' -- Fecha Liquidada: ' + str(self.inicio_jornada_global)
