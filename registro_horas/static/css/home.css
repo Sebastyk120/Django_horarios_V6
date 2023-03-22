@@ -154,12 +154,12 @@ body {
 .grids {
     display: grid;
     grid-template-columns: 500px 400px 400px;
-    grid-template-rows: 20px 300px 300px;
+    grid-template-rows: 0px 650px 20px;
 }
 
 .containers {
     position: absolute;
-    top: 149%;
+    top: 158%;
     left: 63%;
     transform: translate(-50%, -50%);
 
@@ -193,7 +193,7 @@ body {
 h1 {
   font-family: 'Franklin Gothic Book';
   font-size:48px;
-  padding-right:160px;
+  padding-right:130px;
 }
 
 
@@ -205,7 +205,7 @@ h1 {
 }
 
 .inner-header {
-  height:65vh;
+  height:80vh;
   width:100%;
   margin: 0;
   padding: 0;
@@ -554,4 +554,47 @@ body {
   text-align: center;
   font-family: 'Franklin Gothic Book';
   font-size: 15px;
+}
+
+
+
+#section01 a {
+  padding-top: 60px;
+}
+#section01 a span {
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+@keyframes sdb04 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
 }

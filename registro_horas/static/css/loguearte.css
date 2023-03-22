@@ -104,7 +104,6 @@
   /*Imagen de Heavens*/
   .heavens{
     float: right;
-    background-image: linear-gradient(135deg, #23212f 5%, #9526a9 95%);
     background-image: url(../img/loginimg.png) ;
     height: 100%;
     color:#fff;
