@@ -239,7 +239,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
+                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -287,7 +287,7 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
+                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -307,7 +307,7 @@ def crear_jornada(request):
                     nueva_jornada.user = request.user
                     print(request.POST)
                     nueva_jornada.save()
-                    messages.success(request, f"La jornada de {nueva_jornada.empleado} ha sido creada correctamente")
+                    messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                     return redirect('crear_jornada')
             else:
                 return render(request, 'crear_jornada.html',

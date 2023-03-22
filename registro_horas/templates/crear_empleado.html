@@ -28,7 +28,8 @@
     {%if messages%}{% for m in messages%}
     <script>
       Swal.fire({
-        title: "EL EMPLEADO {{m}} HA SIDO CREADO CORRECTAMENTE",
+        title: "EL EMPLEADO HA SIDO CREADO CORRECTAMENTE",
+        text: "Empleado creado: {{m}}",
         icon: "success",
       });
     </script>
