@@ -19,3 +19,16 @@ h1{
     color: aliceblue;
 
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Book';
+    font-size: 15px;
+  }
