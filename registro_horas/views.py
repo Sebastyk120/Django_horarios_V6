@@ -74,7 +74,7 @@ def importar_excel_emp(request):
                 data[12],
             )
             valor.save()
-
+            messages.success(request, "Excel de empleados importado correctamente")
     return render(request, 'import_empleados.html')
 
 
@@ -109,7 +109,7 @@ def importar_excel_jor(request):
                 extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales,
             )
             valor.save()
-
+            messages.success(request, "Excel de jornadas importado correctamente")
     return render(request, 'import_jornadas.html')
 
 
@@ -125,7 +125,7 @@ def importar_excel_cargo(request):
                 data[1],
             )
             valor.save()
-
+            messages.success(request, "Excel de cargos importado correctamente")
     return render(request, 'import_cargos.html')
 
 
@@ -141,7 +141,7 @@ def importar_excel_festivos(request):
                 data[1],
             )
             valor.save()
-
+            messages.success(request, "Excel de festivos importado correctamente")
     return render(request, 'import_festivos.html')
 
 
