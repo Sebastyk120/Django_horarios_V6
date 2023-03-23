@@ -3,6 +3,7 @@ let dataTableInitialized = false;
 
 const dataTableOptions = {
     processing: true,
+    processingIndicator: '<div class="spinner"></div>',
     columnDefs: [
         {
             className: "centered",
