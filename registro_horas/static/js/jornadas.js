@@ -11,8 +11,22 @@ const dataTableOptions = {
         {orderable: false, targets: [21]},
         {searchable: false, targets: [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21]}
     ],
-    pageLength: 100,
-    destroy: true
+    paging: true,
+    pageLength: 50,
+    destroy: true,
+    language: {
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros en total)",
+        paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior",
+        },
+    },
 };
 const initDatatable = async () => {
     if (dataTableInitialized) {

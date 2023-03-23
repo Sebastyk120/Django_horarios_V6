@@ -3,59 +3,61 @@
 <html lang="en">
 
 <head>
-  <title>Iniciar Sesion</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Iniciar Sesion</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
-  <!--custom css-->
-  <link rel="stylesheet" href="{% static 'css/loguearte.css' %}" />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
+    <!--custom css-->
+    <link rel="stylesheet" href="{% static 'css/loguearte.css' %}"/>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
     <div class="login">
-      <div class="container">
-        <h1>INICIAR SESIÓN</h1>
-        <form action="/iniciar_sesion/" method="post">
-          {% csrf_token %}
-          <form class="form-signin" method="POST" action="/iniciar_sesion/">
-            <div class="card-body border-primary mb-3 text-center">
-              <div class="form-floating mb-3">
-                <input style="font-family: 'Franklin Gothic Book'" type="text" placeholder="Usuario" name="username"
-                  class="form-control " />
-                <label style="font-family: 'Franklin Gothic Book'" for="floatingInput">Usuario</label>
-              </div>
-              <div class="form-floating">
-                <input style="font-family: 'Franklin Gothic Book'" type="password" name="password" placeholder="Ingrese Contraseña"
-                  class="form-control" />
-                <label style="font-family: 'Franklin Gothic Book'" for="floatingInput">Contraseña</label>
-              </div>
-              <br>
-              <button class="button">Iniciar Sesión</button>
-            </div>
-            <br />
-          </form>
-        </form>
-      </div>
+        <div class="container">
+            <h1>INICIAR SESIÓN</h1>
+            <form action="/iniciar_sesion/" method="post">
+                {% csrf_token %}
+                <form class="form-signin" method="POST" action="/iniciar_sesion/">
+                    <div class="card-body border-primary mb-3 text-center">
+                        <div class="form-floating mb-3">
+                            <input style="font-family: 'Franklin Gothic Book'" type="text" placeholder="Usuario"
+                                   name="username"
+                                   class="form-control "/>
+                            <label style="font-family: 'Franklin Gothic Book'" for="floatingInput">Usuario</label>
+                        </div>
+                        <div class="form-floating">
+                            <input style="font-family: 'Franklin Gothic Book'" type="password" name="password"
+                                   placeholder="Ingrese Contraseña"
+                                   class="form-control"/>
+                            <label style="font-family: 'Franklin Gothic Book'" for="floatingInput">Contraseña</label>
+                        </div>
+                        <br>
+                        <button class="button">Iniciar Sesión</button>
+                    </div>
+                    <br/>
+                </form>
+            </form>
+        </div>
     </div>
     <div class="heavens">
     </div>
     <div class="footer">
-      <p>Heavens Fruit. - Todos los derechos reservados ©</p>
-      </div>
+        <p>Heavens Fruit. - Todos los derechos reservados ©</p>
+    </div>
     {{ error }}
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

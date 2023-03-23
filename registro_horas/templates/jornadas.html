@@ -1,82 +1,86 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <br />
-    <title>Ver Jornadas</title>
-    <!-------Datatable-------->
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
-    />
-    <!-------Font Awesome-------->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    />
-    <!-------Css Sebas-------->
-    <link rel="stylesheet" href="{% static 'css/jornadas.css' %}" />
-  </head>
-  <body>
-    <h1 style="text-align: center">Ver Jornadas</h1>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <br/>
+        <title>Ver Jornadas</title>
+        <!-------Datatable-------->
+        <link
+                rel="stylesheet"
+                href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
+        />
+        <!-------Font Awesome-------->
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        />
+        <!-------Css Sebas-------->
+        <link rel="stylesheet" href="{% static 'css/jornadas.css' %}"/>
+    </head>
+    <body>
+    <h1 style="text-align: center">Ver Jornadas Ultimos 30 Días</h1>
     <div class="container-fluid">
-      <div class="row"></div>
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="table-responsive">
-          <table
-            id="datatable_jornadas"
-            class="table table-sm table-light table-striped table-hover table-responsive table-bordered">
-            <caption>
-              Todas las Jornadas
-            </caption>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <a class="nav-link" href="/jornadas/importar/"
-                ><button class="button btn btn-success" ;>
-                  Importar xlsx
-                </button></a
-              >
-              <a class="nav-link" href="/jornadas/exportar/"
-                ><button class="button btn btn-success" ;>
-                  Exportar xlsx
-                </button></a>
+        <div class="row"></div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+                <table
+                        id="datatable_jornadas"
+                        class="table table-sm table-light table-striped table-hover table-responsive table-bordered">
+                    <caption>
+                        Todas las Jornadas
+                    </caption>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="nav-link" href="/jornadas/importar/"
+                        >
+                            <button class="button btn btn-success" ;>
+                                Importar xlsx
+                            </button>
+                        </a
+                        >
+                        <a class="nav-link" href="/jornadas/exportar/"
+                        >
+                            <button class="button btn btn-success" ;>
+                                Exportar xlsx
+                            </button>
+                        </a>
+                    </div>
+                    <br>
+                    <thead class="table-dark">
+                    <tr>
+                        <th class="centered">No.</th>
+                        <th class="centered">Empleado</th>
+                        <th class="centered">Documento</th>
+                        <th class="centered">Inicio Jornada</th>
+                        <th class="centered">Salida Jornada</th>
+                        <th class="centered">Inicio Descan 1</th>
+                        <th class="centered">Salida Descan 1</th>
+                        <th class="centered">Inicio Descan 2</th>
+                        <th class="centered">Salida Descan 2</th>
+                        <th class="centered">Jor Legal</th>
+                        <th class="centered">Total H</th>
+                        <th class="centered">Hor Diu</th>
+                        <th class="centered">Hor Noc</th>
+                        <th class="centered">Hor Ex Diu</th>
+                        <th class="centered">Hor Ex Noc</th>
+                        <th class="centered">Hor Diu Fes</th>
+                        <th class="centered">Hor Noc Fes</th>
+                        <th class="centered">Ex Diu Fes</th>
+                        <th class="centered">Ex Noc Fes</th>
+                        <th class="centered">Creación</th>
+                        <th class="centered">Usuario</th>
+                        <th class="centered">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody_jornadas"></tbody>
+                </table>
             </div>
-            <br>
-            <thead class="table-dark">
-              <tr>
-                <th class="centered">No.</th>
-                <th class="centered">Empleado</th>
-                <th class="centered">Documento</th>
-                <th class="centered">Inicio Jornada</th>
-                <th class="centered">Salida Jornada</th>
-                <th class="centered">Inicio Descan 1</th>
-                <th class="centered">Salida Descan 1</th>
-                <th class="centered">Inicio Descan 2</th>
-                <th class="centered">Salida Descan 2</th>
-                <th class="centered">Jor Legal</th>
-                <th class="centered">Total H</th>
-                <th class="centered">Hor Diu</th>
-                <th class="centered">Hor Noc</th>
-                <th class="centered">Hor Ex Diu</th>
-                <th class="centered">Hor Ex Noc</th>
-                <th class="centered">Hor Diu Fes</th>
-                <th class="centered">Hor Noc Fes</th>
-                <th class="centered">Ex Diu Fes</th>
-                <th class="centered">Ex Noc Fes</th>
-                <th class="centered">Creación</th>
-                <th class="centered">Usuario</th>
-                <th class="centered">Opciones</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody_jornadas"></tbody>
-          </table>
         </div>
-      </div>
     </div>
     <div class="footer">
-      <p>Heavens Fruit. - Todos los derechos reservados ©</p>
-      </div>
+        <p>Heavens Fruit. - Todos los derechos reservados ©</p>
+    </div>
     <!-------Jquery-------->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -85,6 +89,6 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <!-------Js Sebas-------->
     <script src="{% static 'js/jornadas.js' %}"></script>
-  </body>
-</html>
+    </body>
+    </html>
 {% endblock %}

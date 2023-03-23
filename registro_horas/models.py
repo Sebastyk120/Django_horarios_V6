@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .choices import estados, empresas, area, extras, contrato, tipo_doc, mes, anio
-from django.forms import TextInput
-from django.utils import formats
+from .choices import estados, empresas, area, extras, contrato, tipo_doc
+
+
 
 # Modelos APP Heavens.
 
@@ -15,7 +15,8 @@ class Cargos(models.Model):
 
     def __str__(self):
         return str(self.cargo)
-    
+
+
 class Festivos(models.Model):
     festivo = models.DateField(max_length=10, verbose_name="Festivo")
 
@@ -28,7 +29,7 @@ class Festivos(models.Model):
 
 class Empleados(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre Empleado")
-    tdoc = models.CharField(max_length=10,choices=tipo_doc, default='CC', verbose_name="Tipo De Documento")
+    tdoc = models.CharField(max_length=10, choices=tipo_doc, default='CC', verbose_name="Tipo De Documento")
     cedula = models.IntegerField(verbose_name="Cedula Empleado")
     empresa = models.CharField(max_length=100, choices=empresas, default='Heavens Fruits SAS', verbose_name="Empresa")
     estado = models.CharField(max_length=10, choices=estados, default='Activo', verbose_name="Estado")
@@ -73,13 +74,3 @@ class Jornada(models.Model):
 
     def __str__(self):
         return str("Nombre:  ") + str(self.empleado.nombre) + ' -- Fecha Liquidada: ' + str(self.inicio_jornada_global)
-
-class Filtros(models.Model):
-    mes = models.CharField(max_length=60, verbose_name="mes", choices=mes, default="1")
-    anio = models.TextField(verbose_name="anio", choices=anio, default="2023", blank=True, null=True)
-
-    class Meta:
-        ordering = ['id']
-
-    def __str__(self):
-        return str("Año: ") +str(self.anio) + str("Mes:") + str(self.mes)

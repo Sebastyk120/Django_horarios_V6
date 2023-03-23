@@ -9,9 +9,10 @@ objetos_festivo = Festivos.objects.all()
 for festivo in objetos_festivo:
     festivos_lista.append(festivo.festivo.strftime('%Y-%m-%d'))
 
+
 class Horarios:
     def __init__(self, inicio_jornada_global, salida_jornada_global, inicio_descanso_global, salida_descanso_global,
-                inicio_descanso_global2, salida_descanso_global2, jornada_legal):
+                 inicio_descanso_global2, salida_descanso_global2, jornada_legal):
         self.inicio_jornada_global = inicio_jornada_global
         self.salida_jornada_global = salida_jornada_global
         self.inicio_descanso_global = inicio_descanso_global

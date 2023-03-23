@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 from tablib import Dataset
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
@@ -10,13 +10,12 @@ from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
 from django.contrib import messages
 from .models import Jornada, Empleados, Cargos, Festivos
-from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm, FiltrosForm
+from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm
 from .calc_horarios import Horarios
 from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse
 
 
 # Create your views here.
-
 
 def home(request):
     return render(request, 'home.html')
@@ -165,7 +164,8 @@ def iniciar_sesion(request):
             request, username=request.POST['username'], password=request.POST['password'])
         print(request.POST)
         if user is None:
-            return render(request, 'iniciar_sesion.html', {'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
+            return render(request, 'iniciar_sesion.html',
+                          {'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
         else:
             print(request.POST)
             login(request, user)
@@ -358,19 +358,24 @@ def actualizar_jornada(request, jornada_id):
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                         invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
                         invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
                         invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_globalf >= salida_jornada_globalf:
                         invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     else:
                         jornada_legalf = form.cleaned_data['jornada_legal']
                         horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
@@ -393,31 +398,40 @@ def actualizar_jornada(request, jornada_id):
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                         invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
                         invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
                         invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_globalf >= salida_jornada_globalf:
                         invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
                         invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
                         invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_global2f >= salida_jornada_globalf:
                         invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
                         invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
-                        return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     else:
                         jornada_legalf = form.cleaned_data['jornada_legal']
                         horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
@@ -510,9 +524,11 @@ def eliminar_jornada(request, jornada_id):
 def list_jornadas(request):
     data = {}
     try:
-        todas_jornadas = Jornada.objects.all()
-        # mostrar 10 elementos por página
-        paginator = Paginator(todas_jornadas, 1000)
+        dia_actual = datetime.today()
+        fechas_dos_meses = dia_actual - timedelta(days=30)
+        todas_jornadas = Jornada.objects.filter(inicio_jornada_global__range=[fechas_dos_meses, dia_actual])
+        registros = todas_jornadas.count()
+        paginator = Paginator(todas_jornadas, registros)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         data['todas_jornadas'] = []
@@ -520,13 +536,18 @@ def list_jornadas(request):
             jornada_dict = {
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
-                'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',', '.') if jornada.empleado.cedula else None,
+                'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',',
+                                                                                 '.') if jornada.empleado.cedula else None,
                 'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y Hora:%H:%M'),
                 'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
-                'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
-                'salida_descanso_global': jornada.salida_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
-                'inicio_descanso_global2': jornada.inicio_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global2 else "-",
-                'salida_descanso_global2': jornada.salida_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global2 else "-",
+                'inicio_descanso_global': jornada.inicio_descanso_global.strftime(
+                    '%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
+                'salida_descanso_global': jornada.salida_descanso_global.strftime(
+                    '%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
+                'inicio_descanso_global2': jornada.inicio_descanso_global2.strftime(
+                    '%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global2 else "-",
+                'salida_descanso_global2': jornada.salida_descanso_global2.strftime(
+                    '%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global2 else "-",
                 'jornada_legal': jornada.jornada_legal,
                 'total_horas': jornada.total_horas,
                 'diurnas_totales': jornada.diurnas_totales,
@@ -550,40 +571,37 @@ def list_jornadas(request):
 def empleados(request):
     return render(request, 'empleados.html')
 
+
 @login_required
 def list_empleados(request):
     data = {}
-    mes = 3
-    anio = 2020
     try:
         todas_empleados = Empleados.objects.all()
-        if mes and anio:
-            todas_empleados = todas_empleados.filter(ingreso__month=mes, ingreso__year=anio)
-            registros = todas_empleados.count()
-            paginator = Paginator(todas_empleados, registros)
-            page = request.GET.get('page')
-            empleados = paginator.get_page(page)
-            data['todas_empleados'] = []
-            for empleado in empleados:
-                empleado_dict = {
-                    'id': empleado.id,
-                    'nombre': empleado.nombre,
-                    'tdoc': empleado.tdoc,
-                    'cedula': format(empleado.cedula, ',d').replace(',', '.') if empleado.cedula else None,
-                    'empresa': empleado.empresa,
-                    'estado': empleado.estado,
-                    'contrato': empleado.contrato,
-                    'area': empleado.area,
-                    'cargo': empleado.cargo.cargo,
-                    'salario': str("$") + format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
-                    'generaextras': empleado.generaextras,
-                    'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
-                    'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
-                }
-                data['todas_empleados'].append(empleado_dict)
-                data['empleados_count'] = todas_empleados.count()
-                data['pages_count'] = paginator.num_pages
-                data['current_page'] = empleados.number
+        registros = todas_empleados.count()
+        paginator = Paginator(todas_empleados, registros)
+        page = request.GET.get('page')
+        empleados = paginator.get_page(page)
+        data['todas_empleados'] = []
+        for empleado in empleados:
+            empleado_dict = {
+                'id': empleado.id,
+                'nombre': empleado.nombre,
+                'tdoc': empleado.tdoc,
+                'cedula': format(empleado.cedula, ',d').replace(',', '.') if empleado.cedula else None,
+                'empresa': empleado.empresa,
+                'estado': empleado.estado,
+                'contrato': empleado.contrato,
+                'area': empleado.area,
+                'cargo': empleado.cargo.cargo,
+                'salario': str("$") + format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
+                'generaextras': empleado.generaextras,
+                'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
+                'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
+            }
+            data['todas_empleados'].append(empleado_dict)
+            data['empleados_count'] = todas_empleados.count()
+            data['pages_count'] = paginator.num_pages
+            data['current_page'] = empleados.number
         return JsonResponse(data)
     except Exception as e:
         return JsonResponse({'error': str(e)})
