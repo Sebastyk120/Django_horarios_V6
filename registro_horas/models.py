@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .choices import estados, empresas, area, extras, contrato, tipo_doc
+from .choices import estados, empresas, area, extras, contrato, tipo_doc, mes, anio
 from django.forms import TextInput
 from django.utils import formats
 
@@ -73,3 +73,13 @@ class Jornada(models.Model):
 
     def __str__(self):
         return str("Nombre:  ") + str(self.empleado.nombre) + ' -- Fecha Liquidada: ' + str(self.inicio_jornada_global)
+
+class Filtros(models.Model):
+    mes = models.CharField(max_length=60, verbose_name="mes", choices=mes, default="1")
+    anio = models.TextField(verbose_name="anio", choices=anio, default="2023", blank=True, null=True)
+
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return str("Año: ") +str(self.anio) + str("Mes:") + str(self.mes)

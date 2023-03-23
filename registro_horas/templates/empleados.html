@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% csrf_token %}
-
+{% extends 'base.html' %} {% load static %} {% block content %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +22,17 @@
     <br />
 
     <h1 style="text-align: center">Ver Empleados</h1>
-
+    <div class="col-md-6 offset-md-3 mt-5">
+      <form action="/empleados/" method="post" class="card card-body h-100 border-primary">
+        <div class="card-header">
+        <h1 class="text-center mb-4">Filtrar Empleados Por Mes y Año De Ingreso</h1>
+        {{ error }} {% csrf_token %} {{ form|crispy }}
+        </div>
+        <button class="btn btn-primary"> Filtrar</button>
+      </form>
+    </div>
+  
+    </form>
     <div class="container-fluid">
       <div class="row"></div>
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">

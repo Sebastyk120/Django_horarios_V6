@@ -1,19 +1,18 @@
+from datetime import timedelta
+from tablib import Dataset
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Jornada, Empleados, Cargos, Festivos
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
-from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm
-from .calc_horarios import Horarios
-from django.contrib.auth.decorators import login_required, user_passes_test
-from datetime import timedelta
-from tablib import Dataset
-from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse
 from django.contrib import messages
-
+from .models import Jornada, Empleados, Cargos, Festivos
+from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm, FiltrosForm
+from .calc_horarios import Horarios
+from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse
 
 
 # Create your views here.
@@ -26,30 +25,38 @@ def home(request):
 def export_emp_excel(request):
     empleados_resource = EmpleadosResource()
     dataset = empleados_resource.export()
-    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response = HttpResponse(
+        dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xlsx"'
     return response
+
 
 def export_jor_excel(request):
     jornada_resource = JornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response = HttpResponse(
+        dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xlsx"'
     return response
+
 
 def export_cargos_excel(request):
     cargos_resource = CargosResource()
     dataset = cargos_resource.export()
-    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response = HttpResponse(
+        dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xlsx"'
     return response
+
 
 def export_festivos_excel(request):
     festivos_resource = FestivosResourse()
     dataset = festivos_resource.export()
-    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
+    response = HttpResponse(
+        dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xlsx"'
     return response
+
 
 def importar_excel_emp(request):
     if request.method == 'POST':
@@ -74,7 +81,8 @@ def importar_excel_emp(request):
                 data[12],
             )
             valor.save()
-            messages.success(request, "Excel de empleados importado correctamente")
+            messages.success(
+                request, "Excel de empleados importado correctamente")
     return render(request, 'import_empleados.html')
 
 
@@ -85,7 +93,8 @@ def importar_excel_jor(request):
         new_jornada = request.FILES['jornadas']
         imported_data = dataset.load(new_jornada.read(), format='xlsx')
         for data in imported_data:
-            horarioo = Horarios(data[1], data[2], data[3], data[4], data[5], data[6], data[7])
+            horarioo = Horarios(data[1], data[2], data[3],
+                                data[4], data[5], data[6], data[7])
             valor = Jornada(
                 data[0],
                 data[1],
@@ -97,19 +106,20 @@ def importar_excel_jor(request):
                 data[7],
                 data[8],
                 data[9],
-                user = request.user,
-                total_horas = horarioo.total_horas,
-                diurnas_totales = horarioo.diurnas_totales,
-                nocturnas_totales = horarioo.nocturnas_totales,
-                extras_diurnas_totales = horarioo.extras_diurnas_totales,
-                extras_nocturnos_totales = horarioo.extras_nocturnos_totales,
-                diurnos_festivo_totales = horarioo.diurnos_festivo_totales,
-                nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales,
-                extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales,
-                extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales,
+                user=request.user,
+                total_horas=horarioo.total_horas,
+                diurnas_totales=horarioo.diurnas_totales,
+                nocturnas_totales=horarioo.nocturnas_totales,
+                extras_diurnas_totales=horarioo.extras_diurnas_totales,
+                extras_nocturnos_totales=horarioo.extras_nocturnos_totales,
+                diurnos_festivo_totales=horarioo.diurnos_festivo_totales,
+                nocturnos_festivo_totales=horarioo.nocturnos_festivo_totales,
+                extras_diurnos_festivo_totales=horarioo.extras_diurnos_festivo_totales,
+                extras_nocturnos_festivo_totales=horarioo.extras_nocturnos_festivo_totales,
             )
             valor.save()
-            messages.success(request, "Excel de jornadas importado correctamente")
+            messages.success(
+                request, "Excel de jornadas importado correctamente")
     return render(request, 'import_jornadas.html')
 
 
@@ -125,7 +135,8 @@ def importar_excel_cargo(request):
                 data[1],
             )
             valor.save()
-            messages.success(request, "Excel de cargos importado correctamente")
+            messages.success(
+                request, "Excel de cargos importado correctamente")
     return render(request, 'import_cargos.html')
 
 
@@ -141,7 +152,8 @@ def importar_excel_festivos(request):
                 data[1],
             )
             valor.save()
-            messages.success(request, "Excel de festivos importado correctamente")
+            messages.success(
+                request, "Excel de festivos importado correctamente")
     return render(request, 'import_festivos.html')
 
 
@@ -239,7 +251,8 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -287,7 +300,8 @@ def crear_jornada(request):
                         nueva_jornada.user = request.user
                         print(request.POST)
                         nueva_jornada.save()
-                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                         return redirect('crear_jornada')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -307,7 +321,8 @@ def crear_jornada(request):
                     nueva_jornada.user = request.user
                     print(request.POST)
                     nueva_jornada.save()
-                    messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                    messages.success(
+                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                     return redirect('crear_jornada')
             else:
                 return render(request, 'crear_jornada.html',
@@ -373,7 +388,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-                        
+
                         return redirect('jornadas')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -420,7 +435,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-                        
+
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -439,7 +454,7 @@ def actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
                     nueva_jornada.save()
-                    
+
                     return redirect('jornadas')
             return redirect('jornadas')
         except ValueError:
@@ -496,7 +511,8 @@ def list_jornadas(request):
     data = {}
     try:
         todas_jornadas = Jornada.objects.all()
-        paginator = Paginator(todas_jornadas, 1000)  # mostrar 10 elementos por página
+        # mostrar 10 elementos por página
+        paginator = Paginator(todas_jornadas, 1000)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         data['todas_jornadas'] = []
@@ -530,45 +546,47 @@ def list_jornadas(request):
         return JsonResponse({'error': str(e)})
 
 
-@login_required()
+@login_required
 def empleados(request):
     return render(request, 'empleados.html')
-
 
 @login_required
 def list_empleados(request):
     data = {}
+    mes = 3
+    anio = 2020
     try:
         todas_empleados = Empleados.objects.all()
-        registros = todas_empleados.count()
-        paginator = Paginator(todas_empleados, registros)  # Cambiar el número de elementos por página a 25
-        page = request.GET.get('page')
-        empleados = paginator.get_page(page)
-        data['todas_empleados'] = []
-        for empleado in empleados:
-            empleado_dict = {
-                'id': empleado.id,
-                'nombre': empleado.nombre,
-                'tdoc': empleado.tdoc,
-                'cedula': format(empleado.cedula, ',d').replace(',', '.') if empleado.cedula else None,
-                'empresa': empleado.empresa,
-                'estado': empleado.estado,
-                'contrato': empleado.contrato,
-                'area': empleado.area,
-                'cargo': empleado.cargo.cargo,
-                'salario': str("$") + format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
-                'generaextras': empleado.generaextras,
-                'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
-                'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
-            }
-            data['todas_empleados'].append(empleado_dict)
-        data['empleados_count'] = todas_empleados.count()
-        data['pages_count'] = paginator.num_pages
-        data['current_page'] = empleados.number
+        if mes and anio:
+            todas_empleados = todas_empleados.filter(ingreso__month=mes, ingreso__year=anio)
+            registros = todas_empleados.count()
+            paginator = Paginator(todas_empleados, registros)
+            page = request.GET.get('page')
+            empleados = paginator.get_page(page)
+            data['todas_empleados'] = []
+            for empleado in empleados:
+                empleado_dict = {
+                    'id': empleado.id,
+                    'nombre': empleado.nombre,
+                    'tdoc': empleado.tdoc,
+                    'cedula': format(empleado.cedula, ',d').replace(',', '.') if empleado.cedula else None,
+                    'empresa': empleado.empresa,
+                    'estado': empleado.estado,
+                    'contrato': empleado.contrato,
+                    'area': empleado.area,
+                    'cargo': empleado.cargo.cargo,
+                    'salario': str("$") + format(empleado.salario, ',d').replace(',', '.') if empleado.salario else None,
+                    'generaextras': empleado.generaextras,
+                    'ingreso': empleado.ingreso.strftime('%d %B %Y') if empleado.ingreso else "-",
+                    'retiro': empleado.retiro.strftime('%d %B %Y') if empleado.retiro else "-",
+                }
+                data['todas_empleados'].append(empleado_dict)
+                data['empleados_count'] = todas_empleados.count()
+                data['pages_count'] = paginator.num_pages
+                data['current_page'] = empleados.number
         return JsonResponse(data)
     except Exception as e:
         return JsonResponse({'error': str(e)})
-
 
 
 @login_required
@@ -582,7 +600,7 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
-            
+
             return redirect('empleados')
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
@@ -604,7 +622,8 @@ def crear_empleado(request):
             return redirect('crear_empleado')
         except ValueError:
             return render(request, 'crear_empleado.html',
-                        {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
+                          {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
+
 
 @login_required
 def crear_festivo(request):
@@ -620,8 +639,9 @@ def crear_festivo(request):
             return redirect('crear_festivo')
         except ValueError:
             return render(request, 'crear_festivo.html',
-                        {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
-            
+                          {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
+
+
 @login_required
 def crear_cargo(request):
     if request.method == 'GET':
@@ -636,7 +656,7 @@ def crear_cargo(request):
             return redirect('crear_cargo')
         except ValueError:
             return render(request, 'crear_cargo.html',
-                        {'form': CrearcargoForm, 'error': 'Por Favor Escriba Datos Validos'})
+                          {'form': CrearcargoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
 @login_required
