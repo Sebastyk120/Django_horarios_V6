@@ -1,15 +1,15 @@
-ul {
+#columns {
     display: grid;
-    grid-template-columns: 230px 280px;
-    column-count: 2;
+    grid-template-columns: 230px 280px 280px 280px;
+    column-count: 4;
     column-gap:55px;
-    -webkit-column-count: 2;
+    -webkit-column-count: 4;
     -webkit-column-gap:55px;
-    -moz-column-count: 2;
+    -moz-column-count: 4;
     -moz-column-gap: 55px;
-    -o-column-count: 2;
+    -o-column-count: 4;
     -o-column-gap: 55px;
-    -ms-column-count: 2;
+    -ms-column-count: 4;
     -ms-column-gap: 55px;
   }
 

@@ -14,60 +14,24 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
 </head>
 <body>
-<nav
-        class="navbar navbar-expand-lg"
-        style="
-        background-color: #111111;
-        font-family: 'Franklin Gothic Book';
-        font-size: 15px;"
->
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">LIQUIDADOR DE HORARIOS</a>
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
+    <label>
+    <input type="checkbox">
+    <span class="menu"> <span class="hamburger"></span> </span>
                 {% if user.is_authenticated %}
-                    <a class="nav-link" aria-current="page" href="/empleados/crear/"
-                    >Crear Empleado</a
-                    >
-                    <a class="nav-link" href="/empleados">Ver Empleados</a>
-                    <a class="nav-link" href="/jornadas/crear/">Ingresar Jornada</a>
-                    <a class="nav-link" href="/jornadas">Ver Jornadas</a>
-                    <a class="nav-link" href="/festivos/crear/">Festivos</a>
-                    <a class="nav-link" href="/cargos/crear/">Cargos</a>
-                    <a
-                            class="nav-link"
-                            href="/signup"
-                            tabindex="-1"
-                            aria-disabled="true"
-                    >Registrar Usuario</a
-                    >
+                <ul class="menu__box">
+                    <li><a class="menu__item" href="/">Home</a></li>
+                    <li><a class="menu__item" href="/empleados/crear/">Crear Empleados</a></li>
+                    <li><a class="menu__item" href="/empleados">Ver Empleados</a></li>
+                    <li><a class="menu__item" href="/jornadas/crear/">Crear Jornadas</a></li>
+                    <li><a class="menu__item" href="/jornadas">Ver Jornadas</a></li>
+                    <li><a class="menu__item" href="/festivos/crear/">Crear Festivos</a></li>
+                    <li><a class="menu__item" href="/cargos/crear/">Crear Cargos</a></li>
+                    <li><a class="menu__item" href="/logout">Salir</a></li>
+                  </ul>
                 {% else %}
                     <a class="nav-link" href="/iniciar_sesion">Iniciar Sesión</a>
                 {% endif %}
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a
-                        class="nav-link"
-                        href="/logout"
-                        tabindex="-1"
-                        aria-disabled="true"
-                >Salir</a
-                >
-            </div>
-        </div>
-    </div>
-</nav>
+            </label>
 {% block content %} {% endblock %}
 </body>
 </html>

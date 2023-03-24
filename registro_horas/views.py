@@ -474,8 +474,7 @@ def actualizar_jornada(request, jornada_id):
         except ValueError:
             jornada = get_object_or_404(Jornada, pk=jornada_id)
             form = CrearjornadaForm(request.POST, instance=jornada)
-            return render(request, 'actualizar_jornada.html', {'jornada': jornada, 'form': form,
-                                                               'error': "Error De Datos"})
+            return render(request, 'actualizar_jornada.html', {'jornada': jornada, 'form': form,'error': "Error De Datos"})
 
 
 @login_required
