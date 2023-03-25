@@ -41,6 +41,19 @@ urlpatterns = [
     path('cargos/importar/', views.importar_excel_cargo, name='import_cargo'),
     path('cargos/exportar/', views.export_cargos_excel, name='export_cargo'),
     path('cargos/crear/', views.crear_cargo, name='crear_cargo'),
-    path('logout/', views.salir, name='logout'),  
-    
+    path('logout/', views.salir, name='logout'),
+    # ------------------------------------------Operaciones--------------------------------------
+    path('operaciones/', views.ope_home, name='ope_home'),
+    path('operaciones/jornadas/', views.ope_jornadas, name='ope_jornadas'),
+    path('operaciones/lista/jornadas/', views.ope_list_jornadas, name='ope_lista_jornadas'),
+    path('operaciones/jornadas/crear/', views.ope_crear_jornada, name='ope_crear_jornada'),
+    path('operaciones/jornadas/actualizar/<int:jornada_id>/', views.ope_actualizar_jornada, name='ope_actualizar_jornada'),
+    path('operaciones/jornadas/eliminar/<int:jornada_id>/', views.ope_eliminar_jornada, name='ope_eliminar_jornada'),
+    path('operaciones/jornadas/importar/', views.ope_importar_excel_jor, name='ope_import_jornada'),
+    path('operaciones/jornadas/exportar/', views.ope_export_jor_excel, name='ope_export_jornada'),
+    path('operaciones/empleados/', views.ope_empleados, name='ope_empleados'),
+    path('operaciones/lista/empleados/', views.ope_list_empleados, name='ope_lista_empleados'),
+    path('operaciones/festivos/ver/', views.ope_crear_festivo, name='ope_crear_festivo'),
+    path('operaciones/cargos/ver/', views.ope_crear_cargo, name='ope_crear_cargo'),
+
 ]

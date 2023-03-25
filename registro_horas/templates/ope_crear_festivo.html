@@ -1,0 +1,41 @@
+{% extends 'ope_base.html' %} {% block content %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="{% static 'css/cfestivo.css' %}"/>
+        <title>Días Festivos</title>
+    </head>
+    <body>
+    <main class="container mt-4">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="nav-link" href="/festivos/exportar/"
+            >
+                <button class="button btn btn-success" ;>
+                    Exportar Festivos xlsx
+                </button>
+            </a
+            >
+        </div>
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="card card-body h-100 border-primary">
+                <div class="card-header">
+                    <h1 class="text-center mb-4">Dias Festivos Modulo Operaciones</h1>
+                </div>
+                <div class="card-body">
+                    <ul id="colums" class="col-md-5 list-group-horizontal">
+                        {% for festivo_nombre in festivos_nombre %}
+                            <li id="columnas">{{ festivo_nombre }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <p>Heavens Fruit. - Todos los derechos reservados ©</p>
+    </div>
+    </body>
+    </html>
+{% endblock %}  
