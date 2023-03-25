@@ -36,8 +36,8 @@
                     <button class="btn btn-primary">Guardar</button>
                 </div>
                 <div class="card-body">
-                    <ul class="col-md-9 list-group-horizontal">
-                        <br/>
+                    <ul id="columns" class="col-md-9 list-group-horizontal">
+                        
                         {% for cargo_nombre in cargos_nombre %}
                             <li>{{ cargo_nombre }}</li>
                         {% endfor %}
