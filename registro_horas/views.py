@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
 from django.contrib import messages
-from .models import Jornada, Empleados, Cargos, Festivos
+from .models import Jornada, Empleados, Cargos, Festivos, OpeJornada
 from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm
 from .calc_horarios import Horarios
 from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse
@@ -681,3 +681,18 @@ def crear_cargo(request):
 def salir(request):
     logout(request)
     return redirect('home')
+
+
+# ----------------------------------- OPERACIONES ----------------------------------------------------------------------
+
+def ope_export_jor_excel(request):
+    jornada_resource = JornadasResource()
+    dataset = jornada_resource.export()
+    response = HttpResponse(
+        dataset.xlsx, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados_Operaciones.xlsx"'
+    return response
+
+@login_required
+def ope_jornadas(request):
+    return render(request, 'ope_jornadas.html')

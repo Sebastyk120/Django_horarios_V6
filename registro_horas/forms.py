@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Empleados, Jornada, Cargos, Festivos
+from .models import Empleados, Jornada, Cargos, Festivos, OpeJornada
 from datetime import datetime
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
@@ -44,7 +44,7 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar')
+            Submit('submit', 'Guardar', css_class='col-sm-6')
         )
 
 
@@ -107,3 +107,43 @@ class CrearfestivoForm(ModelForm):
         fields = ["festivo"]
 
 
+# --------------------------------------- OPERACIONES ----------------------------------------------------------------
+
+class OpeCrearjornadaForm(ModelForm):
+    class Meta:
+        model = OpeJornada
+        widgets = {
+            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+
+        }
+        fields = ["empleado", "inicio_jornada_global", "salida_jornada_global", "inicio_descanso_global",
+                  "salida_descanso_global", "inicio_descanso_global2", "salida_descanso_global2", "jornada_legal"]
+
+    def __init__(self, *args, **kwargs):
+        super(OpeCrearjornadaForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-md-4'
+        self.helper.field_class = 'col-md-6'
+        self.helper.layout = Layout(
+            Div(
+                Div('inicio_jornada_global', css_class='col-sm-6'),
+                Div('salida_jornada_global', css_class='col-sm-6'),
+                Div('inicio_descanso_global', css_class='col-sm-6'),
+                Div('salida_descanso_global', css_class='col-sm-6'),
+                css_class='row'
+            ),
+            Div(
+                Div('inicio_descanso_global2', css_class='col-sm-6'),
+                Div('salida_descanso_global2', css_class='col-sm-6'),
+                Div('jornada_legal', css_class='col-sm-6'),
+                Div('empleado', css_class='col-sm-6'),
+                css_class='row'
+            ),
+            Submit('submit', 'Guardar')
+        )
