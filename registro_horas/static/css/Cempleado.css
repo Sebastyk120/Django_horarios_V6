@@ -5,10 +5,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    z-index:1;
 }
 
-form{
+form {
     font-family: 'Franklin Gothic Book';
+    
 }
 
 .footer {
@@ -22,4 +24,18 @@ form{
     text-align: center;
     font-family: 'Franklin Gothic Book';
     font-size: 15px;
-  }
+}
+
+h1 {
+    text-align: left; 
+    font-family: 'Franklin Gothic Book';
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+}
+
+#submit-id-submit{
+
+    
+
+}
