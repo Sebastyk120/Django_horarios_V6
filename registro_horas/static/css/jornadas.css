@@ -2,7 +2,9 @@
     text-align: center !important;
     vertical-align: middle !important;
 }
-.html, body{
+
+.html,
+body {
     height: 100vh;
     background-image: url(../img/fondojornadas.png);
     background-position: center center;
@@ -14,36 +16,38 @@
     font-family: 'Franklin Gothic Book';
     font-size: 15px;
 }
+
 h1 {
     font-family: 'Franklin Gothic Book';
     font-weight: bold;
-  }
-
-th{
-    font-family: 'Franklin Gothic Book';
-    
 }
 
-.card{
+th {
+    font-family: 'Franklin Gothic Book';
+
+}
+
+.card {
     display: flex;
     justify-content: center;
 }
 
-thead{
+thead {
     color: rgb(0, 0, 0);
 
 }
 
-tbody{
+tbody {
     font-family: 'Franklin Gothic Book';
 }
 
 
-.btn{
+.btn {
 
     font-family: 'Franklin Gothic Book';
 
 }
+
 /*Spinner*/
 
 .footer {
@@ -57,4 +61,68 @@ tbody{
     text-align: center;
     font-family: 'Franklin Gothic Book';
     font-size: 15px;
-  }
+}
+
+h1 {
+    text-align: left;
+    font-family: 'Franklin Gothic Book';
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+}
+
+.btn1 {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #222;
+    padding: 8px 30px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+.btn1 span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: #7895d2;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn1:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+#import {
+
+    position: relative;
+    top: 0px;
+    left: -10px;
+
+}
+
+#export {
+
+    position: relative;
+    left: -10px;
+    top: 0px;
+
+}

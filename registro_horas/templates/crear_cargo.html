@@ -9,31 +9,22 @@
     <body>
     <main class="container mt-4">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="nav-link" href="/cargos/importar/"
-            >
-                <button class="button btn btn-success" ;>
-                    Importar cargos xlsx
-                </button>
-            </a
-            >
-            <a class="nav-link" href="/cargos/exportar/"
-            >
-                <button class="button btn btn-success" ;>
-                    Exportar cargos xlsx
-                </button>
-            </a
-            >
+            <a class="nav-link" href="/cargos/importar/">
+                <button class="button btn1 " id="import"><span>Importar</span></button>
+            </a>
+            <a class="nav-link" href="/cargos/exportar/">
+                <button class="button btn1" id="export"><span>Exportar</span></button>
+            </a>
         </div>
-        <div class="col-md-6 offset-md-3 mt-5">
+        <div class="col-md">
             <form
                     action="/cargos/crear/"
                     method="post"
-                    class="card card-body h-100 border-primary"
-            >
+                    class="card card-body h-100 border-primary">
                 <div class="card-header">
                     <h1 class="text-center mb-4">Crear Un Cargo</h1>
                     {{ error }} {% csrf_token %} {{ form|crispy }}
-                    <button class="btn btn-primary">Guardar</button>
+                    <button class="buttong" id="guardar">Guardar</button>
                 </div>
                 <div class="card-body">
                     <ul id="columns" class="col-md-9 list-group-horizontal">
