@@ -44,7 +44,7 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar', css_class='col-sm-6')
+            Submit('submit', 'Guardar')
         )
 
 
