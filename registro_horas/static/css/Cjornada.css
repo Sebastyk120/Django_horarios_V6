@@ -1,8 +1,10 @@
-.html, body{
+.html,
+body {
     height: 100vh;
     font-family: 'Franklin Gothic Book';
 }
-body{
+
+body {
     background-image: url(../img/fondojornadas.png);
     background-position: center center;
     background-size: cover;
@@ -10,9 +12,10 @@ body{
     height: 100vh;
 }
 
-form{
-    font-family:'Franklin Gothic Book';
+form {
+    font-family: 'Franklin Gothic Book';
 }
+
 .footer {
     position: fixed;
     left: 0;
@@ -24,5 +27,79 @@ form{
     text-align: center;
     font-family: 'Franklin Gothic Book';
     font-size: 15px;
-  }
+}
 
+h1 {
+    text-align: left;
+    font-family: 'Franklin Gothic Book';
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+}
+
+#submit-id-submit {
+
+    position: relative;
+    left: 520px;
+    height: 40px;
+    width: 120px;
+
+}
+
+.btn {
+   
+    margin: 30px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #2e4bcc;
+    color: #ecf0f1;
+
+    transition: background-color .3s;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #8e27ae;
+}
+
+.btn>* {
+    position: relative;
+}
+
+.btn span {
+    display: block;
+    padding: 12px 24px;
+}
+
+.btn:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
