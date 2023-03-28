@@ -1,10 +1,10 @@
-body{
+body {
 
     font-family: 'Franklin Gothic Book';
 
 }
 
-a{
+a {
 
     color: aliceblue;
     font-size: 15px;
@@ -14,9 +14,63 @@ a{
 .custom-toggler.navbar-toggler {
     border-color: rgb(153, 144, 238);
 }
+
 /* Setting the stroke to green using rgb values (0, 128, 0) */
- 
+
 .custom-toggler .navbar-toggler-icon {
-    background-image:url(../img/purple.png) 
+    background-image: url(../img/purple.png)
+}
+
+.nav-item {
+    width: 398px;
+    margin: 0px;
+    position: relative;
+    left: -20px;
+    border-top: 5px solid #ffffff;
+    display: inline-block;
+
+}
+
+.nav-item a {
+
+    display: block;
+    padding: 20px;
+    background: linear-gradient(135deg, rgb(255, 255, 255) rgb(255, 255, 255)65);
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.2s, background 0.5s;
+    margin: 2px;
+}
+
+.nav-item a:hover {
+    color: #000000;
+}
+
+.nav-item ::after{
+    color: #000000;
+    content: "";
+    background-color: white;
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    right: 100%;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+
+}
+
+.nav-item :hover::after{
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
 
 }
