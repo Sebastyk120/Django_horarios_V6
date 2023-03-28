@@ -52,8 +52,7 @@ def export_cargos_excel(request):
 def export_festivos_excel(request):
     festivos_resource = FestivosResourse()
     dataset = festivos_resource.export()
-    response = HttpResponse(
-        dataset.xlsx, content_type='application/vnd.ms-excel')
+    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xlsx"'
     return response
 
@@ -1180,4 +1179,3 @@ def ope_crear_festivo(request):
 def ope_crear_cargo(request):
     cargos_nombre = Cargos.objects.values_list('cargo', flat=True)
     return render(request, 'ope_crear_cargo.html', {'cargos_nombre': cargos_nombre})
-
