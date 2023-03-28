@@ -153,6 +153,10 @@ h1 {
 
 .header {
   position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   text-align: center;
   background-image: url(../img/bkhome.png);
   color: white;
@@ -477,7 +481,7 @@ screen and (max-height: 900px) {
 
   body {
     height: 100vh;
-    background-image: url(../img/fondojornadas.png);
+    background-image: url(../img/bkhomw2.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -567,7 +571,7 @@ screen and (max-height: 900px) {
 
 .cards--1 .cards__img,
 .cards--1 .cards__img--hover {
-  background-image: url(../img/RRHH.png);
+  background-image: url(../img/rrhhh.jpg);
 }
 
 .cards--2 .cards__img,

@@ -1,26 +1,26 @@
 #columns {
-    display: grid;
-    grid-template-columns: 230px 280px 280px 280px;
-    column-count: 4;
-    column-gap:55px;
-    -webkit-column-count: 4;
-    -webkit-column-gap:55px;
-    -moz-column-count: 4;
-    -moz-column-gap: 55px;
-    -o-column-count: 4;
-    -o-column-gap: 55px;
-    -ms-column-count: 4;
-    -ms-column-gap: 55px;
-  }
+  display: grid;
+  grid-template-columns: 230px 280px 280px 280px;
+  column-count: 4;
+  column-gap: 55px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 55px;
+  -moz-column-count: 4;
+  -moz-column-gap: 55px;
+  -o-column-count: 4;
+  -o-column-gap: 55px;
+  -ms-column-count: 4;
+  -ms-column-gap: 55px;
+}
 
 body {
-    height: 100vh;
-    background-image: url(../img/fondojornadas.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Franklin Gothic Book'
+  height: 100vh;
+  background-image: url(../img/fondojornadas.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Franklin Gothic Book'
 }
 
 .footer {
@@ -37,14 +37,14 @@ body {
 }
 
 h1 {
-  text-align: left; 
+  text-align: left;
   font-family: 'Franklin Gothic Book';
   font-style: italic;
   color: #003cff;
   font-weight: bold;
 }
 
-#import{
+#import {
 
   position: relative;
   left: 350px;
@@ -52,7 +52,7 @@ h1 {
 
 }
 
-#export{
+#export {
 
   position: relative;
   left: 177px;
@@ -73,11 +73,11 @@ h1 {
   background-color: #222;
   padding: 10px 50px;
   margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
 }
 
 .btn1 span {
-  position: relative; 
+  position: relative;
   z-index: 1;
 }
 
@@ -103,14 +103,14 @@ h1 {
 #guardar {
 
   position: relative;
-  left: 550px;
+  left: 380px;
   height: 40px;
   width: 120px;
 
 }
 
 .buttong {
- 
+
   margin: 30px auto;
   padding: 0;
   overflow: hidden;
@@ -167,3 +167,322 @@ h1 {
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
+#volver {
+
+  position: relative;
+  right: -600px;
+  top: -2px;
+  height: 40px;
+  width: 120px;
+
+
+}
+
+.buttonv {
+
+  margin: 30px auto;
+  padding: 6px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #c70000;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+
+.buttonv:hover,
+.buttonv:focus {
+  background-color: #8327ae;
+}
+
+.buttonv>* {
+  position: relative;
+}
+
+.buttonv span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.buttonv:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.buttonv:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+.card{
+
+  position: relative;
+  left: -50px;
+
+}
+
+  #columns {
+    display: grid;
+    grid-template-columns: 230px 280px 280px 250px;
+    column-count: 4;
+    column-gap: 10px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 10px;
+    -moz-column-count: 4;
+    -moz-column-gap: 10px;
+    -o-column-count: 4;
+    -o-column-gap: 10px;
+    -ms-column-count: 4;
+    -ms-column-gap: 10px;
+  }
+
+  body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Franklin Gothic Book';
+    font-size: 14px;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Book';
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: left;
+    font-family: 'Franklin Gothic Book';
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+  }
+
+  #import {
+
+    position: relative;
+    left: 294px;
+    top: 150px;
+
+  }
+
+  #export {
+
+    position: relative;
+    left: 120px;
+    top: 220px;
+
+  }
+
+  .btn1 {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #222;
+    padding: 10px 50px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+    width: 97%;
+    
+  }
+
+  .btn1 span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: #7881d2;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  }
+
+  .btn1:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  }
+
+  #guardar {
+
+    position: relative;
+    left: 300px;
+    height: 40px;
+    width: 120px;
+
+  }
+
+  .buttong {
+
+    margin: 30px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #2e4bcc;
+    color: #ecf0f1;
+
+    transition: background-color .3s;
+  }
+
+  .buttong:hover,
+  .buttong:focus {
+    background-color: #8e27ae;
+  }
+
+  .buttong>* {
+    position: relative;
+  }
+
+  .buttong span {
+    display: block;
+    padding: 12px 24px;
+  }
+
+  .buttong:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .buttong:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+  }
+
+  #volver {
+
+    position: relative;
+    right: -450px;
+    top: -2px;
+    height: 40px;
+    width: 120px;
+
+
+  }
+
+  .buttonv {
+
+    margin: 30px auto;
+    padding: 6px;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #c70000;
+    color: #ecf0f1;
+    transition: background-color .3s;
+  }
+
+  .buttonv:hover,
+  .buttonv:focus {
+    background-color: #8327ae;
+  }
+
+  .buttonv>* {
+    position: relative;
+  }
+
+  .buttonv span {
+    display: block;
+    padding: 12px 24px;
+  }
+
+  .buttonv:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .buttonv:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+  }
+
+}

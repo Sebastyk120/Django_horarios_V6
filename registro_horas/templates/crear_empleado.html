@@ -9,7 +9,7 @@
     <title>Crear Empleado</title>
   </head>
   <body>
-    <br><br><br><br>
+
   <main class="container mt-4">
       <div>
         <form action="/empleados/crear/" method="post" class="card card-body h-100 border-primary">
@@ -18,6 +18,8 @@
           </div>
           <div class="card-body">
           {{ error }} {% csrf_token %} {% crispy form %}
+          
+          <a class="buttonv btn btn-danger" href="/" role="button" id="volver">Volver</a>
           </div>
         </form>
       </div>

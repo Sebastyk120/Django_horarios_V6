@@ -44,7 +44,7 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar')
+            Submit('submit', 'Guardar'),
         )
 
 
@@ -88,7 +88,7 @@ class CrearjornadaForm(ModelForm):
                 Div('empleado', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar')
+            
         )
 
 
@@ -145,5 +145,4 @@ class OpeCrearjornadaForm(ModelForm):
                 Div('empleado', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar')
         )
