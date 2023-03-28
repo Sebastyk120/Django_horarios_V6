@@ -13,6 +13,7 @@
 <body>
 <nav class="navbar navbar-dark  fixed-top">
     <div class="container-fluid">
+<<<<<<< HEAD
         <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -61,6 +62,45 @@
                     {% endif %}
                 </div>
             </div>
+=======
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start text-bg-dark " tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: #00184d;">
+        <div class="offcanvas-body">
+          {% if user.is_authenticated %}
+          <div class="slideout-sidebar">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/empleados/crear/">Crear Empleados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/empleados/">Ver Empleados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/jornadas/crear/">Crear Jornadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/jornadas/">Ver Jornadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/festivos/crear/">Festivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/cargos/crear">Cargos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/logout">Salir</a>
+            </li>
+          </ul>
+          </div>
+          {% else %}
+          <a class="nav-link" href="/iniciar_sesion">Iniciar Sesión</a>
+          {% endif %}
+>>>>>>> 814b72f89977c6ce5bd270c4a2efaf0e1bb7927c
         </div>
 </nav>
 {% block content %} {% endblock %}
