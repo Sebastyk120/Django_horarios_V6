@@ -27,7 +27,6 @@ def export_emp_excel(request):
     response = HttpResponse(
         dataset.xlsx, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xlsx"'
-    messages.success(request, "Excel de jornadas operaciones exportado correctamente")
     return response
 
 
@@ -690,7 +689,6 @@ def ope_home(request):
 
 
 def ope_export_jor_excel(request):
-    messages.success(request, "Excel de jornadas operaciones exportado correctamente")
     jornada_resource = OpeJornadasResource()
     dataset = jornada_resource.export()
     response = HttpResponse(
