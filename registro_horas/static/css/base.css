@@ -11,8 +11,12 @@ a{
 
 }
 
-navbar-toggler{
-
-    color: blueviolet;
+.custom-toggler.navbar-toggler {
+    border-color: rgb(153, 144, 238);
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+ 
+.custom-toggler .navbar-toggler-icon {
+    background-image:url(../img/purple.png) 
 
 }

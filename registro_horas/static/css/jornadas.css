@@ -42,11 +42,6 @@ tbody {
 }
 
 
-.btn {
-
-    font-family: 'Franklin Gothic Book';
-
-}
 
 /*Spinner*/
 
@@ -124,5 +119,12 @@ h1 {
     position: relative;
     left: -10px;
     top: 0px;
+
+}
+    
+.btn{
+
+    position: relative;
+    margin: 2px;
 
 }
