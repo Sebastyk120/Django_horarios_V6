@@ -3,7 +3,7 @@ from django import forms
 from .models import Empleados, Jornada, Cargos, Festivos, OpeJornada
 from datetime import datetime
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit
+from crispy_forms.layout import Layout, Div, Submit, Button
 
 
 class CrearempleadoForm(ModelForm):
@@ -44,9 +44,8 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
-            Submit('submit', 'Guardar')
-        )
-
+            Submit('submit', 'Guardar'),
+    )
 
 iniciop = datetime.now()
 inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
