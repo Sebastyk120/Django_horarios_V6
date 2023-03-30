@@ -174,7 +174,6 @@ def iniciar_sesion(request):
 @user_passes_test(lambda u: u.is_superuser)
 def signup(request):
     if request.method == 'GET':
-        print('enviando formulario')
         return render(request, 'signup.html', {'form': UserCreationForm})
     else:
         if request.POST['password1'] == request.POST['password2']:
@@ -617,7 +616,6 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
-
             return redirect('empleados')
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
