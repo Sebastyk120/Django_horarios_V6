@@ -397,7 +397,7 @@ def actualizar_jornada(request, jornada_id):
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'actualizar_jornada.html',
+                        return render(request, '   <a class="buttonv btn btn-danger" href="/operaciones/jornadas/" role="button" id="volver">Volver</a></div>_jornada.html',
                                       {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                         invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
@@ -510,7 +510,6 @@ def eliminar_jornada(request, jornada_id):
                 nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
-                messages.success(request, "Jornada eliminada correctamente")
             return redirect('jornadas')
         except ValueError:
             jornada = get_object_or_404(Jornada, pk=jornada_id)
@@ -619,11 +618,11 @@ def actualizar_empleado(request, empleado_id):
             form.save()
 
             return redirect('empleados')
+        
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
-            return render(request, 'actualizar_empleado.html', {'empleado': empleado, 'form': form,
-                                                                'error': "Error De Datos"})
+            return render(request, 'actualizar_empleado.html', {'empleado': empleado, 'form': form,'error': "Error De Datos"})
 
 
 @login_required
@@ -1009,7 +1008,6 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-
                         return redirect('ope_jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -1028,7 +1026,6 @@ def ope_actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
                     nueva_jornada.save()
-
                     return redirect('ope_jornadas')
             return redirect('ope_jornadas')
         except ValueError:
@@ -1071,7 +1068,6 @@ def ope_eliminar_jornada(request, jornada_id):
                 nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
-                messages.success(request, "Jornada eliminada correctamente")
             return redirect('ope_jornadas')
         except ValueError:
             jornada = get_object_or_404(OpeJornada, pk=jornada_id)

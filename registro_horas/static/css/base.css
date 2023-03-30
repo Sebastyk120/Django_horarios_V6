@@ -21,7 +21,7 @@ a {
 }
 
 .nav-item {
-    width: 398px;
+    width: 290px;
     margin: 0px;
     position: relative;
     left: -20px;
@@ -72,5 +72,35 @@ a {
     -webkit-transition: all 0.35s;
     transition: all 0.35s;
 
+}
+
+#offcanvasDarkNavbar{
+
+    width: 15%;
+
+}
+
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+    #offcanvasDarkNavbar{
+
+        width: 15%;
+    
+    }
+    
+
+    .nav-item {
+        width: 195px;
+        margin: 0px;
+        position: relative;
+        left: -20px;
+        border-top: 5px solid #ffffff;
+        display: inline-block;
+    
+    }
+
+    
 }
 

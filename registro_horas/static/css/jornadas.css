@@ -128,3 +128,17 @@ h1 {
     margin: 2px;
 
 }
+
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+body{
+
+    zoom: 80%;
+
+}
+
+}
+
+

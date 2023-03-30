@@ -268,7 +268,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Book'
+    font-family: 'Franklin Gothic Book';
+    font-size: 14px;
 }
 
 .footer {

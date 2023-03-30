@@ -16,7 +16,7 @@ form {
 .card{
 
   position: relative;
-  top: 100px;
+  top: 50px;
 
 }
 
@@ -108,13 +108,13 @@ h1 {
     transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
-#guardar {
+#submit-id-submit {
 
   position: relative;
-  left: 350px;
+  left: -100px;
   height: 40px;
   width: 120px;
-  top: 3px;
+  top: 100px;
 
 }
 
@@ -179,7 +179,7 @@ h1 {
 #volver {
 
     position: relative;
-    right: -600px;
+    right: -700px;
     top: 0px;
     height: 40px;
     width: 120px;
@@ -248,6 +248,12 @@ h1 {
   @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
 
+  body{
+
+    font-size: 13px;
+
+  }
+
   .card{
 
     position: relative;
@@ -258,9 +264,10 @@ screen and (max-height: 900px) {
   #submit-id-submit {
 
     position: relative;
-    left: 280px;
+    left: -120px;
     height: 40px;
     width: 120px;
+    top: 0px;
 
 }
 
@@ -325,8 +332,8 @@ screen and (max-height: 900px) {
 #volver {
 
     position: relative;
-    right: -550px;
-    top: 0px;
+    right: -580px;
+    top: -100px;
     height: 40px;
     width: 120px;
   
