@@ -92,7 +92,7 @@ class OpeJornada(models.Model):
     diurnas_totales = models.FloatField(verbose_name="Horas Diurnas", default=0)
     nocturnas_totales = models.FloatField(verbose_name="Horas Nocturnas", default=0)
     extras_diurnas_totales = models.FloatField(verbose_name="Horas Extras Diurnas", default=0)
-    extras_nocturnos_totales = models.FloatField(verbose_name=" Horas Extras Nocturnas", default=0)
+    extras_nocturnos_totales = models.FloatField(verbose_name="Horas Extras Nocturnas", default=0)
     diurnos_festivo_totales = models.FloatField(verbose_name="Horas Diurnas Festivas", default=0)
     nocturnos_festivo_totales = models.FloatField(verbose_name="Horas Nocturnas Festivas", default=0)
     extras_diurnos_festivo_totales = models.FloatField(verbose_name="Horas Extras Diurnas Festivas", default=0)
