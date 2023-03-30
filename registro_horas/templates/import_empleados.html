@@ -16,6 +16,7 @@
             <h1 class="text text-center">Importacion De Empleados Excel</h1>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                <label for="formFile" class="form-label" style="color: #FFFFFF">Adjunte archivo con nombre empleados</label>
                 <input type="file" class="form-control" name="empleados"/>
                 <br>
                 <button type="submit" class="button btn btn-success">Cargar</button>

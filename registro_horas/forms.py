@@ -46,9 +46,14 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
+<<<<<<< HEAD
 
         )
 
+=======
+              Submit('submit', 'Guardar', css_class='d-grid gap-2 col-6 mx-auto')
+    )
+>>>>>>> a892e5139683795658ec21a04a201b0bae1c9bff
 
 iniciop = datetime.now()
 inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
@@ -90,7 +95,6 @@ class CrearjornadaForm(ModelForm):
                 Div('empleado', css_class='col-sm-6'),
                 css_class='row'
             ),
-
         )
 
 

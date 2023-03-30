@@ -14,6 +14,7 @@
                 crossorigin="anonymous"
         />
         <!-- Bootstrap CSS v5.2.1 -->
+        <link rel="stylesheet" href="{% static 'css/ejornada.css' %}"/>
         <br/>
     </head>
     <body>
@@ -24,6 +25,8 @@
                     <h1 class="text-center text-danger">Eliminar Jornada <br> {{ jornada.empleado.nombre }}</h1>
                     {{ error }} {% csrf_token %} {{ form|crispy }}
                     <button class="btn btn-danger">Eliminar</button>
+                    <br>
+                    <a class="buttonv btn btn-info" href="/jornadas/" role="button" id="volver">Volver</a></div>
                 </form>
             </div>
         </div>

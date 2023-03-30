@@ -23,8 +23,14 @@
             <div>
                 <form method="post" class="card card-body h-100 border-primary">
                     <h1 class="text-center text-info">Editar Empleado <br> {{ empleado.nombre }}</h1>
+<<<<<<< HEAD
                     {{ error }} {% csrf_token %} {{ form|crispy }}
                     <button class="btn btn-primary"> Guardar</button>
+=======
+                    {{ error }} {% csrf_token %} {% crispy form %}
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <a class="buttonv btn btn-danger" href="/empleados/" role="button" id="volver">Volver</a></div>
+>>>>>>> a892e5139683795658ec21a04a201b0bae1c9bff
                 </form>
             </div>
         </div>

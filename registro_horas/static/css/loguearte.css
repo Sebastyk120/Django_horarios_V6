@@ -301,7 +301,7 @@ screen and (max-height: 900px) {
     border: none;
     background-color: #eeeeefb6;
     position: relative;
-    top: -120px;
+    top: -150px;
   }
   
   input[type="checkbox"] {
@@ -391,7 +391,7 @@ screen and (max-height: 900px) {
     position: relative;
     height: 190px;
     width: 240px;
-    top: -100px;
+    top: -140px;
   
   }
   
@@ -435,13 +435,13 @@ screen and (max-height: 900px) {
     height: 40px;
     position: relative;
     left: 80px;
-    top: -190px;
+    top: -240px;
   }
   
   #float{
   
     position: relative;
-    top: -180px;
+    top: -210px;
   
   }
   
@@ -485,7 +485,7 @@ screen and (max-height: 900px) {
     height: 40px;
     position: relative;
     left: 80px;
-    top: -130px;
+    top: -230px;
   }
 
 }
