@@ -52,7 +52,10 @@
 
 .card:hover {
   border-color: #008bf8;
-  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 18px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: 325px;
+  height: 225px;
 }
 
 .card:hover .card-button {
@@ -452,6 +455,9 @@ screen and (max-height: 900px) {
   .card:hover {
     border-color: #008bf8;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    position: relative;
+    width: 280px;
+    height: 150px;
   }
 
   .card:hover .card-button {
@@ -494,13 +500,14 @@ screen and (max-height: 900px) {
     grid-template-columns: 737px 716px;
     grid-template-rows: 394px 150px;
   }
+
   .containers {
     position: absolute;
     top: 160%;
     left: 70%;
     transform: translate(-50%, -50%);
 
-}
+  }
 
 }
 
