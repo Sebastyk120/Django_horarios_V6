@@ -251,7 +251,7 @@ def crear_jornada(request):
                         print(request.POST)
                         nueva_jornada.save()
                         messages.success(
-                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                            request, f"La jornada de {nueva_jornada.empleado.nombre}")
                         return redirect('crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:

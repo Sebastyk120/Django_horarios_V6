@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 body {
     height: 90vh;
     background-image: url(../img/fondojornadas.png);
@@ -30,6 +32,13 @@ h1{
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
+  }
+
+  #volver{
+
+    position: relative;
+    top: -38px;
+
   }

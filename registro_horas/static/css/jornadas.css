@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 .centered {
     text-align: center !important;
     vertical-align: middle !important;
@@ -13,17 +15,17 @@ body {
     align-items: center;
     justify-content: center;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
 }
 
 h1 {
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-weight: bold;
 }
 
 th {
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 
 }
 
@@ -38,7 +40,7 @@ thead {
 }
 
 tbody {
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 
@@ -54,13 +56,13 @@ tbody {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
 }
 
 h1 {
     text-align: left;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-style: italic;
     color: #003cff;
     font-weight: bold;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 body {
     height: 100vh;
     background-image: url(../img/fondojornadas.png);
@@ -9,6 +11,7 @@ body {
 
 html{
     font-size: 13.8px;
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 .buttonv{

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 body {
     height: 100vh;
     background-image: url(../img/fondojornadas.png);
@@ -9,7 +11,7 @@ body {
 }
 
 form {
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 
 }
 
@@ -29,13 +31,13 @@ form {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
 }
 
 h1 {
     text-align: left;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-style: italic;
     color: #003cff;
     font-weight: bold;
