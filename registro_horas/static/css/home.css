@@ -53,9 +53,9 @@
 .card:hover {
   border-color: #008bf8;
   box-shadow: 0 20px 18px 0 rgba(0, 0, 0, 0.25);
-  position: relative;
-  width: 325px;
-  height: 225px;
+  position: relative; 
+  transform: translateY(-20px);
+  
 }
 
 .card:hover .card-button {
@@ -314,7 +314,7 @@ input:checked~ul {
 }
 
 input:checked~label .menu {
-  box-shadow: 0 0 0 130vw #fff, 0 0 0 100vh #fff;
+  box-shadow: 0 0 0 130vw #ffffff, 0 0 0 100vh #ffffff;
 }
 
 input:checked~label .hamburguer {
@@ -414,6 +414,7 @@ screen and (max-height: 900px) {
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
     overflow: visible;
+  
   }
 
   .card-details {
@@ -456,8 +457,7 @@ screen and (max-height: 900px) {
     border-color: #008bf8;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
     position: relative;
-    width: 280px;
-    height: 150px;
+    transform: translateY(-20px);
   }
 
   .card:hover .card-button {

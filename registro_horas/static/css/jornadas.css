@@ -135,7 +135,7 @@ h1 {
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
 
-body{
+tr{
 
     zoom: 80%;
 
