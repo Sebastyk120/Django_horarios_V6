@@ -59,6 +59,20 @@ input[type="password"] {
   top: -70px;
 }
 
+#user{
+
+  position: relative;
+  top: -110px;
+
+}
+
+#pass{
+
+  position: relative;
+  top: -110px;
+
+}
+
 input[type="checkbox"] {
   float: left;
   margin-right: 5px;
@@ -190,13 +204,13 @@ button {
   height: 50px;
   position: relative;
   left: 90px;
-  top: -110px;
+  top: -150px;
 }
 
 #float{
 
   position: relative;
-  top: -130px;
+  top: -170px;
 
 }
 
