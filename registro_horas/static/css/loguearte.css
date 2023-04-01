@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,7 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
 }
 
 .container {
@@ -42,7 +44,7 @@ body {
 .login h1 {
   margin-bottom: 40px;
   font-size: 2.5em;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
 
 }
 
@@ -107,7 +109,7 @@ input[type="checkbox"] {
 .login .copyright {
   display: inline-block;
   float: none;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
 }
 
 /*Imagen de Heavens*/
@@ -134,7 +136,7 @@ input[type="checkbox"] {
   background-color: rgb(54, 54, 54);
   color: white;
   text-align: center;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   font-size: 15px;
 }
 
@@ -173,7 +175,7 @@ button {
   border: none;
   font-size: 15px;
   outline: none;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   cursor: pointer;
   border: 2px solid rgb(234, 0, 255);
   border-radius: 5px 5px 5px 5px;
@@ -222,7 +224,7 @@ a {
   border: none;
   font-size: 15px;
   outline: none;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   cursor: pointer;
   border: 2px solid rgb(255, 0, 0);
   border-radius: 5px 5px 5px 5px;
@@ -261,7 +263,7 @@ screen and (max-height: 900px) {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
   }
   
   .container {
@@ -289,7 +291,7 @@ screen and (max-height: 900px) {
   .login h1 {
     margin-bottom: 40px;
     font-size: 2.5em;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
   
   }
   
@@ -354,7 +356,7 @@ screen and (max-height: 900px) {
   .login .copyright {
     display: inline-block;
     float: none;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
   }
   
   /*Imagen de Heavens*/
@@ -381,7 +383,7 @@ screen and (max-height: 900px) {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
   }
   
@@ -420,7 +422,7 @@ screen and (max-height: 900px) {
     border: none;
     font-size: 15px;
     outline: none;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     cursor: pointer;
     border: 2px solid rgb(234, 0, 255);
     border-radius: 5px 5px 5px 5px;
@@ -469,7 +471,7 @@ screen and (max-height: 900px) {
     border: none;
     font-size: 15px;
     outline: none;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     cursor: pointer;
     border: 2px solid rgb(255, 0, 0);
     border-radius: 5px 5px 5px 5px;

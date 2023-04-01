@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 #columns {
     display: grid;
     grid-template-columns: 230px 280px 280px 280px;
@@ -20,7 +22,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Book'
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 .footer {
@@ -32,13 +34,13 @@ body {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
 }
 
 h1 {
     text-align: left;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-style: italic;
     color: #003cff;
     font-weight: bold;
@@ -55,8 +57,14 @@ h1 {
 #export {
 
     position: relative;
-    left: 177px;
+    left: 250px;
     top: 150px;
+
+}
+
+.card{
+
+    top: -40px;
 
 }
 
@@ -239,8 +247,9 @@ h1 {
 screen and (max-height: 900px) {
 
     #columns {
+        font-size: 10.5px;
         display: grid;
-        grid-template-columns: 230px 280px 280px 250px;
+        grid-template-columns: 150px 200px 200px 250px;
         column-count: 4;
         column-gap: 10px;
         -webkit-column-count: 4;
@@ -260,7 +269,7 @@ screen and (max-height: 900px) {
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        font-family: 'Franklin Gothic Book';
+        font-family: 'Noto Sans Display', sans-serif;
         font-size: 14px;
     }
 
@@ -273,13 +282,13 @@ screen and (max-height: 900px) {
         background-color: rgb(54, 54, 54);
         color: white;
         text-align: center;
-        font-family: 'Franklin Gothic Book';
+        font-family: 'Noto Sans Display', sans-serif;
         font-size: 15px;
     }
 
     h1 {
         text-align: left;
-        font-family: 'Franklin Gothic Book';
+        font-family: 'Noto Sans Display', sans-serif;
         font-style: italic;
         color: #003cff;
         font-weight: bold;
@@ -296,8 +305,8 @@ screen and (max-height: 900px) {
     #export {
 
         position: relative;
-        left: -380px;
-        top: 670px;
+        left: 70px;
+        top: 100px;
 
     }
 
@@ -310,7 +319,7 @@ screen and (max-height: 900px) {
         overflow: hidden;
         color: #fff;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 12px;
         background-color: #222;
         padding: 10px 50px;
         margin: 0 auto;
@@ -412,10 +421,10 @@ screen and (max-height: 900px) {
     #volver {
 
         position: relative;
-        right: -450px;
+        right: -350px;
         top: -2px;
-        height: 40px;
-        width: 120px;
+        height: 35px;
+        width: 100px;
 
 
     }
@@ -476,5 +485,12 @@ screen and (max-height: 900px) {
 
         transition: width .2s ease-out, padding-top .2s ease-out;
     }
+
+#card{
+
+   width: 77%;
+    left: 140px;
+    top: -40px;
+}
 
 }

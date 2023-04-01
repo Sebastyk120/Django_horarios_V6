@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 #colums {
     display: grid;
     grid-template-columns: 210px 200px;
@@ -20,7 +22,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Book'
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 .footer {
@@ -32,13 +34,13 @@ body {
   background-color: rgb(54, 54, 54);
   color: white;
   text-align: center;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   font-size: 15px;
 }
 
 h1 {
   text-align: left; 
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   font-style: italic;
   color: #003cff;
   font-weight: bold;
@@ -47,7 +49,7 @@ h1 {
 #import{
 
   position: relative;
-  left: 350px;
+  left: 402px;
   top: 70px;
 
 }
@@ -55,7 +57,7 @@ h1 {
 #export{
 
   position: relative;
-  left: 177px;
+  left: 190px;
   top: 150px;
 
 }
@@ -268,7 +270,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 14px;
 }
 
@@ -281,13 +283,13 @@ body {
   background-color: rgb(54, 54, 54);
   color: white;
   text-align: center;
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   font-size: 15px;
 }
 
 h1 {
   text-align: left; 
-  font-family: 'Franklin Gothic Book';
+  font-family: 'Noto Sans Display', sans-serif;
   font-style: italic;
   color: #003cff;
   font-weight: bold;
@@ -296,7 +298,7 @@ h1 {
 #import{
 
   position: relative;
-  left: 220px;
+  left: 250px;
   top: 70px;
 
 }
@@ -304,7 +306,7 @@ h1 {
 #export{
 
   position: relative;
-  left: 45px;
+  left: 58px;
   top: 150px;
 
 }
@@ -318,7 +320,7 @@ h1 {
   overflow: hidden;
   color: #fff;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 12px;
   background-color: #222;
   padding: 10px 50px;
   margin: 0 auto;

@@ -16,15 +16,17 @@
             <h1 class="text text-center">Importacion De Jornadas Excel</h1>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                <label for="formFile" class="form-label" style="color: #FFFFFF">Adjunte archivo con nombre "jornadas"</label>
                 <input type="file" class="form-control" name="jornadas"/>
                 <br>
+                
                 <button type="submit" class="button btn btn-success">Cargar</button>
             </form>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="nav-link" href="/jornadas">
-                    <button type="submit" class="button btn btn-danger">Volver</button>
-                </a>
-            </div>
+            <a class="nav-link" href="/jornadas/">
+                <button type="submit" class="button btn btn-danger" id="volver">Volver</button>
+            </a>
+        </div>
         </div>
         <h5 class="text text-center">El Archivo De Excel Debe Tener El Nombre: "Jornadas"</h5>
     </div>

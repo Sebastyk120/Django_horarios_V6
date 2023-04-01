@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 .card {
     width: 320px;
     height: 220px;
@@ -32,7 +34,7 @@
     bottom: 0;
     opacity: 0;
     transition: 0.3s ease-out;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 .text-body {
@@ -43,13 +45,14 @@
 .text-title {
     font-size: 1.2em;
     font-weight: bolder;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 
 .card:hover {
     border-color: #008bf8;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 18px 0 rgba(0, 0, 0, 0.25);
+    transform: translateY(-20px);
 }
 
 .card:hover .card-button {
@@ -97,7 +100,7 @@ body {
 .texts-title {
     font-size: 1.2em;
     font-weight: bold;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 
@@ -142,7 +145,7 @@ body {
 }
 
 h1 {
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 48px;
     padding-right: 130px;
 }
@@ -232,7 +235,7 @@ h1 {
 h5 {
 
     font-size: 14px;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     vertical-align: middle;
 
 }
@@ -361,7 +364,7 @@ a.salir {
 
 .text {
     color: #000000;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 22px;
     letter-spacing: 8px;
     line-height: 32px;
@@ -404,6 +407,7 @@ screen and (max-height: 900px) {
         border: 2px solid #c3c6ce;
         transition: 0.5s ease-out;
         overflow: visible;
+      
     }
 
     .card-details {
@@ -438,13 +442,14 @@ screen and (max-height: 900px) {
     .text-title {
         font-size: 1em;
         font-weight: bold;
-        font-family: 'Franklin Gothic Book';
+        font-family: 'Noto Sans Display', sans-serif;
     }
 
 
     .card:hover {
         border-color: #008bf8;
         box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+        transform: translateY(-10px);
     }
 
     .card:hover .card-button {
@@ -506,7 +511,7 @@ screen and (max-height: 900px) {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
     font-size: 15px;
 }
 
@@ -633,7 +638,7 @@ screen and (max-height: 900px) {
 .cards__title {
     margin-top: 5px;
     margin-bottom: 10px;
-    font-family: 'Franklin Gothic Book';
+    font-family: 'Noto Sans Display', sans-serif;
 }
 
 
