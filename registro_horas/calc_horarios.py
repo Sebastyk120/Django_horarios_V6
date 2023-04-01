@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta
 import locale
+from datetime import datetime, timedelta
+
 from .models import Festivos
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
@@ -513,7 +514,7 @@ class Horarios:
                         self.extras_nocturnos_festivo_totales = round(
                             minutos_extras_nocturnos_festivo / 60, 1)
 
-                # ----------------------------- Función Jornada Continua sin descanso
+                # ----------------------------- Función Jornada Continua sin descanso  -----------------------------
                 def jornada_sin_descanso():
                     # --------------- Jornada con Dia diferente ------------------------------------------
                     if inicio_dia != salida_dia:
