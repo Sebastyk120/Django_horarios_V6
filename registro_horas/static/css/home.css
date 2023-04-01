@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
 /*Home con opciones*/
 
 .card {
@@ -70,6 +71,8 @@ img.crearempleado {
 
 }
 
+/*       COLUMNAS Y FILAS DE LOS CARD DEL HOME PRINCIPAL        */
+
 .grid {
   display: grid;
   grid-template-columns: 400px 400px 400px;
@@ -93,7 +96,6 @@ body {
   background-attachment: fixed;
 }
 
-/*Inicio para escoger roles*/
 
 .texts-body {
   color: rgb(126, 124, 124);
@@ -140,7 +142,7 @@ body {
 }
 
 
-/*Animación de home*/
+/*Animación de PRE LOGIN*/
 
 
 body {
@@ -195,7 +197,6 @@ h1 {
   background-color: white;
 }
 
-/* Animacion menu hamburguesa */
 
 .parallax>use {
   animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
@@ -255,6 +256,7 @@ h5 {
   box-sizing: border-box;
 }
 
+/* Animacion menu hamburguesa */
 
 .menu {
   background: #fff;
@@ -399,7 +401,7 @@ a.salir {
   animation: 0.5s draw linear forwards;
 }
 
-/*responsive*/
+/*    MODELO DE LA PAGINA RESPONSIVE     */
 
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
@@ -511,6 +513,8 @@ screen and (max-height: 900px) {
 
 }
 
+/*      PIE DE PAGINA      */
+
 .footer {
   position: fixed;
   left: 0;
@@ -524,7 +528,7 @@ screen and (max-height: 900px) {
   font-size: 15px;
 }
 
-
+/*    ANIMACION DE FLECHA HACIA ABAJO PRE LOGIN      */
 
 #section01 a {
   padding-top: 60px;
@@ -574,7 +578,7 @@ screen and (max-height: 900px) {
   }
 }
 
-
+/*      CARD DE PRE-LOGIN, PARA ESCOGER EL ROL        */
 
 .cards--1 .cards__img,
 .cards--1 .cards__img--hover {

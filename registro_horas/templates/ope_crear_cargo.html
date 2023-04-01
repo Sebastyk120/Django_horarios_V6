@@ -1,12 +1,12 @@
 {% extends 'ope_base.html' %} {% block content %} {% load static %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="{% static 'css/occargo.css' %}"/>
-        <title>Cargos</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="{% static 'css/occargo.css' %}"/>
+    <title>Cargos</title>
+</head>
+<body>
     <main class="container mt-4">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="nav-link" href="/cargos/exportar/">
@@ -30,9 +30,9 @@
             </div>
         </div>
     </main>
-    <div class="footer">
-        <p>Heavens Fruit. - Todos los derechos reservados ©</p>
-    </div>
+<div class="footer">
+    <p>Heavens Fruit. - Todos los derechos reservados ©</p>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% if messages %}{% for m in messages %}
         <script>

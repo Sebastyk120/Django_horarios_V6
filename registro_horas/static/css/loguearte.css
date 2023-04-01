@@ -141,6 +141,9 @@ input[type="checkbox"] {
 
 }
 
+/*      PIE DE PAGINA       */
+
+
 .footer {
   position: fixed;
   left: 0;
@@ -164,6 +167,7 @@ input[type="checkbox"] {
 
 }
 
+/*  BOTONES DE INICIAR SESION Y DE VOLVER CON ESTILOS   */
 
 .buttonBox>button {
   transition: box-shadow .4s, transform .2s, background .4s, color .4s;
@@ -206,6 +210,7 @@ button {
   left: 90px;
   top: -150px;
 }
+
 
 #float{
 
@@ -257,6 +262,7 @@ a {
   top: -100px;
 }
 
+/*       MODELADO DE LA PAGINA RESPONSIVE      */
 
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
@@ -451,7 +457,7 @@ screen and (max-height: 900px) {
     height: 40px;
     position: relative;
     left: 80px;
-    top: -240px;
+    top: -200px;
   }
   
   #float{
@@ -501,7 +507,7 @@ screen and (max-height: 900px) {
     height: 40px;
     position: relative;
     left: 80px;
-    top: -230px;
+    top: -185px;
   }
 
 }

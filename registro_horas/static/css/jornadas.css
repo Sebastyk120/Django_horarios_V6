@@ -45,7 +45,7 @@ tbody {
 
 
 
-/*Spinner*/
+/*        PIE DE PAGINA          */
 
 .footer {
     position: fixed;
@@ -67,6 +67,8 @@ h1 {
     color: #003cff;
     font-weight: bold;
 }
+
+/*          ESTILOS DE LOS BOTONES DE IMPORTAR Y EXPORTAR         */
 
 .btn1 {
     border: none;
@@ -131,6 +133,7 @@ h1 {
 
 }
 
+/*      MODELADO DE LA PAGINA RESPONSIVE       */
 
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {

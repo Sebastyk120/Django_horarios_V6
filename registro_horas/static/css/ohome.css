@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
 
+
+
 .card {
     width: 320px;
     height: 220px;
@@ -449,7 +451,7 @@ screen and (max-height: 900px) {
     .card:hover {
         border-color: #008bf8;
         box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-        transform: translateY(-10px);
+        transform: translateY(-20px);
     }
 
     .card:hover .card-button {

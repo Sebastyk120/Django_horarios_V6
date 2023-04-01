@@ -4,10 +4,12 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8"/>
+        <!--------------------CSS local-------------------------------->
         <link rel="stylesheet" href="{% static 'css/ccargo.css' %}"/>
         <title>Cargos</title>
     </head>
     <body>
+        <!----------------Botones de excel---------->
     <main class="container mt-4">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="nav-link" href="/cargos/importar/">
@@ -17,6 +19,7 @@
                 <button class="button btn1" id="export"><span>Exportar xlsx</span></button>
             </a>
         </div>
+        <!--------------------------Card de cargos---------------->
         <div class="col-md">
             <form
                     action="/cargos/crear/"
