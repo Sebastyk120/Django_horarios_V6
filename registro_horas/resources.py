@@ -45,6 +45,7 @@ class FestivosResourse(resources.ModelResource):
     class Meta:
         model = Festivos
 
+
 # -----------------------------------------OPERACIONES---------------------------------------------------------------
 
 class OpeJornadasResource(resources.ModelResource):
@@ -69,4 +70,3 @@ class OpeJornadasResource(resources.ModelResource):
 
     def dehydrate_empleado(self, empleados):
         return empleados.empleado.nombre
-

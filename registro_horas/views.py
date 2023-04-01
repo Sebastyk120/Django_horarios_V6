@@ -215,6 +215,55 @@ def crear_jornada(request):
                 elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                     invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                     return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
+                    if salida_jornada_globalf <= inicio_jornada_globalf:
+                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
+                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
+                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 2."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
+                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
+                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                    else:
+                        jornada_legalf = form.cleaned_data['jornada_legal']
+                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
+                                            salida_descanso_globalf,
+                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
+                        nueva_jornada = form.save(commit=False)
+                        nueva_jornada.total_horas = horarioo.total_horas
+                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
+                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
+                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
+                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
+                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
+                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
+                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
+                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
+                        nueva_jornada.user = request.user
+                        print(request.POST)
+                        nueva_jornada.save()
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                        return redirect('crear_jornada')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
@@ -252,55 +301,6 @@ def crear_jornada(request):
                         messages.success(
                             request, f"La jornada de {nueva_jornada.empleado.nombre}")
                         return redirect('crear_jornada')
-                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
-                    if salida_jornada_globalf <= inicio_jornada_globalf:
-                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
-                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
-                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
-                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
-                        return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
-                    else:
-                        jornada_legalf = form.cleaned_data['jornada_legal']
-                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
-                                            salida_descanso_globalf,
-                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
-                        nueva_jornada = form.save(commit=False)
-                        nueva_jornada.total_horas = horarioo.total_horas
-                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
-                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
-                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
-                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
-                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
-                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
-                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
-                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
-                        nueva_jornada.user = request.user
-                        print(request.POST)
-                        nueva_jornada.save()
-                        messages.success(
-                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
-                        return redirect('crear_jornada')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
                     horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
@@ -317,10 +317,9 @@ def crear_jornada(request):
                     nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
-                    print(request.POST)
                     nueva_jornada.save()
-                    messages.success(
-                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                    messages.success(request,
+                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
                     return redirect('crear_jornada')
             else:
                 return render(request, 'crear_jornada.html',
@@ -353,6 +352,62 @@ def actualizar_jornada(request, jornada_id):
                 elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                     invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                     return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
+                    if salida_jornada_globalf <= inicio_jornada_globalf:
+                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
+                        return render(request, {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
+                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
+                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 2."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
+                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
+                        return render(request, 'actualizar_jornada.html',
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
+                    else:
+                        jornada_legalf = form.cleaned_data['jornada_legal']
+                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
+                                            salida_descanso_globalf,
+                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
+                        nueva_jornada = form.save(commit=False)
+                        nueva_jornada.total_horas = horarioo.total_horas
+                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
+                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
+                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
+                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
+                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
+                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
+                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
+                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
+                        nueva_jornada.user = request.user
+                        nueva_jornada.save()
+                        messages.success(request,
+                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                        return redirect('jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
@@ -391,63 +446,8 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-
-                        return redirect('jornadas')
-                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
-                    if salida_jornada_globalf <= inicio_jornada_globalf:
-                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, '   <a class="buttonv btn btn-danger" href="/operaciones/jornadas/" role="button" id="volver">Volver</a></div>_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
-                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
-                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
-                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
-                        return render(request, 'actualizar_jornada.html',
-                                      {'form': CrearjornadaForm, 'Invalido': invalido})
-                    else:
-                        jornada_legalf = form.cleaned_data['jornada_legal']
-                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
-                                            salida_descanso_globalf,
-                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
-                        nueva_jornada = form.save(commit=False)
-                        nueva_jornada.total_horas = horarioo.total_horas
-                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
-                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
-                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
-                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
-                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
-                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
-                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
-                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
-                        nueva_jornada.user = request.user
-                        nueva_jornada.save()
-
+                        messages.success(request,
+                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -466,7 +466,8 @@ def actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
                     nueva_jornada.save()
-
+                    messages.success(request,
+                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                     return redirect('jornadas')
             return redirect('jornadas')
         except ValueError:
@@ -616,11 +617,12 @@ def actualizar_empleado(request, empleado_id):
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
             return redirect('empleados')
-        
+
         except ValueError:
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
-            return render(request, 'actualizar_empleado.html', {'empleado': empleado, 'form': form,'error': "Error De Datos"})
+            return render(request, 'actualizar_empleado.html',
+                          {'empleado': empleado, 'form': form, 'error': "Error De Datos"})
 
 
 @login_required
@@ -758,48 +760,6 @@ def ope_crear_jornada(request):
                     invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                     return render(request, 'ope_crear_jornada.html',
                                   {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
-                    if salida_jornada_globalf <= inicio_jornada_globalf:
-                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'ope_crear_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
-                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'ope_crear_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'ope_crear_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'ope_crear_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'ope_crear_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    else:
-                        jornada_legalf = form.cleaned_data['jornada_legal']
-                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
-                                            salida_descanso_globalf,
-                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
-                        nueva_jornada = form.save(commit=False)
-                        nueva_jornada.total_horas = horarioo.total_horas
-                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
-                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
-                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
-                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
-                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
-                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
-                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
-                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
-                        nueva_jornada.user = request.user
-                        print(request.POST)
-                        nueva_jornada.save()
-                        messages.success(
-                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
-                        return redirect('ope_crear_jornada')
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
@@ -826,7 +786,7 @@ def ope_crear_jornada(request):
                         return render(request, 'ope_crear_jornada.html',
                                       {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
-                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 1."
+                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 2."
                         return render(request, 'ope_crear_jornada.html',
                                       {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                     elif salida_descanso_global2f >= salida_jornada_globalf:
@@ -835,6 +795,47 @@ def ope_crear_jornada(request):
                                       {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                     elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
                         invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
+                        return render(request, 'ope_crear_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    else:
+                        jornada_legalf = form.cleaned_data['jornada_legal']
+                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
+                                            salida_descanso_globalf,
+                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
+                        nueva_jornada = form.save(commit=False)
+                        nueva_jornada.total_horas = horarioo.total_horas
+                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
+                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
+                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
+                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
+                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
+                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
+                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
+                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
+                        nueva_jornada.user = request.user
+                        nueva_jornada.save()
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
+                        return redirect('ope_crear_jornada')
+                elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
+                    if salida_jornada_globalf <= inicio_jornada_globalf:
+                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
+                        return render(request, 'ope_crear_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
+                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
+                        return render(request, 'ope_crear_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'ope_crear_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
+                        return render(request, 'ope_crear_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
                         return render(request, 'ope_crear_jornada.html',
                                       {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                     else:
@@ -874,7 +875,6 @@ def ope_crear_jornada(request):
                     nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
-                    print(request.POST)
                     nueva_jornada.save()
                     messages.success(
                         request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido creada correctamente")
@@ -912,6 +912,63 @@ def ope_actualizar_jornada(request, jornada_id):
                     invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                     return render(request, 'ope_actualizar_jornada.html',
                                   {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
+                    if salida_jornada_globalf <= inicio_jornada_globalf:
+                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
+                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_globalf >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
+                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 2."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif salida_descanso_global2f >= salida_jornada_globalf:
+                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
+                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
+                        return render(request, 'ope_actualizar_jornada.html',
+                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    else:
+                        jornada_legalf = form.cleaned_data['jornada_legal']
+                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
+                                            salida_descanso_globalf,
+                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
+                        nueva_jornada = form.save(commit=False)
+                        nueva_jornada.total_horas = horarioo.total_horas
+                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
+                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
+                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
+                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
+                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
+                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
+                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
+                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
+                        nueva_jornada.user = request.user
+                        nueva_jornada.save()
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                        return redirect('ope_jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
@@ -950,62 +1007,8 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-
-                        return redirect('ope_jornadas')
-                elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
-                    if salida_jornada_globalf <= inicio_jornada_globalf:
-                        invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
-                        invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_globalf <= inicio_jornada_globalf or inicio_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 1 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf <= inicio_jornada_globalf or salida_descanso_globalf <= inicio_descanso_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_globalf >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 1 no puede ser mayor a la salida de jornada."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_jornada_globalf or inicio_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de inicio de descanso 2 no puede ser menor al inicio de jornada o mayor a la jornada de salida"
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f <= inicio_jornada_globalf or salida_descanso_global2f <= inicio_descanso_global2f:
-                        invalido = "La jornada de salida de descanso 2 no puede ser menor al inicio de jornada o al incio de descanso 1."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif salida_descanso_global2f >= salida_jornada_globalf:
-                        invalido = "La jornada de salida de descanso 2 no puede ser mayor a la salida de jornada."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    elif inicio_descanso_global2f <= inicio_descanso_globalf or inicio_descanso_global2f <= salida_descanso_globalf:
-                        invalido = "La jornada de descanso 2 no puede coincidir con el descanso 1."
-                        return render(request, 'ope_actualizar_jornada.html',
-                                      {'form': OpeCrearjornadaForm, 'Invalido': invalido})
-                    else:
-                        jornada_legalf = form.cleaned_data['jornada_legal']
-                        horarioo = Horarios(inicio_jornada_globalf, salida_jornada_globalf, inicio_descanso_globalf,
-                                            salida_descanso_globalf,
-                                            inicio_descanso_global2f, salida_descanso_global2f, jornada_legalf)
-                        nueva_jornada = form.save(commit=False)
-                        nueva_jornada.total_horas = horarioo.total_horas
-                        nueva_jornada.diurnas_totales = horarioo.diurnas_totales
-                        nueva_jornada.nocturnas_totales = horarioo.nocturnas_totales
-                        nueva_jornada.extras_diurnas_totales = horarioo.extras_diurnas_totales
-                        nueva_jornada.extras_nocturnos_totales = horarioo.extras_nocturnos_totales
-                        nueva_jornada.diurnos_festivo_totales = horarioo.diurnos_festivo_totales
-                        nueva_jornada.nocturnos_festivo_totales = horarioo.nocturnos_festivo_totales
-                        nueva_jornada.extras_diurnos_festivo_totales = horarioo.extras_diurnos_festivo_totales
-                        nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
-                        nueva_jornada.user = request.user
-                        nueva_jornada.save()
+                        messages.success(
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('ope_jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']

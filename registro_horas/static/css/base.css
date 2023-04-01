@@ -24,7 +24,7 @@ a {
 
 .nav-item {
     width: 290px;
-    margin: 0px;
+    margin: 0;
     position: relative;
     left: -20px;
     border-top: 5px solid #ffffff;
@@ -95,7 +95,7 @@ screen and (max-height: 900px) {
 
     .nav-item {
         width: 195px;
-        margin: 0px;
+        margin: 0;
         position: relative;
         left: -20px;
         border-top: 5px solid #ffffff;

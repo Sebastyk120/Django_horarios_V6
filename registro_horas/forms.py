@@ -46,8 +46,9 @@ class CrearempleadoForm(ModelForm):
                 Div('retiro', css_class='col-sm-6'),
                 css_class='row'
             ),
-              Submit('submit', 'Guardar', css_class='d-grid gap-2 col-6 mx-auto')
-    )
+            Submit('submit', 'Guardar', css_class='d-grid gap-2 col-6 mx-auto')
+        )
+
 
 iniciop = datetime.now()
 inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
