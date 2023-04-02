@@ -1,18 +1,18 @@
 {% extends 'ope_base.html' %} {% block content %}
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="{% static 'css/cfestivo.css' %}"/>
-        <title>Días Festivos</title>
-    </head>
-    <body>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="{% static 'css/cfestivo.css' %}"/>
+    <title>Días Festivos</title>
+</head>
+<body>
     <main class="container mt-4">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="nav-link" href="/festivos/exportar/">
-            <button class="button btn1" id="export"><span>Exportar xlsx</span></button>
-        </a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="nav-link" href="/festivos/exportar/">
+                <button class="button btn1" id="export"><span>Exportar xlsx</span></button>
+            </a>
         </div>
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card card-body h-100 border-primary">
@@ -30,9 +30,9 @@
             </div>
         </div>
     </main>
-    <div class="footer">
-        <p>Heavens Fruit. - Todos los derechos reservados ©</p>
-    </div>
-    </body>
-    </html>
+<div class="footer">
+    <p>Heavens Fruit. - Todos los derechos reservados ©</p>
+</div>
+</body>
+</html>
 {% endblock %}  

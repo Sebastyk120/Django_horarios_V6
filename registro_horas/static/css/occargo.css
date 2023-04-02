@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
 
+/*      LLAMADO DE COLUMNAS DESDE CSS       */
+
 #columns {
     display: grid;
     grid-template-columns: 230px 280px 280px 280px;
@@ -25,6 +27,8 @@ body {
     font-family: 'Noto Sans Display', sans-serif;
 }
 
+/*    PIE DE PAGINA     */
+
 .footer {
     position: fixed;
     left: 0;
@@ -45,6 +49,9 @@ h1 {
     color: #003cff;
     font-weight: bold;
 }
+
+
+/*        ESITLOS DE BOTONES IMPORTAR Y EXPORTAR EXCEL        */
 
 #import {
 
@@ -107,6 +114,8 @@ h1 {
     -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
+
+/*     ESTILOS DE BOTONES DE GUARDAR Y VOLVER      */
 
 #guardar {
 
@@ -243,6 +252,8 @@ h1 {
     transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
+/*           MODELADO DE PAGINA RESPONSIVE          */
+
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
 
@@ -293,6 +304,8 @@ screen and (max-height: 900px) {
         color: #003cff;
         font-weight: bold;
     }
+
+    /*    ESTILOS DE BOTONES IMPORTAR Y EXPORTAR EXCEL     */
 
     #import {
 
@@ -350,6 +363,8 @@ screen and (max-height: 900px) {
         -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
         transform: translateX(-9%) translateY(-25%) rotate(45deg);
     }
+
+    /*      ESTILOS EN LOS BOTONES DE GUARDAR Y VOLVER         */
 
     #guardar {
 
@@ -485,6 +500,8 @@ screen and (max-height: 900px) {
 
         transition: width .2s ease-out, padding-top .2s ease-out;
     }
+
+    /*      TAMAÑO DEL CARD AL REALIZAR EL MODELO RESPONSIVE    */
 
 #card{
 

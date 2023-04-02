@@ -1,7 +1,6 @@
 {% extends 'ope_base.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <title>Ver Empleados</title>
@@ -12,12 +11,10 @@
     <!-------Css Sebas-------->
     <link rel="stylesheet" href="{% static 'css/empleados.css' %}" />
 </head>
-
 <body>
     <br>
     <h1 style="text-align: center">Ver Empleados Operaciones</h1>
     <div class="container-fluid">
-        <div class="row"></div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="table-responsive-empleados">
                 <table id="datatable_empleados"
@@ -30,7 +27,7 @@
                             <button class="button btn1" id="export"><span>Exportar xlsx</span></button>
                         </a>
                     </div>
-                    <br />
+                    <br>
                     <thead class="table table-dark">
                         <tr>
                             <th class="centered">No</th>
@@ -53,7 +50,6 @@
             </div>
         </div>
     </div>
-
     <!-------Jquery-------->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -63,7 +59,6 @@
     <!-------Js Sebas-------->
     <script src="{% static 'js/ope_empleados.js' %}"></script>
 </body>
-
 </html>
     
 {% endblock %}

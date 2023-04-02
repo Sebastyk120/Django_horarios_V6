@@ -4,7 +4,7 @@
     height: 100vh;
 }
 body{
-    background-image: url(../img/M2.jpg);
+    background-image: url(../img/bkhome.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -25,4 +25,12 @@ form{
 }
 body.div{
     border-radius: 50%;
+}
+
+img{
+
+    position: relative;
+    height: 300px;
+    width: 390px;
+
 }

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
 
+/*   LLAMADO DE COLUMNAS CSS   */
+
 #columns {
   display: grid;
   grid-template-columns: 230px 280px 280px 280px;
@@ -25,6 +27,8 @@ body {
   font-family: 'Noto Sans Display', sans-serif;
 }
 
+/*      PIE DE PAGINA     */
+
 .footer {
   position: fixed;
   left: 0;
@@ -45,6 +49,8 @@ h1 {
   color: #003cff;
   font-weight: bold;
 }
+
+/*    ESTILO DE BOTONES PARA IMPORTAR Y EXPORTAR     */
 
 #import {
 
@@ -101,6 +107,8 @@ h1 {
   -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
   transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
+
+/*  ESTILO DE BOTONES PARA GUARDAR Y VOLVER  */
 
 #guardar {
 
@@ -237,8 +245,13 @@ h1 {
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
+/*     MODELO DE PAGINA RESPONSIVE       */
+
+
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
+
+  /*        CAMBIO DE TAMAÑO DE CARD          */
 
   .card {
 
@@ -246,6 +259,8 @@ screen and (max-height: 900px) {
     left: -50px;
 
   }
+
+  /*       LLAMADO DE COLUMNAS CSS       */
 
   #columns {
     display: grid;
@@ -273,6 +288,9 @@ screen and (max-height: 900px) {
     font-size: 13px;
   }
 
+/*     PIE DE PAGINA     */
+
+
   .footer {
     position: fixed;
     left: 0;
@@ -293,6 +311,8 @@ screen and (max-height: 900px) {
     color: #003cff;
     font-weight: bold;
   }
+
+/*     ESITLO EN LOS BOTONES DE IMPORTAR Y EXPORTAR       */
 
   #import {
 
@@ -351,6 +371,9 @@ screen and (max-height: 900px) {
     -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
   }
+
+
+  /*     ESTILO EN LOS BOTONES DE GUARDAR Y VOLVER      */
 
   #guardar {
 
