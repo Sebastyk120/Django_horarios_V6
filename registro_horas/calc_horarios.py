@@ -1,14 +1,8 @@
 import locale
 from datetime import datetime, timedelta
-
 from .models import Festivos
 
 locale.setlocale(locale.LC_ALL, ("esp", "UTF-8"))
-
-festivos_lista = []
-objetos_festivo = Festivos.objects.all()
-for festivo in objetos_festivo:
-    festivos_lista.append(festivo.festivo.strftime('%Y-%m-%d'))
 
 
 class Horarios:
@@ -53,6 +47,10 @@ class Horarios:
             def calculohoras():
                 # ------------------------------------Lista De Festivos Colombia 2023 -------------------------------
                 def festivos():
+                    festivos_lista = []
+                    objetos_festivo = Festivos.objects.all()
+                    for festivo in objetos_festivo:
+                        festivos_lista.append(festivo.festivo.strftime('%Y-%m-%d'))
                     inicio_jornada_global_festivo = datetime.strftime(
                         self.inicio_jornada_global, "%Y-%m-%d")
                     salida_jornada_global_festivo = datetime.strftime(
