@@ -687,6 +687,22 @@ def ope_home(request):
     return render(request, 'ope_home.html')
 
 
+def ope_iniciar_sesion(request):
+    if request.method == 'GET':
+        return render(request, 'ope_iniciar_sesion.html', {'form': AuthenticationForm})
+    else:
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
+        print(request.POST)
+        if user is None:
+            return render(request, 'ope_iniciar_sesion.html',
+                          {'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
+        else:
+            print(request.POST)
+            login(request, user)
+            return redirect('ope_home')
+
+
 def ope_export_jor_excel(request):
     jornada_resource = OpeJornadasResource()
     dataset = jornada_resource.export()
@@ -696,6 +712,7 @@ def ope_export_jor_excel(request):
     return response
 
 
+@login_required
 def ope_importar_excel_jor(request):
     if request.method == 'POST':
         jornadas_resource = OpeJornadasResource()

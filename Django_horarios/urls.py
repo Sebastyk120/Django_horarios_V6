@@ -44,6 +44,7 @@ urlpatterns = [
     path('logout/', views.salir, name='logout'),
     # ------------------------------------------Operaciones--------------------------------------
     path('operaciones/', views.ope_home, name='ope_home'),
+    path('ope_iniciar_sesion/', views.ope_iniciar_sesion, name='ope_iniciar_sesion'),
     path('operaciones/jornadas/', views.ope_jornadas, name='ope_jornadas'),
     path('operaciones/lista/jornadas/', views.ope_list_jornadas, name='ope_lista_jornadas'),
     path('operaciones/jornadas/crear/', views.ope_crear_jornada, name='ope_crear_jornada'),
