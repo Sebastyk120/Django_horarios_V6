@@ -30,6 +30,15 @@
                 </form>
             </div>
         </div>
+        {% if messages %}{% for m in messages %}
+            <script>
+                Swal.fire({
+                    title: "JORNADA ACTUALIZADA CORRECTAMENTE",
+                    text: "{{m}}",
+                    icon: "success",
+                });
+            </script>
+        {% endfor %}{% endif %}
     </main>
     </body>
     </html>

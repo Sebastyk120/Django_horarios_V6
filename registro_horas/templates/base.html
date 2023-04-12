@@ -59,6 +59,17 @@
     </div>
 </nav>
 {% block content %} {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% if messages %}{% for m in messages %}
+    <script>
+        Swal.fire({
+            title: "OPERACION REALIZADA CORRECTAMENTE",
+            text: "{{m}}",
+            icon: "success",
+        });
+    </script>
+{% endfor %}{% endif %}
 <!-------------JavaScript local-------------------->
 <script src="{% static 'js/nav.js' %}"></script>
 <!-------------JavaScript Bootstrap-------------------->

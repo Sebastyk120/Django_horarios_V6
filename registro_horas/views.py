@@ -355,7 +355,7 @@ def actualizar_jornada(request, jornada_id):
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, actualizar_jornada.html, {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                         invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                         return render(request, 'actualizar_jornada.html',
@@ -405,8 +405,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-                        messages.success(request,
-                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
