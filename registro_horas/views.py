@@ -405,7 +405,12 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
+<<<<<<< HEAD
                         messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+=======
+                        messages.success(request,
+                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+>>>>>>> 4137ac15d6ac74c50ef52483a0c9c7469be8e27e
                         return redirect('jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -446,7 +451,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(request,
-                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -509,6 +514,8 @@ def eliminar_jornada(request, jornada_id):
                 nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
+                messages.error(request,
+                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminada correctamente")
             return redirect('jornadas')
         except ValueError:
             jornada = get_object_or_404(Jornada, pk=jornada_id)
@@ -615,6 +622,7 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
+            messages.success(request, f"el empleado {empleado.nombre} ha sido actualizado correctamente")
             return redirect('empleados')
 
         except ValueError:
@@ -983,7 +991,7 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(
-                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('ope_jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -1024,7 +1032,7 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(
-                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('ope_jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -1043,6 +1051,8 @@ def ope_actualizar_jornada(request, jornada_id):
                     nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                     nueva_jornada.user = request.user
                     nueva_jornada.save()
+                    messages.success(
+                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                     return redirect('ope_jornadas')
             return redirect('ope_jornadas')
         except ValueError:
@@ -1085,6 +1095,8 @@ def ope_eliminar_jornada(request, jornada_id):
                 nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
+                messages.success(
+                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminado correctamente")
             return redirect('ope_jornadas')
         except ValueError:
             jornada = get_object_or_404(OpeJornada, pk=jornada_id)

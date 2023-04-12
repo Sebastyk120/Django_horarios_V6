@@ -28,6 +28,15 @@
             </div>
         </div>
     </main>
+    {% if messages %}{% for m in messages %}
+    <script>
+        Swal.fire({
+            title: "OPERACION CREADO CORRECTAMENTE",
+            text: "{{m}}",
+            icon: "success",
+        });
+    </script>
+{% endfor %}{% endif %}
 </body>
     </html>
 {% endblock %}
