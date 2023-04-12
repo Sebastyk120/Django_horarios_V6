@@ -69,6 +69,41 @@ img.crearempleado {
 
 }
 
+img.crearempleado:hover {
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes swing {
+    15% {
+        transform: rotate(20deg);
+    }
+
+    30% {
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        transform: rotate(30deg);
+    }
+
+    65% {
+        transform: rotate(-30deg);
+    }
+
+    80% {
+        transform: rotate(15deg);
+    }
+
+    90% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 .grid {
     display: grid;
     grid-template-columns: 400px 400px 400px;
@@ -409,7 +444,7 @@ screen and (max-height: 900px) {
         border: 2px solid #c3c6ce;
         transition: 0.5s ease-out;
         overflow: visible;
-      
+
     }
 
     .card-details {

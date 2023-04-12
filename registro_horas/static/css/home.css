@@ -54,9 +54,9 @@
 .card:hover {
   border-color: #008bf8;
   box-shadow: 0 20px 18px 0 rgba(0, 0, 0, 0.25);
-  position: relative; 
+  position: relative;
   transform: translateY(-20px);
-  
+
 }
 
 .card:hover .card-button {
@@ -68,8 +68,44 @@ img.crearempleado {
 
   width: 70px;
   height: 70px;
-
+  transition: transform .7s ease-in-out;
 }
+
+img.crearempleado:hover {
+  animation: swing 1s ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes swing {
+  15% {
+    transform: rotate(20deg);
+  }
+
+  30% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(30deg);
+  }
+
+  65% {
+    transform: rotate(-30deg);
+  }
+
+  80% {
+    transform: rotate(15deg);
+  }
+
+  90% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 
 /*       COLUMNAS Y FILAS DE LOS CARD DEL HOME PRINCIPAL        */
 
@@ -416,7 +452,7 @@ screen and (max-height: 900px) {
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
     overflow: visible;
-  
+
   }
 
   .card-details {
