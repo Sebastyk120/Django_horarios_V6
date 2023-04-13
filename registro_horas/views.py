@@ -405,12 +405,8 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.extras_nocturnos_festivo_totales = horarioo.extras_nocturnos_festivo_totales
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
-<<<<<<< HEAD
-                        messages.success(request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
-=======
                         messages.success(request,
                                      f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
->>>>>>> 4137ac15d6ac74c50ef52483a0c9c7469be8e27e
                         return redirect('jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
