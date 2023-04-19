@@ -44,3 +44,16 @@ h1{
     top: -38px;
 
   }
+
+  @media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+    .card{
+
+        position: relative;
+        top: -90px;
+        left: -50px;
+
+    }
+
+}

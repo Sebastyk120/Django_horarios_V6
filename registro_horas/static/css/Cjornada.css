@@ -38,3 +38,21 @@ h1 {
     color: #003cff;
     font-weight: bold;
 }
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+.card{
+
+    position: relative;
+    top: -100px;
+
+}
+
+body {
+
+    font-size: 10px;
+
+}
+
+}
