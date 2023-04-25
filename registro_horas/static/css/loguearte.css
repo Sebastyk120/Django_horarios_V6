@@ -290,7 +290,7 @@ screen and (max-height: 900px) {
     width: 80%;
     margin: auto;
     padding: 20px;
-    height: 85%
+    height: 100%
   }
   
   .login,
@@ -322,8 +322,8 @@ screen and (max-height: 900px) {
     margin-bottom: 1.5px;
     border: none;
     background-color: #eeeeefb6;
-    position: relative;
-    top: -150px;
+    position: absolute;
+    top: 0px;
   }
   
   input[type="checkbox"] {

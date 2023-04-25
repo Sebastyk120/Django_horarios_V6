@@ -618,7 +618,7 @@ def actualizar_empleado(request, empleado_id):
             empleado = get_object_or_404(Empleados, pk=empleado_id)
             form = CrearempleadoForm(request.POST, instance=empleado)
             form.save()
-            messages.success(request, f"el empleado {empleado.nombre} ha sido actualizado correctamente")
+            messages.success(request, f"El empleado {empleado.nombre} ha sido actualizado correctamente")
             return redirect('empleados')
 
         except ValueError:
@@ -654,7 +654,7 @@ def crear_festivo(request):
             form = CrearfestivoForm(request.POST)
             nuevo_festivo = form.save(commit=False)
             nuevo_festivo.save()
-            messages.success(request, f"{nuevo_festivo.festivo}")
+            messages.success(request, f"El día festivo {nuevo_festivo.festivo} se ha creado correctamente")
             return redirect('crear_festivo')
         except ValueError:
             return render(request, 'crear_festivo.html',
@@ -671,7 +671,7 @@ def crear_cargo(request):
             form = CrearcargoForm(request.POST)
             nuevo_cargo = form.save(commit=False)
             nuevo_cargo.save()
-            messages.success(request, f"{nuevo_cargo.cargo}")
+            messages.success(request, f"El cargo {nuevo_cargo.cargo} ha sido creado correctamente")
             return redirect('crear_cargo')
         except ValueError:
             return render(request, 'crear_cargo.html',

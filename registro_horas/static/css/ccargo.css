@@ -264,7 +264,7 @@ screen and (max-height: 900px) {
 
   #columns {
     display: grid;
-    grid-template-columns: 230px 280px 280px 250px;
+    grid-template-columns: 245px 240px 240px 250px;
     column-count: 4;
     column-gap: 10px;
     -webkit-column-count: 4;

@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-lfr-0nqell1=(6u2y(2r_cbxvbv9uxvd4mffu#exs%f%eg@q%+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.52']
 
 MESSAGES_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Application definition
