@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lfr-0nqell1=(6u2y(2r_cbxvbv9uxvd4mffu#exs%f%eg@q%+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.1.52']
+ALLOWED_HOSTS = ['192.168.1.250']
 
 MESSAGES_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Application definition
