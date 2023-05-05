@@ -24,35 +24,32 @@ def home(request):
 def export_emp_excel(request):
     empleados_resource = EmpleadosResource()
     dataset = empleados_resource.export()
-    response = HttpResponse(
-        dataset.xlsx, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xlsx"'
+    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xls"'
     return response
 
 
 def export_jor_excel(request):
     jornada_resource = JornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(
-        dataset.xlsx, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xlsx"'
+    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xls"'
     return response
 
 
 def export_cargos_excel(request):
     cargos_resource = CargosResource()
     dataset = cargos_resource.export()
-    response = HttpResponse(
-        dataset.xlsx, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xlsx"'
+    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xls"'
     return response
 
 
 def export_festivos_excel(request):
     festivos_resource = FestivosResourse()
     dataset = festivos_resource.export()
-    response = HttpResponse(dataset.xlsx, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xlsx"'
+    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xls"'
     return response
 
 
@@ -209,9 +206,16 @@ def crear_jornada(request):
                 salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                 inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                 salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
+                sumador_dia = inicio_jornada_globalf + timedelta(days=1)
+                sumador_dia2 = int(sumador_dia.strftime("%d"))
+                salida_logica = int(salida_jornada_globalf.strftime("%d"))
+                if salida_logica > sumador_dia2:
+                    invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
+                    return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
+
                 elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                     invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                     return render(request, 'crear_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
@@ -346,6 +350,12 @@ def actualizar_jornada(request, jornada_id):
                 salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                 inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                 salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
+                sumador_dia = inicio_jornada_globalf + timedelta(days=1)
+                sumador_dia2 = int(sumador_dia.strftime("%d"))
+                salida_logica = int(salida_jornada_globalf.strftime("%d"))
+                if salida_logica > sumador_dia2:
+                    invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
+                    return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'actualizar_jornada.html', {'form': CrearjornadaForm, 'Invalido': invalido})
@@ -709,13 +719,11 @@ def ope_iniciar_sesion(request):
 def ope_export_jor_excel(request):
     jornada_resource = OpeJornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(
-        dataset.xlsx, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados_Operaciones.xlsx"'
+    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="jornadas_exportados_Operaciones.xls"'
     return response
 
 
-@login_required
 def ope_importar_excel_jor(request):
     if request.method == 'POST':
         jornadas_resource = OpeJornadasResource()
@@ -725,7 +733,7 @@ def ope_importar_excel_jor(request):
         for data in imported_data:
             horarioo = Horarios(data[1], data[2], data[3],
                                 data[4], data[5], data[6], data[7])
-            valor = Jornada(
+            valor = OpeJornada(
                 data[0],
                 data[1],
                 data[2],
@@ -772,6 +780,12 @@ def ope_crear_jornada(request):
                 salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                 inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                 salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
+                sumador_dia = inicio_jornada_globalf + timedelta(days=1)
+                sumador_dia2 = int(sumador_dia.strftime("%d"))
+                salida_logica = int(salida_jornada_globalf.strftime("%d"))
+                if salida_logica > sumador_dia2:
+                    invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
+                    return render(request, 'ope_crear_jornada.html', {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'ope_crear_jornada.html',
@@ -924,6 +938,12 @@ def ope_actualizar_jornada(request, jornada_id):
                 salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                 inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                 salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
+                sumador_dia = inicio_jornada_globalf + timedelta(days=1)
+                sumador_dia2 = int(sumador_dia.strftime("%d"))
+                salida_logica = int(salida_jornada_globalf.strftime("%d"))
+                if salida_logica > sumador_dia2:
+                    invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
+                    return render(request, 'ope_actualizar_jornada.html', {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'ope_actualizar_jornada.html',
