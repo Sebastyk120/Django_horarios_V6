@@ -4,7 +4,8 @@ estados = (
 )
 empresas = (
     ('Heavens Fruits SAS', 'Heavens Fruits SAS'),
-    ('People', 'People')
+    ('People', 'People'),
+    ('Turnos', 'Turnos')
 )
 
 area = (
