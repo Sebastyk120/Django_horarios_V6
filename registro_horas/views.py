@@ -2,10 +2,11 @@ from datetime import timedelta, datetime
 from tablib import Dataset
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseForbidden
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth import login, authenticate, logout
 from django.db import IntegrityError
 from django.contrib import messages
@@ -18,13 +19,17 @@ from .resources import EmpleadosResource, JornadasResource, CargosResource, Fest
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    if request.user.username == 'prueba':
+        return redirect('ope_home')
+    else:
+        return render(request, 'home.html')
 
 
 def export_emp_excel(request):
     empleados_resource = EmpleadosResource()
     dataset = empleados_resource.export()
-    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response = HttpResponse(dataset.xls,
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="empleados_exportados.xls"'
     return response
 
@@ -32,7 +37,8 @@ def export_emp_excel(request):
 def export_jor_excel(request):
     jornada_resource = JornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response = HttpResponse(dataset.xls,
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="jornadas_exportados.xls"'
     return response
 
@@ -40,7 +46,8 @@ def export_jor_excel(request):
 def export_cargos_excel(request):
     cargos_resource = CargosResource()
     dataset = cargos_resource.export()
-    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response = HttpResponse(dataset.xls,
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="cargos_exportados.xls"'
     return response
 
@@ -48,7 +55,8 @@ def export_cargos_excel(request):
 def export_festivos_excel(request):
     festivos_resource = FestivosResourse()
     dataset = festivos_resource.export()
-    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response = HttpResponse(dataset.xls,
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="festivos_exportados.xls"'
     return response
 
@@ -156,16 +164,16 @@ def iniciar_sesion(request):
     if request.method == 'GET':
         return render(request, 'iniciar_sesion.html', {'form': AuthenticationForm})
     else:
-        user = authenticate(
-            request, username=request.POST['username'], password=request.POST['password'])
-        print(request.POST)
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
             return render(request, 'iniciar_sesion.html',
                           {'form': AuthenticationForm, 'error': 'Usuario o contraseña incorrecto'})
         else:
-            print(request.POST)
             login(request, user)
-            return redirect('home')
+            if user.username == 'prueba':
+                return redirect('ope_home')
+            else:
+                return redirect('home')
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -365,7 +373,8 @@ def actualizar_jornada(request, jornada_id):
                 elif inicio_descanso_global2f is not None and salida_descanso_global2f is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
                         invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
-                        return render(request, actualizar_jornada.html, {'form': CrearjornadaForm, 'Invalido': invalido})
+                        return render(request, actualizar_jornada.html,
+                                      {'form': CrearjornadaForm, 'Invalido': invalido})
                     elif salida_jornada_globalf >= (inicio_jornada_globalf + timedelta(hours=47)):
                         invalido = "La jornada de salida no puede ser de mas de un día respecto a la jornada de inicio."
                         return render(request, 'actualizar_jornada.html',
@@ -416,7 +425,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(request,
-                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -457,7 +466,7 @@ def actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(request,
-                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                                         f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -521,7 +530,7 @@ def eliminar_jornada(request, jornada_id):
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
                 messages.error(request,
-                                     f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminada correctamente")
+                               f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminada correctamente")
             return redirect('jornadas')
         except ValueError:
             jornada = get_object_or_404(Jornada, pk=jornada_id)
@@ -577,11 +586,13 @@ def list_jornadas(request):
         return JsonResponse({'error': str(e)})
 
 
+@permission_required('registro_horas.view_empleados', raise_exception=True)
 @login_required
 def empleados(request):
     return render(request, 'empleados.html')
 
 
+@permission_required('registro_horas.view_empleados', raise_exception=True)
 @login_required
 def list_empleados(request):
     data = {}
@@ -618,24 +629,25 @@ def list_empleados(request):
 
 
 @login_required
+@permission_required('registro_horas.view_empleados', raise_exception=True)
 def actualizar_empleado(request, empleado_id):
+    empleado = get_object_or_404(Empleados, pk=empleado_id)
+
     if request.method == 'GET':
-        empleado = get_object_or_404(Empleados, pk=empleado_id)
         form = CrearempleadoForm(instance=empleado)
         return render(request, 'actualizar_empleado.html', {'empleado': empleado, 'form': form})
-    else:
-        try:
-            empleado = get_object_or_404(Empleados, pk=empleado_id)
+    elif request.method == 'POST':
+        if request.user.has_perm('registro_horas.change_empleados'):
             form = CrearempleadoForm(request.POST, instance=empleado)
-            form.save()
-            messages.success(request, f"El empleado {empleado.nombre} ha sido actualizado correctamente")
-            return redirect('empleados')
-
-        except ValueError:
-            empleado = get_object_or_404(Empleados, pk=empleado_id)
-            form = CrearempleadoForm(request.POST, instance=empleado)
-            return render(request, 'actualizar_empleado.html',
-                          {'empleado': empleado, 'form': form, 'error': "Error De Datos"})
+            if form.is_valid():
+                form.save()
+                messages.success(request, f"El empleado {empleado.nombre} ha sido actualizado correctamente")
+                return redirect('empleados')
+            else:
+                return render(request, 'actualizar_empleado.html',
+                              {'empleado': empleado, 'form': form, 'error': "Error de datos"})
+        else:
+            return HttpResponseForbidden("No tienes permiso para editar un empleado.")
 
 
 @login_required
@@ -719,7 +731,8 @@ def ope_iniciar_sesion(request):
 def ope_export_jor_excel(request):
     jornada_resource = OpeJornadasResource()
     dataset = jornada_resource.export()
-    response = HttpResponse(dataset.xls,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response = HttpResponse(dataset.xls,
+                            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="jornadas_exportados_Operaciones.xls"'
     return response
 
@@ -785,7 +798,8 @@ def ope_crear_jornada(request):
                 salida_logica = int(salida_jornada_globalf.strftime("%d"))
                 if salida_logica > sumador_dia2:
                     invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
-                    return render(request, 'ope_crear_jornada.html', {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    return render(request, 'ope_crear_jornada.html',
+                                  {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'ope_crear_jornada.html',
@@ -943,7 +957,8 @@ def ope_actualizar_jornada(request, jornada_id):
                 salida_logica = int(salida_jornada_globalf.strftime("%d"))
                 if salida_logica > sumador_dia2:
                     invalido = "La jornada de salida no puede ser de mas a dos días en fecha."
-                    return render(request, 'ope_actualizar_jornada.html', {'form': OpeCrearjornadaForm, 'Invalido': invalido})
+                    return render(request, 'ope_actualizar_jornada.html',
+                                  {'form': OpeCrearjornadaForm, 'Invalido': invalido})
                 if salida_jornada_globalf <= inicio_jornada_globalf:
                     invalido = "La jornada de salida no puede ser menor a la jornada de entrada."
                     return render(request, 'ope_actualizar_jornada.html',
@@ -1007,7 +1022,7 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(
-                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('ope_jornadas')
                 elif inicio_descanso_globalf is not None and salida_descanso_globalf is not None:
                     if salida_jornada_globalf <= inicio_jornada_globalf:
@@ -1048,7 +1063,7 @@ def ope_actualizar_jornada(request, jornada_id):
                         nueva_jornada.user = request.user
                         nueva_jornada.save()
                         messages.success(
-                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
+                            request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido actualizada correctamente")
                         return redirect('ope_jornadas')
                 else:
                     jornada_legalf = form.cleaned_data['jornada_legal']
@@ -1112,7 +1127,7 @@ def ope_eliminar_jornada(request, jornada_id):
                 nueva_jornada.user = request.user
                 nueva_jornada.delete()
                 messages.success(
-                        request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminado correctamente")
+                    request, f"La jornada de {nueva_jornada.empleado.nombre} ha sido eliminado correctamente")
             return redirect('ope_jornadas')
         except ValueError:
             jornada = get_object_or_404(OpeJornada, pk=jornada_id)
