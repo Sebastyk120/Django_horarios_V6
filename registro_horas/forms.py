@@ -52,18 +52,19 @@ class CrearempleadoForm(ModelForm):
 
 iniciop = datetime.now()
 inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
+min = datetime(2023, 1, 1, 0, 0)
 
 
 class CrearjornadaForm(ModelForm):
     class Meta:
         model = Jornada
         widgets = {
-            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
 
         }
         fields = ["empleado", "inicio_jornada_global", "salida_jornada_global", "inicio_descanso_global",
@@ -114,12 +115,12 @@ class OpeCrearjornadaForm(ModelForm):
     class Meta:
         model = OpeJornada
         widgets = {
-            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
-            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio}),
+            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
+            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
 
         }
         fields = ["empleado", "inicio_jornada_global", "salida_jornada_global", "inicio_descanso_global",
