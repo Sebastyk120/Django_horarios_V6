@@ -213,6 +213,7 @@ def crear_jornada(request):
                     inicio_jornada_globalf = form.cleaned_data['inicio_jornada_global']
                     salida_jornada_globalf = form.cleaned_data['salida_jornada_global']
                     inicio_descanso_globalf = form.cleaned_data['inicio_descanso_global']
+                    print(inicio_descanso_globalf)
                     salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                     inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                     salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']

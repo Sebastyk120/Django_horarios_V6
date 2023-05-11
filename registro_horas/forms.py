@@ -50,13 +50,11 @@ class CrearempleadoForm(ModelForm):
         )
 
 
-iniciop = datetime.now()
-inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
-min = datetime(2023, 1, 1, 0, 0)
-
-
 class CrearjornadaForm(ModelForm):
     class Meta:
+        iniciop = datetime.now()
+        inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
+        min = datetime(2023, 1, 1, 0, 0)
         model = Jornada
         widgets = {
             'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
@@ -113,6 +111,9 @@ class CrearfestivoForm(ModelForm):
 
 class OpeCrearjornadaForm(ModelForm):
     class Meta:
+        iniciop = datetime.now()
+        inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
+        min = datetime(2023, 1, 1, 0, 0)
         model = OpeJornada
         widgets = {
             'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
