@@ -73,7 +73,6 @@ class CrearjornadaForm(ModelForm):
         self.fields['salida_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
         self.fields['inicio_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
         self.fields['salida_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
-
         self.fields['inicio_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
             '%Y-%m-%dT%H:%M:%S')
         self.fields['salida_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
@@ -150,7 +149,6 @@ class OpeCrearjornadaForm(ModelForm):
         self.fields['salida_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
         self.fields['inicio_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
         self.fields['salida_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
-
         self.fields['inicio_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
             '%Y-%m-%dT%H:%M:%S')
         self.fields['salida_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
