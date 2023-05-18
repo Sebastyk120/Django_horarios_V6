@@ -17,15 +17,11 @@ from .resources import EmpleadosResource, JornadasResource, CargosResource, Fest
 
 
 # Create your views here.
-def hora():
-    iniciop = datetime.now()
-    return iniciop
+
 def home(request):
     if request.user.username == 'prueba':
-        iniciop = datetime.now()
         return redirect('ope_home')
     else:
-        iniciop = datetime.now()
         return render(request, 'home.html')
 
 
