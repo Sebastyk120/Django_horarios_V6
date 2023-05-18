@@ -1,10 +1,9 @@
 from datetime import datetime
-
+from django.utils import timezone
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
 from django import forms
 from django.forms import ModelForm
-
 from .models import Empleados, Jornada, Cargos, Festivos, OpeJornada
 
 
@@ -52,24 +51,42 @@ class CrearempleadoForm(ModelForm):
 
 class CrearjornadaForm(ModelForm):
     class Meta:
-        iniciop = datetime.now()
-        inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
-        min = datetime(2023, 1, 1, 0, 0)
         model = Jornada
         widgets = {
-            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-
+            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local'}),
         }
         fields = ["empleado", "inicio_jornada_global", "salida_jornada_global", "inicio_descanso_global",
                   "salida_descanso_global", "inicio_descanso_global2", "salida_descanso_global2", "jornada_legal"]
 
     def __init__(self, *args, **kwargs):
         super(CrearjornadaForm, self).__init__(*args, **kwargs)
+
+        now = timezone.now()
+        self.fields['inicio_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+
+        self.fields['inicio_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global2'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global2'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-md-4'
@@ -111,24 +128,42 @@ class CrearfestivoForm(ModelForm):
 
 class OpeCrearjornadaForm(ModelForm):
     class Meta:
-        iniciop = datetime.now()
-        inicio = datetime.strftime(iniciop, "%Y-%m-%dT%H:%M:%S")
-        min = datetime(2023, 1, 1, 0, 0)
         model = OpeJornada
         widgets = {
-            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local', 'max': inicio, 'min': min}),
-
+            'inicio_jornada_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_jornada_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'inicio_descanso_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_descanso_global': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'inicio_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local'}),
+            'salida_descanso_global2': forms.TextInput(attrs={'type': 'datetime-local'}),
         }
         fields = ["empleado", "inicio_jornada_global", "salida_jornada_global", "inicio_descanso_global",
                   "salida_descanso_global", "inicio_descanso_global2", "salida_descanso_global2", "jornada_legal"]
 
     def __init__(self, *args, **kwargs):
         super(OpeCrearjornadaForm, self).__init__(*args, **kwargs)
+
+        now = timezone.now()
+        self.fields['inicio_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global2'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
+
+        self.fields['inicio_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_jornada_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['inicio_descanso_global2'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+        self.fields['salida_descanso_global2'].widget.attrs['min'] = datetime(2023, 1, 1, 0, 0).strftime(
+            '%Y-%m-%dT%H:%M:%S')
+
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-md-4'

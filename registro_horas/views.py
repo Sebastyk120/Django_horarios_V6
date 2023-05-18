@@ -17,11 +17,15 @@ from .resources import EmpleadosResource, JornadasResource, CargosResource, Fest
 
 
 # Create your views here.
-
+def hora():
+    iniciop = datetime.now()
+    return iniciop
 def home(request):
     if request.user.username == 'prueba':
+        iniciop = datetime.now()
         return redirect('ope_home')
     else:
+        iniciop = datetime.now()
         return render(request, 'home.html')
 
 
@@ -213,7 +217,6 @@ def crear_jornada(request):
                     inicio_jornada_globalf = form.cleaned_data['inicio_jornada_global']
                     salida_jornada_globalf = form.cleaned_data['salida_jornada_global']
                     inicio_descanso_globalf = form.cleaned_data['inicio_descanso_global']
-                    print(inicio_descanso_globalf)
                     salida_descanso_globalf = form.cleaned_data['salida_descanso_global']
                     inicio_descanso_global2f = form.cleaned_data['inicio_descanso_global2']
                     salida_descanso_global2f = form.cleaned_data['salida_descanso_global2']
