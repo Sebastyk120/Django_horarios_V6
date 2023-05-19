@@ -173,6 +173,50 @@ body {
     height: 100%;
 }
 
+img.opmanguito {
+
+    width: 180px;
+    height: 180px;
+    position: relative;
+    left: 130px;
+    top: 50px;
+    transition: transform .7s ease-in-out;
+}
+
+img.opmanguito:hover {
+    animation: swings 1s ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes swings {
+    20% {
+        transform: translateY(-30px);
+    }
+
+    40% {
+        transform: translateY(0px);
+    }
+
+
+    60% {
+        transform: translateY(-30px);
+    }
+
+    80% {
+        transform: translateY(0px);
+    }
+
+}
+
+.userlog {
+
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+    text-align: center;
+}
 
 /*Animación de home*/
 
@@ -512,6 +556,41 @@ screen and (max-height: 900px) {
         top: 70%;
         left: 55%;
         transform: translate(-50%, -50%);
+
+    }
+
+    img.opmanguito {
+
+        width: 120px;
+        height: 120px;
+        position: relative;
+        left: 50px;
+        top: 50px;
+        transition: transform .7s ease-in-out;
+    }
+
+    img.opmanguito:hover {
+        animation: swings 1s ease;
+        animation-iteration-count: 1;
+    }
+
+    @keyframes swings {
+        20% {
+            transform: translateY(-30px);
+        }
+
+        40% {
+            transform: translateY(0px);
+        }
+
+
+        60% {
+            transform: translateY(-30px);
+        }
+
+        80% {
+            transform: translateY(0px);
+        }
 
     }
 

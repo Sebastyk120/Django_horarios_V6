@@ -25,6 +25,8 @@
     <body style="overflow-y:hidden">
         <body style="overflow-x:hidden">
             <body scroll=no>
+                <p class="userlog">Hola {{ request.user.first_name }} bienvenido a la aplicacion de operaciones</p>
+                <a class="nomanguito" aria-current="page" href="/"><img class="opmanguito" src="../static/img/opemanguito.png" aling="center"></a>
                 <div class="container">
                     <div class="grid">
                         <div class="card">
@@ -147,35 +149,6 @@
                         <!--Fin de olas-->
                     </div>
                 </header>
-                <!-------Cards para escoger el Rol------>
-                <section id="section02">
-                    <div class="containers">
-                        <div class="grids">
-                            <article class="cards cards--1">
-                                <div class="cards__info-hover">
-                                </div>
-                                <div class="cards__img"></div>
-                                <a href="/iniciar_sesion" class="cards_link">
-                                    <div class="cards__img--hover"></div>
-                                </a>
-                                <div class="cards__info">
-                                    <h3 class="cards__title">TALENTO HUMANO</h3>
-                                </div>
-                            </article>
-                            <article class="cards cards--2">
-                                <div class="cards__info-hover">
-                                </div>
-                                <div class="cards__img"></div>
-                                <a href="#" class="cards_link">
-                                    <div class="cards__img--hover"></div>
-                                </a>
-                                <div class="cards__info">
-                                    <h3 class="cards__title">OPERACIONES</h3>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
                 <div class="footer">
                     <p>Heavens Fruit. - Todos los derechos reservados ©</p>
                 </div>

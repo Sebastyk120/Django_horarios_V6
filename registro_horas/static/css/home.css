@@ -146,20 +146,6 @@ body {
 
 
 
-.grids {
-  display: grid;
-  grid-template-columns: 800px 800px 10px;
-  grid-template-rows: 500px 50px 180px;
-}
-
-.containers {
-  position: absolute;
-  top: 161%;
-  left: 63%;
-  transform: translate(-50%, -50%);
-
-}
-
 img.crearempleados {
 
   width: 70px;
@@ -177,11 +163,59 @@ body {
   height: 100%;
 }
 
+img.manguito {
+
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 130px;
+  top: 50px;
+  transition: transformss .7s ease-in-out;
+}
+
+img.manguito:hover {
+  animation: swings 1s ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes swings {
+  20% {
+    transform: rotate(20deg);
+  }
+
+  40% {
+    transform: rotate(-20deg);
+  }
+
+
+  60% {
+    transform: rotate(20deg);
+  }
+
+  80% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.userlog{
+
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold; 
+  position: relative;
+  top: 20px;
+  text-align: center;
+}
 
 /*Animación de PRE LOGIN*/
 
 
 body {
+
   margin: 0;
 }
 
@@ -189,6 +223,7 @@ h1 {
   font-family: 'Noto Sans Display', sans-serif;
   font-size: 48px;
   padding-right: 130px;
+  text-shadow: 0 0 10px #fc84f2;
 }
 
 
@@ -201,6 +236,7 @@ h1 {
   text-align: center;
   background-image: url(../img/bkhome.png);
   color: white;
+  
 }
 
 .inner-header {
@@ -220,10 +256,10 @@ h1 {
 .waves {
   position: relative;
   width: 100%;
-  height: 15vh;
+  height: 18vh;
   margin-bottom: -7px;
   min-height: 100px;
-  max-height: 150px;
+  max-height: 140px;
 }
 
 .content {
@@ -284,6 +320,20 @@ h5 {
 
 }
 
+.custom-btn {
+  color: #fff;
+  width: 170px;
+  height: 50px;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  top: -170px;
+  display: inline-block;
+}
+
 *,
 *:before,
 *::after {
@@ -291,6 +341,16 @@ h5 {
   padding: 0;
   box-sizing: border-box;
 }
+
+.btn-1 {
+  border: none;
+  background-color: #ff9aff;
+  box-shadow: 0 0 5px #ef97e8;
+}
+.btn-1:hover {
+   box-shadow: 0 0 10px #ef97e8, 0 0 20px #ef97e8, 0 0 20px #fff inset;
+}
+
 
 /* Animacion menu hamburguesa */
 
@@ -522,6 +582,42 @@ screen and (max-height: 900px) {
     left: 55%;
     transform: translate(-50%, -50%);
   }
+
+  img.manguito {
+
+    width: 120px;
+    height: 120px;
+    position: relative;
+    left: 50px;
+    top: 50px;
+    transition: transform .7s ease-in-out;
+}
+
+img.manguito:hover {
+    animation: swings 1s ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes swings {
+    20% {
+        transform: translateY(-30px);
+    }
+
+    40% {
+        transform: translateY(0px);
+    }
+
+
+    60% {
+        transform: translateY(-30px);
+    }
+
+    80% {
+        transform: translateY(0px);
+    }
+
+}
+
 
   body {
     height: 100vh;
