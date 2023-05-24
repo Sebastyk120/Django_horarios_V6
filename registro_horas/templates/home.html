@@ -21,7 +21,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!--custom css-->
 <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
-<link rel="stylesheet" href="{% static 'css/bgdark.css' %}"/>
 <!--Googlefonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,11 +32,13 @@
     <body style="overflow-y:hidden">
     <body style="overflow-x:hidden">
     <body scroll=no>
+        <p class="userlog">Hola {{ request.user.first_name }} bienvenido a la aplicacion de talento humano</p>
+        <a class="nmanguito" aria-current="page" href="/operaciones/"><img class="manguito" src="../static/img/rhmango.png" aling="center"></a>
     <div class="container">
         <div class="grid">
             <div class="card">
                 <div class="card-details">
-                    <a class="nav-link active" aria-current="page" href="/empleados/crear/"><p class="text-title" style='text-align:center'>
+                    <a class="nav-link" href="/empleados/crear/"><p class="text-title " style='text-align:center'><p class="text-title" style='text-align:center'>
                         <img class="crearempleado" src="../static/img/personas.png" aling="center"> <br><br>Crear Empleado</p>
                 </div>
                 <button class="card-button">Crear Empleado</button>
@@ -135,11 +136,8 @@
             <div class="inner-header flex">
                 <h1><img class="logo" src="../static/img/logowhite.png">Heavens Fruits SAS</h1>
             </div>
-            <section id="section01" class="demo">
-                <h5>Desliza hacia abajo</h5>
-                <a href="#section02"><span></span></a>
-            </section>
-
+            <a href="/iniciar_sesion" class="cards_link">
+            <button class="custom-btn btn-1">Iniciar Sesion</button>
             <!--Container de Olas-->
             <div>
                 <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -158,41 +156,9 @@
             <!--Fin de olas-->
         </div>
     </header>
-    <!-------Cards para escoger el Rol------>
-    <section id="section02">
-            <div class="containers">
-                <div class="grids">
-                    <article class="cards cards--1">
-                        <div class="cards__info-hover">
-                            </div>
-                            <div class="cards__img"></div>
-                            <a href="/iniciar_sesion" class="cards_link">
-                                <div class="cards__img--hover"></div>
-                            </a>
-                            <div class="cards__info">
-                                <h3 class="cards__title">TALENTO HUMANO</h3>
-                            </div>
-                    </article>
-                    <article class="cards cards--2">
-                        <div class="cards__info-hover">
-                        </div>
-                        <div class="cards__clock-info">
-                        </div>
-                        <div class="cards__img"></div>
-                        <a href="/ope_iniciar_sesion" class="cards_link">
-                        <div class="cards__img--hover"></div>
-                        </a>
-                        <div class="cards__info">
-                        <h3 class="cards__title">OPERACIONES</h3>
-                        </div>
-                    </article>
-                </div>
-            </div>
-    </section>
     <div class="footer">
         <p>Heavens Fruit. - Todos los derechos reservados ©</p>
     </div>
 {% endif %}
-<script src="{% static 'js/webdark.js' %}"></script>
 </body>
 </html>
