@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registro_horas',
+    'Nomina.apps.NominaConfig',
     'crispy_forms',
     'crispy_bootstrap5',
     'import_export',
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Django_horarios.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'registro_horas/templates'],
+        'DIRS': [BASE_DIR / 'Nomina/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,7 +116,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'registro_horas/static'))
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'Nomina/static'))
 LOGIN_URL = '/iniciar_sesion'
 
 # Default primary key field type

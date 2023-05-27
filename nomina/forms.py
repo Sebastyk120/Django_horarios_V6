@@ -12,8 +12,8 @@ class CrearempleadoForm(ModelForm):
         ordering = ['nombre']
         model = Empleados
         widgets = {
-            'ingreso': forms.TextInput(attrs={'type': 'date', 'max': datetime.now().date}),
-            'retiro': forms.TextInput(attrs={'type': 'date', 'max': datetime.now().date}),
+            'ingreso': forms.DateInput(attrs={'type': 'date'}),
+            'retiro': forms.DateInput(attrs={'type': 'date'}),
             'nombre': forms.TextInput(attrs={'type': 'text', 'placeholder': 'Ingrese El Nombre Completo'}),
             'cedula': forms.NumberInput(attrs={'type': 'number', 'placeholder': 'Ingrese Documento'}),
         }
@@ -22,6 +22,9 @@ class CrearempleadoForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CrearempleadoForm, self).__init__(*args, **kwargs)
+        now = timezone.now()
+        self.fields['ingreso'].widget.attrs['max'] = now.strftime('%Y-%m-%d')
+        self.fields['retiro'].widget.attrs['max'] = now.strftime('%Y-%m-%d')
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-md-2'

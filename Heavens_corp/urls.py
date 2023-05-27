@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from registro_horas import views
+from Nomina import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

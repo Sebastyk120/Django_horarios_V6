@@ -32,7 +32,7 @@ const initDatatable = async () => {
     const tableBody_empleados = document.querySelector("#tableBody_empleados");
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
-    const page = params.page || 1; // Si no hay valor para la página, se muestra la primera
+    const page = params.page || 1;
     const data = await listempleados(page);
     const rows = data.todas_empleados.map(
       (todas_empleados, index) => `
