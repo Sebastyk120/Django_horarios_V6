@@ -4,6 +4,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
 from django import forms
 from django.forms import ModelForm
+
 from .models import Empleados, Jornada, Cargos, Festivos, OpeJornada
 
 

@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('registro_horas', '0005_delete_filtros'),
+        ('nomina', '0005_delete_filtros'),
     ]
 
     operations = [
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('nocturnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Nocturnas Festivas')),
                 ('extras_diurnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Extras Diurnas Festivas')),
                 ('extras_nocturnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Extras Nocturnas Festivas')),
-                ('empleado', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='registro_horas.empleados')),
+                ('empleado', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='nomina.empleados')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Creada Por')),
             ],
             options={

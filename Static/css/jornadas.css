@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+.centered {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.html,
+body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: bold;
+}
+
+th {
+    font-family: 'Noto Sans Display', sans-serif;
+
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+thead {
+    color: rgb(0, 0, 0);
+
+}
+
+tbody {
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
+
+
+/*        PIE DE PAGINA          */
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    text-align: left;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+}
+
+/*          ESTILOS DE LOS BOTONES DE IMPORTAR Y EXPORTAR         */
+
+.btn1 {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #222;
+    padding: 8px 30px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+.btn1 span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: #7895d2;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn1:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+#import {
+
+    position: relative;
+    top: 0px;
+    left: -10px;
+
+}
+
+#export {
+
+    position: relative;
+    left: -10px;
+    top: 0px;
+
+}
+    
+.btn{
+
+    position: relative;
+    margin: 2px;
+
+}
+
+/*      MODELADO DE LA PAGINA RESPONSIVE       */
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+tr{
+
+    zoom: 80%;
+
+}
+
+}
+
+

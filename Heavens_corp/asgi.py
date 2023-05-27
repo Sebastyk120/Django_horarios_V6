@@ -1,5 +1,5 @@
 """
-ASGI config for Django_horarios project.
+ASGI config for Heavens_corp project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Django_horarios.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Heavens_corp.settings')
 
 application = get_asgi_application()

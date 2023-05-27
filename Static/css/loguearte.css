@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(../img/bkhome.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Noto Sans Display', sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  height: 85%
+}
+
+.login,
+.heavens {
+  width: 50%
+}
+
+/*Login*/
+.login {
+  float: left;
+  background-color: #fafafaa6;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.login h1 {
+  margin-bottom: 40px;
+  font-size: 2.5em;
+  font-family: 'Noto Sans Display', sans-serif;
+
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.5px;
+  border: none;
+  background-color: #eeeeefb6;
+  position: relative;
+  top: -70px;
+}
+
+#user{
+
+  position: relative;
+  top: -110px;
+
+}
+
+#pass{
+
+  position: relative;
+  top: -110px;
+
+}
+
+input[type="checkbox"] {
+  float: left;
+  margin-right: 5px;
+
+}
+
+.login span {
+  float: left
+}
+
+.login a {
+  float: right;
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s all ease-in-out;
+}
+
+
+.login hr {
+  width: 30%;
+  display: inline-block
+}
+
+.login p {
+  display: inline-block;
+  margin: 0px 10px 30px;
+}
+
+.login ul {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.login ul li {
+  display: inline-block;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.login ul li:hover {
+  opacity: 0.6
+}
+
+.login ul li:last-child {
+  margin-right: 0
+}
+
+.login .copyright {
+  display: inline-block;
+  float: none;
+  font-family: 'Noto Sans Display', sans-serif;
+}
+
+/*Imagen de Heavens*/
+.heavens {
+  float: right;
+  background-image: url(../img/loginimg.png);
+  height: 100%;
+  color: #fff;
+  border-radius: 0 10px 10px 0;
+  text-align: center;
+  padding: 100px 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+/*      PIE DE PAGINA       */
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 2.2%;
+  width: 100%;
+  background-color: rgb(54, 54, 54);
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size: 15px;
+}
+
+
+
+.logo {
+  position: relative;
+  height: 190px;
+  width: 240px;
+  top: -100px;
+
+}
+
+/*  BOTONES DE INICIAR SESION Y DE VOLVER CON ESTILOS   */
+
+.buttonBox>button {
+  transition: box-shadow .4s, transform .2s, background .4s, color .4s;
+  position: relative;
+
+}
+
+.buttonBox:hover button {
+  background: rgb(207, 0, 190);
+  color: #ffffff;
+  position: relative;
+
+}
+
+button {
+  width: 270px;
+  height: 50px;
+  background: rgba(169, 0, 211, 0.11);
+  text-transform: uppercase;
+  color: rgb(184, 0, 174);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: 'Noto Sans Display', sans-serif;
+  cursor: pointer;
+  border: 2px solid rgb(234, 0, 255);
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 10px #fc05be;
+  text-shadow: 0 2px 3px #563719;
+
+}
+
+.buttonBox{
+
+  width: 270px;
+  height: 50px;
+  position: relative;
+  left: 90px;
+  top: -150px;
+}
+
+
+#float{
+
+  position: relative;
+  top: -170px;
+
+}
+
+.buttonBoxs>a {
+  transition: box-shadow .4s, transform .2s, background .4s, color .4s;
+  position: relative;
+
+}
+
+.buttonBoxs:hover a {
+  background: rgb(207, 0, 0);
+  color: #ffffff;
+  position: relative;
+
+}
+
+a {
+  width: 270px;
+  height: 50px;
+  background: rgba(169, 0, 211, 0.11);
+  text-transform: uppercase;
+  color: rgb(184, 0, 0);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: 'Noto Sans Display', sans-serif;
+  cursor: pointer;
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 10px #fc0505;
+  text-shadow: 0 2px 3px #563719;
+  padding: 9px;
+
+}
+
+.buttonBoxs{
+
+  width: 270px;
+  height: 50px;
+  position: relative;
+  left: 90px;
+  top: -100px;
+}
+
+/*       MODELADO DE LA PAGINA RESPONSIVE      */
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url(../img/bkhome.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Noto Sans Display', sans-serif;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    height: 100%
+  }
+  
+  .login,
+  .heavens {
+    width: 50%
+  }
+  
+  /*Login*/
+  .login {
+    float: left;
+    background-color: #fafafaa6;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .login h1 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-family: 'Noto Sans Display', sans-serif;
+  
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1.5px;
+    border: none;
+    background-color: #eeeeefb6;
+    position: absolute;
+    top: 0px;
+  }
+  
+  input[type="checkbox"] {
+    float: left;
+    margin-right: 5px;
+  
+  }
+  
+  .login span {
+    float: left
+  }
+  
+  .login a {
+    float: right;
+    text-decoration: none;
+    color: #000;
+    transition: 0.3s all ease-in-out;
+  }
+  
+  
+  .login hr {
+    width: 30%;
+    display: inline-block
+  }
+  
+  .login p {
+    display: inline-block;
+    margin: 0px 10px 30px;
+  }
+  
+  .login ul {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+  
+  .login ul li {
+    display: inline-block;
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  
+  .login ul li:hover {
+    opacity: 0.6
+  }
+  
+  .login ul li:last-child {
+    margin-right: 0
+  }
+  
+  .login .copyright {
+    display: inline-block;
+    float: none;
+    font-family: 'Noto Sans Display', sans-serif;
+  }
+  
+  /*Imagen de Heavens*/
+  .heavens {
+    float: right;
+    background-image: url(../img/loginimg.png);
+    height: 100%;
+    color: #fff;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    padding: 100px 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+  }
+  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+  }
+  
+  
+  
+  .logo {
+    position: relative;
+    height: 190px;
+    width: 240px;
+    top: -140px;
+  
+  }
+  
+  
+  .buttonBox>button {
+    transition: box-shadow .4s, transform .2s, background .4s, color .4s;
+    position: relative;
+  
+  }
+  
+  .buttonBox:hover button {
+    background: rgb(207, 0, 190);
+    color: #ffffff;
+    position: relative;
+  
+  }
+  
+  button {
+    width: 200px;
+    height: 40px;
+    background: rgba(169, 0, 211, 0.11);
+    text-transform: uppercase;
+    color: rgb(184, 0, 174);
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    font-family: 'Noto Sans Display', sans-serif;
+    cursor: pointer;
+    border: 2px solid rgb(234, 0, 255);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px #fc05be;
+    text-shadow: 0 2px 3px #563719;
+  
+  }
+  
+  .buttonBox{
+  
+    width: 200px;
+    height: 40px;
+    position: relative;
+    left: 80px;
+    top: -200px;
+  }
+  
+  #float{
+  
+    position: relative;
+    top: -170px;
+  
+  }
+  
+  .buttonBoxs>a {
+    transition: box-shadow .4s, transform .2s, background .4s, color .4s;
+    position: relative;
+  
+  }
+  
+  .buttonBoxs:hover a {
+    background: rgb(207, 0, 0);
+    color: #ffffff;
+    position: relative;
+  
+  }
+  
+  a {
+    width: 200px;
+    height: 40px;
+    background: rgba(169, 0, 211, 0.11);
+    text-transform: uppercase;
+    color: rgb(184, 0, 0);
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    font-family: 'Noto Sans Display', sans-serif;
+    cursor: pointer;
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px #fc0505;
+    text-shadow: 0 2px 3px #563719;
+    padding: 7px;
+  
+  }
+  
+  .buttonBoxs{
+  
+    width: 200px;
+    height: 40px;
+    position: relative;
+    left: 80px;
+    top: -185px;
+  }
+
+}

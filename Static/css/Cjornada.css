@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+.html,
+body {
+    height: 100vh;
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
+body {
+    background-image: url(../img/fondojornadas.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+form {
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    text-align: left;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+.card{
+
+    position: relative;
+    top: -100px;
+
+}
+
+body {
+
+    font-size: 10px;
+
+}
+
+}

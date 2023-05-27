@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+.html, body{
+    height: 100vh;
+}
+body{
+    background-image: url(../img/bkhome.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    justify-content: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
+form{
+    background: rgba(0, 0, 0, .5);
+    text-align: center;
+    color: aliceblue;
+    align-items: center;
+    padding: 50px 50px;
+    top: 200px;
+}
+body.div{
+    border-radius: 50%;
+}
+
+img{
+
+    position: relative;
+    height: 300px;
+    width: 390px;
+
+}

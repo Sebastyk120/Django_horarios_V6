@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('generaextras', models.CharField(choices=[('Si', 'Si'), ('No', 'No')], default='No', max_length=2, verbose_name='Genera Extras')),
                 ('ingreso', models.DateField(max_length=10, null=True, verbose_name='Fecha Ingreso')),
                 ('retiro', models.DateField(blank=True, max_length=10, null=True, verbose_name='Fecha Retiro')),
-                ('cargo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='registro_horas.cargos', verbose_name='Cargo')),
+                ('cargo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='nomina.cargos', verbose_name='Cargo')),
             ],
             options={
                 'ordering': ['nombre'],
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
                 ('nocturnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Nocturnas Festivas')),
                 ('extras_diurnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Extras Diurnas Festivas')),
                 ('extras_nocturnos_festivo_totales', models.FloatField(default=0, verbose_name='Horas Extras Nocturnas Festivas')),
-                ('empleado', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='registro_horas.empleados')),
+                ('empleado', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='nomina.empleados')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Creada Por')),
             ],
             options={

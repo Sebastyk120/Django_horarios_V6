@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+body {
+    height: 90vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.container{
+
+    position: absolute;
+    top: 35%;
+    left: 32%;
+}
+
+h1{
+
+    color: aliceblue;
+
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+  }
+
+  /* POSICION DEL BOTON VOLVER*/ 
+
+  #volver{
+
+    position: relative;
+    top: -38px;
+
+  }
+
+  @media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+    .card{
+
+        position: relative;
+        top: -90px;
+        left: -50px;
+
+    }
+
+}

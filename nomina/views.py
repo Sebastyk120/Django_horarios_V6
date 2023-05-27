@@ -19,7 +19,9 @@ from .resources import EmpleadosResource, JornadasResource, CargosResource, Fest
 # Create your views here.
 
 def home(request):
-    if request.user.username == 'prueba':
+    if request.user.username == 'asanchez':
+        return redirect('ope_home')
+    elif request.user.username == 'mbonilla':
         return redirect('ope_home')
     else:
         return render(request, 'home.html')
@@ -194,13 +196,13 @@ def signup(request):
                 return render(request, 'signup.html', {'form': UserCreationForm, "error": 'El usuario ya existe'})
         return render(request, 'signup.html', {'form': UserCreationForm, "error": 'Las contraseñas no coinciden'})
 
-@permission_required('registro_horas.view_jornada', raise_exception=True)
+@permission_required('nomina.view_jornada', raise_exception=True)
 @login_required
 def jornadas(request):
     return render(request, 'jornadas.html')
 
 
-@permission_required('registro_horas.view_jornada', raise_exception=True)
+@permission_required('nomina.view_jornada', raise_exception=True)
 @login_required
 def crear_jornada(request):
     if request.method == 'GET':
@@ -208,7 +210,7 @@ def crear_jornada(request):
     else:
         try:
             form = CrearjornadaForm(request.POST)
-            if request.user.has_perm('registro_horas.add_empleados'):
+            if request.user.has_perm('nomina.add_jornada'):
                 if form.is_valid():
                     inicio_jornada_globalf = form.cleaned_data['inicio_jornada_global']
                     salida_jornada_globalf = form.cleaned_data['salida_jornada_global']
@@ -344,7 +346,7 @@ def crear_jornada(request):
                           {'form': CrearjornadaForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
-@permission_required('registro_horas.view_jornada', raise_exception=True)
+@permission_required('nomina.view_jornada', raise_exception=True)
 @login_required
 def actualizar_jornada(request, jornada_id):
     if request.method == 'GET':
@@ -353,7 +355,7 @@ def actualizar_jornada(request, jornada_id):
         return render(request, 'actualizar_jornada.html', {'jornada': jornada, 'form': form})
     else:
         try:
-            if request.user.has_perm('registro_horas.change_empleados'):
+            if request.user.has_perm('nomina.change_jornada'):
                 empleado = get_object_or_404(Jornada, pk=jornada_id)
                 form = CrearjornadaForm(request.POST, instance=empleado)
                 if form.is_valid():
@@ -503,7 +505,7 @@ def actualizar_jornada(request, jornada_id):
                           {'jornada': jornada, 'form': form, 'error': "Error De Datos"})
 
 
-@permission_required('registro_horas.view_jornada', raise_exception=True)
+@permission_required('nomina.view_jornada', raise_exception=True)
 @login_required
 def eliminar_jornada(request, jornada_id):
     if request.method == 'GET':
@@ -512,7 +514,7 @@ def eliminar_jornada(request, jornada_id):
         return render(request, 'eliminar_jornada.html', {'jornada': jornada, 'form': form})
     else:
         try:
-            if request.user.has_perm('registro_horas.delete_empleados'):    
+            if request.user.has_perm('nomina.delete_jornada'):
                 empleado = get_object_or_404(Jornada, pk=jornada_id)
                 form = CrearjornadaForm(request.POST, instance=empleado)
                 if form.is_valid():
@@ -549,7 +551,7 @@ def eliminar_jornada(request, jornada_id):
             return render(request, 'eliminar_jornada.html', {'jornada': jornada, 'form': form,
                                                              'error': "Error De Datos"})
 
-@permission_required('registro_horas.view_jornada', raise_exception=True)
+@permission_required('nomina.view_jornada', raise_exception=True)
 @login_required
 def list_jornadas(request):
     data = {}
@@ -597,13 +599,13 @@ def list_jornadas(request):
         return JsonResponse({'error': str(e)})
 
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def empleados(request):
     return render(request, 'empleados.html')
 
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def list_empleados(request):
     data = {}
@@ -639,7 +641,7 @@ def list_empleados(request):
         return JsonResponse({'error': str(e)})
 
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def actualizar_empleado(request, empleado_id):
     empleado = get_object_or_404(Empleados, pk=empleado_id)
@@ -648,7 +650,7 @@ def actualizar_empleado(request, empleado_id):
         form = CrearempleadoForm(instance=empleado)
         return render(request, 'actualizar_empleado.html', {'empleado': empleado, 'form': form})
     elif request.method == 'POST':
-        if request.user.has_perm('registro_horas.change_empleados'):
+        if request.user.has_perm('nomina.change_empleados'):
             form = CrearempleadoForm(request.POST, instance=empleado)
             if form.is_valid():
                 form.save()
@@ -661,7 +663,7 @@ def actualizar_empleado(request, empleado_id):
             return HttpResponseForbidden("No tiene permisos para editar un empleado.")
 
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def crear_empleado(request):
     if request.method == 'GET':
@@ -669,7 +671,7 @@ def crear_empleado(request):
     else:
         try:
             form = CrearempleadoForm(request.POST)
-            if request.user.has_perm('registro_horas.add_empleados'):
+            if request.user.has_perm('nomina.add_empleados'):
                 nuevo_empleado = form.save(commit=False)
                 nuevo_empleado.save()
                 messages.success(request, f"{nuevo_empleado.nombre}")
@@ -681,7 +683,7 @@ def crear_empleado(request):
                           {'form': CrearempleadoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
-@permission_required('registro_horas.view_festivos', raise_exception=True)
+@permission_required('nomina.view_festivos', raise_exception=True)
 @login_required
 def crear_festivo(request):
     if request.method == 'GET':
@@ -689,7 +691,7 @@ def crear_festivo(request):
         return render(request, 'crear_festivo.html', {'form': CrearfestivoForm, 'festivos_nombre': festivos_nombre})
     else:
         try:
-            if request.user.has_perm('registro_horas.add_festivos'):           
+            if request.user.has_perm('nomina.add_festivos'):
                 form = CrearfestivoForm(request.POST)
                 nuevo_festivo = form.save(commit=False)
                 nuevo_festivo.save()
@@ -702,7 +704,7 @@ def crear_festivo(request):
                           {'form': CrearfestivoForm, 'error': 'Por Favor Escriba Datos Validos'})
 
 
-@permission_required('registro_horas.view_cargos', raise_exception=True)
+@permission_required('nomina.view_cargos', raise_exception=True)
 @login_required
 def crear_cargo(request):
     if request.method == 'GET':
@@ -710,7 +712,7 @@ def crear_cargo(request):
         return render(request, 'crear_cargo.html', {'form': CrearcargoForm, 'cargos_nombre': cargos_nombre})
     else:
         try:
-            if request.user.has_perm('registro_horas.add_cargos'):
+            if request.user.has_perm('nomina.add_cargos'):
                 form = CrearcargoForm(request.POST)
                 nuevo_cargo = form.save(commit=False)
                 nuevo_cargo.save()
@@ -798,20 +800,20 @@ def ope_importar_excel_jor(request):
     return render(request, 'ope_import_jornadas.html')
 
 
-@permission_required('registro_horas.view_opejornada', raise_exception=True)
+@permission_required('nomina.view_opejornada', raise_exception=True)
 @login_required
 def ope_jornadas(request):
     return render(request, 'ope_jornadas.html')
 
 
-@permission_required('registro_horas.view_opejornada', raise_exception=True)
+@permission_required('nomina.view_opejornada', raise_exception=True)
 @login_required
 def ope_crear_jornada(request):
     if request.method == 'GET':
         return render(request, 'ope_crear_jornada.html', {'form': OpeCrearjornadaForm})
     else:
         try:
-            if request.user.has_perm('registro_horas.add_opejornada'):
+            if request.user.has_perm('nomina.add_opejornada'):
                 form = OpeCrearjornadaForm(request.POST)
                 if form.is_valid():
                     inicio_jornada_globalf = form.cleaned_data['inicio_jornada_global']
@@ -963,7 +965,7 @@ def ope_crear_jornada(request):
             return render(request, 'ope_crear_jornada.html',
                           {'form': OpeCrearjornadaForm, 'error': 'Por Favor Escriba Datos Validos'})
 
-@permission_required('registro_horas.view_opejornada', raise_exception=True)
+@permission_required('nomina.view_opejornada', raise_exception=True)
 @login_required
 def ope_actualizar_jornada(request, jornada_id):
     if request.method == 'GET':
@@ -972,7 +974,7 @@ def ope_actualizar_jornada(request, jornada_id):
         return render(request, 'ope_actualizar_jornada.html', {'jornada': jornada, 'form': form})
     else:
         try:
-            if request.user.has_perm('registro_horas.change_opejornada'):
+            if request.user.has_perm('nomina.change_opejornada'):
                 empleado = get_object_or_404(OpeJornada, pk=jornada_id)
                 form = OpeCrearjornadaForm(request.POST, instance=empleado)
                 if form.is_valid():
@@ -1124,7 +1126,7 @@ def ope_actualizar_jornada(request, jornada_id):
             return render(request, 'ope_actualizar_jornada.html',
                           {'jornada': jornada, 'form': form, 'error': "Error De Datos"})
 
-@permission_required('registro_horas.view_opejornada', raise_exception=True)
+@permission_required('nomina.view_opejornada', raise_exception=True)
 @login_required
 def ope_eliminar_jornada(request, jornada_id):
     if request.method == 'GET':
@@ -1133,7 +1135,7 @@ def ope_eliminar_jornada(request, jornada_id):
         return render(request, 'ope_eliminar_jornada.html', {'jornada': jornada, 'form': form})
     else:
         try:
-            if request.user.has_perm('registro_horas.delete_opejornada'):
+            if request.user.has_perm('nomina.delete_opejornada'):
                 empleado = get_object_or_404(OpeJornada, pk=jornada_id)
                 form = OpeCrearjornadaForm(request.POST, instance=empleado)
                 if form.is_valid():
@@ -1170,7 +1172,7 @@ def ope_eliminar_jornada(request, jornada_id):
             return render(request, 'ope_eliminar_jornada.html', {'jornada': jornada, 'form': form,
                                                                  'error': "Error De Datos"})
 
-@permission_required('registro_horas.view_opejornada', raise_exception=True)
+@permission_required('nomina.view_opejornada', raise_exception=True)
 @login_required
 def ope_list_jornadas(request):
     data = {}
@@ -1217,13 +1219,13 @@ def ope_list_jornadas(request):
     except Exception as e:
         return JsonResponse({'error': str(e)})
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def ope_empleados(request):
     return render(request, 'ope_empleados.html')
 
 
-@permission_required('registro_horas.view_empleados', raise_exception=True)
+@permission_required('nomina.view_empleados', raise_exception=True)
 @login_required
 def ope_list_empleados(request):
     data = {}
@@ -1258,13 +1260,13 @@ def ope_list_empleados(request):
     except Exception as e:
         return JsonResponse({'error': str(e)})
 
-@permission_required('registro_horas.view_festivos', raise_exception=True)
+@permission_required('nomina.view_festivos', raise_exception=True)
 @login_required
 def ope_crear_festivo(request):
     festivos_nombre = Festivos.objects.values_list('festivo', flat=True)
     return render(request, 'ope_crear_festivo.html', {'festivos_nombre': festivos_nombre})
 
-@permission_required('registro_horas.view_festivos', raise_exception=True)
+@permission_required('nomina.view_festivos', raise_exception=True)
 @login_required
 def ope_crear_cargo(request):
     cargos_nombre = Cargos.objects.values_list('cargo', flat=True)

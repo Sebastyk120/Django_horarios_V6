@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+/*        LLAMADO DE COLUMNAS DESDE CSS       */
+
+#colums {
+  display: grid;
+  grid-template-columns: 210px 200px;
+  column-count: 2;
+  column-gap: 130px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 130px;
+  -moz-column-count: 2;
+  -moz-column-gap: 130px;
+  -o-column-count: 2;
+  -o-column-gap: 130px;
+  -ms-column-count: 2;
+  -ms-column-gap: 130px;
+}
+
+body {
+  height: 100vh;
+  background-image: url(../img/fondojornadas.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Noto Sans Display', sans-serif;
+}
+
+/*         PIE DE PAGINA            */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 2.2%;
+  width: 100%;
+  background-color: rgb(54, 54, 54);
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size: 15px;
+}
+
+h1 {
+  text-align: left;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-style: italic;
+  color: #003cff;
+  font-weight: bold;
+}
+
+/*        ESITLOS PARA LOS BOTONES DE IMPORTAR Y EXPORTAR EXCEL         */
+
+#import {
+
+  position: relative;
+  left: 402px;
+  top: 70px;
+
+}
+
+#export {
+
+  position: relative;
+  left: 190px;
+  top: 150px;
+
+}
+
+.btn1 {
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #222;
+  padding: 10px 50px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+.btn1 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #789cd2;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn1:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+#guardar {
+
+  position: relative;
+  left: 120px;
+  height: 40px;
+  width: 120px;
+
+}
+
+.buttong {
+
+  margin: 30px auto;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #2e4bcc;
+  color: #ecf0f1;
+
+  transition: background-color .3s;
+}
+
+.buttong:hover,
+.buttong:focus {
+  background-color: #8e27ae;
+}
+
+.buttong>* {
+  position: relative;
+}
+
+.buttong span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.buttong:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.buttong:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+#volver {
+
+  position: relative;
+  right: -225px;
+  top: -2px;
+  height: 40px;
+  width: 120px;
+
+}
+
+.buttonv {
+
+  margin: 30px auto;
+  padding: 6px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #c70000;
+  color: #ecf0f1;
+
+  transition: background-color .3s;
+}
+
+.buttonv:hover,
+.buttonv:focus {
+  background-color: #8327ae;
+}
+
+.buttonv>* {
+  position: relative;
+}
+
+.buttonv span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.buttonv:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, .3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.buttonv:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+
+/*     MODELADO DE PAGINA RESPONSIVE      */
+
+@media screen and (max-width: 1366px),
+screen and (max-height: 900px) {
+
+  /*       CARD PEQUEÑO        */
+
+  .card {
+
+    position: relative;
+    width: 800px;
+    left: -100px;
+
+  }
+
+  /*      LLAMADO DE COLUMNAS DESDE CSS         */
+
+  #colums {
+    display: grid;
+    grid-template-columns: 210px 200px 200px;
+    column-count: 3;
+    column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -o-column-count: 3;
+    -o-column-gap: 20px;
+    -ms-column-count: 3;
+    -ms-column-gap: 20px;
+  }
+
+  body {
+    height: 100vh;
+    background-image: url(../img/fondojornadas.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 14px;
+  }
+
+  /*     PIE DE PAGINA      */
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 2.2%;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-align: center;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: left;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-style: italic;
+    color: #003cff;
+    font-weight: bold;
+  }
+
+  /*   ESTILOS DE BOTONES DE GUARDAR Y EXPORTAR    */
+
+  #import {
+
+    position: relative;
+    left: 250px;
+    top: 70px;
+
+  }
+
+  #export {
+
+    position: relative;
+    left: 58px;
+    top: 150px;
+
+  }
+
+  .btn1 {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    background-color: #222;
+    padding: 10px 50px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+  }
+
+  .btn1 span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: #789cd2;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  }
+
+  .btn1:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  }
+
+  /*      ESTILOS DE BOTONES GUARDAR Y VOLVER        */
+
+
+  #guardar {
+
+    position: relative;
+    left: 180px;
+    height: 40px;
+    width: 120px;
+
+  }
+
+  .buttong {
+
+    margin: 30px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #2e4bcc;
+    color: #ecf0f1;
+
+    transition: background-color .3s;
+  }
+
+  .buttong:hover,
+  .buttong:focus {
+    background-color: #8e27ae;
+  }
+
+  .buttong>* {
+    position: relative;
+  }
+
+  .buttong span {
+    display: block;
+    padding: 12px 24px;
+  }
+
+  .buttong:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .buttong:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+  }
+
+  #volver {
+
+    position: relative;
+    right: -260px;
+    top: -2px;
+    height: 40px;
+    width: 120px;
+
+  }
+
+  .buttonv {
+
+    margin: 30px auto;
+    padding: 6px;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #c70000;
+    color: #ecf0f1;
+
+    transition: background-color .3s;
+  }
+
+  .buttonv:hover,
+  .buttonv:focus {
+    background-color: #8327ae;
+  }
+
+  .buttonv>* {
+    position: relative;
+  }
+
+  .buttonv span {
+    display: block;
+    padding: 12px 24px;
+  }
+
+  .buttonv:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .buttonv:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+  }
+
+}

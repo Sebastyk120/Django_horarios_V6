@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+.centered {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/*    SPINNER DE CARGA SIN FUNCIONAR, TRISTON    */
+
+.loading-spinner {
+  display: inline-block;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.html,
+body {
+  height: 100vh;
+  background-image: url(../img/fondojornadas.png);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  background-attachment: fixed;
+  font-family: 'Noto Sans Display', sans-serif;
+}
+
+h1 {
+  font-family: 'Noto Sans Display', sans-serif;
+  font-weight: bold;
+}
+
+thead {
+  font-family: 'Noto Sans Display', sans-serif;
+}
+
+td {
+
+  font-family: 'Noto Sans Display', sans-serif;
+
+}
+
+/*      PIE DE PAGINA         */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 2.2%;
+  width: 100%;
+  background-color: rgb(54, 54, 54);
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size: 15px;
+}
+
+h1 {
+  text-align: left;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-style: italic;
+  color: #003cff;
+  font-weight: bold;
+}
+
+/*    ESTILOS DE BOTONES PARA IMPORTAR Y EXPORTAR EXCEL     */
+
+
+.btn1 {
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #222;
+  padding: 8px 30px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+.btn1 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #7196c7;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn1:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+#import {
+
+  position: relative;
+  top: 0px;
+  left: -10px;
+
+}
+
+#export {
+
+  position: relative;
+  left: -10px;
+  top: 0px;
+
+}
