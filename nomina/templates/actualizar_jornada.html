@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-{% load crispy_forms_filters %} {% block content %}
-    {% load crispy_forms_tags %}
+{% extends 'base.html' %} {% load crispy_forms_filters %} {% block content %} {% load crispy_forms_tags %}
     {% load static %}
     <!DOCTYPE html>
     <html lang="es">
@@ -41,14 +39,14 @@
         {% endfor %}{% endif %}
     </main>
     {% if messages %}{% for m in messages %}
-    <script>
-        Swal.fire({
-            title: "OPERACION REALIZADA CORRECTAMENTE",
-            text: "{{m}}",
-            icon: "success",
-        });
-    </script>
-{% endfor %}{% endif %}
+        <script>
+            Swal.fire({
+                title: "OPERACION REALIZADA CORRECTAMENTE",
+                text: "{{m}}",
+                icon: "success",
+            });
+        </script>
+    {% endfor %}{% endif %}
     </body>
     </html>
 {% endblock %}

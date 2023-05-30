@@ -17,15 +17,12 @@
     <orderEntry type="jdk" jdkName="Python 3.11 (Django_horarios_V6) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@popperjs/core" level="application" />
-    <orderEntry type="library" name="jquery-3.5.1" level="application" />
     <orderEntry type="library" name="sweetalert2" level="application" />
-    <orderEntry type="library" name="jquery.dataTables" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="font-awesome" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="dataTables.bootstrap5" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="sweetalert2" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
@@ -36,6 +33,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/Lib/site-packages/crispy_bootstrap5/templates" />
+        <option value="$MODULE_DIR$/nomina/templates" />
       </list>
     </option>
   </component>

@@ -13,8 +13,8 @@ class CrearempleadoForm(ModelForm):
         ordering = ['nombre']
         model = Empleados
         widgets = {
-            'ingreso': forms.DateInput(attrs={'type': 'date'}),
-            'retiro': forms.DateInput(attrs={'type': 'date'}),
+            'ingreso': forms.TextInput(attrs={'type': 'date'}),
+            'retiro': forms.TextInput(attrs={'type': 'date'}),
             'nombre': forms.TextInput(attrs={'type': 'text', 'placeholder': 'Ingrese El Nombre Completo'}),
             'cedula': forms.NumberInput(attrs={'type': 'number', 'placeholder': 'Ingrese Documento'}),
         }
@@ -69,7 +69,6 @@ class CrearjornadaForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CrearjornadaForm, self).__init__(*args, **kwargs)
-
         now = timezone.now()
         self.fields['inicio_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
         self.fields['salida_jornada_global'].widget.attrs['max'] = now.strftime('%Y-%m-%dT%H:%M:%S')
