@@ -39,20 +39,88 @@ h1 {
     font-weight: bold;
 }
 
+.custom-btn {
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+*,
+*:before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn-1 {
+    border: none;
+    background-color: #0206ff;
+    box-shadow: 0 0 5px #002fff;
+}
+
+.btn-1:hover {
+    box-shadow: 0 0 10px #a097ef, 0 0 20px #a497ef, 0 0 20px #d1e1ff inset;
+}
+
+.custom-btn2 {
+    font-family: 'Noto Sans Display', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    font-weight: 500;
+    color: #fff;
+    padding: 10px 28px;
+    text-decoration:none;
+}
+
+.custom-btn2:hover{
+
+    color: #fff;
+
+}
+
+
+*,
+*:before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.btn-2 {
+    border: none;
+    background-color: #ff0000;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+.btn-2:hover {
+    box-shadow: 0 0 10px #ef9797, 0 0 20px #ef9797, 0 0 20px #fdd1d1 inset;
+}
+
 @media screen and (max-width: 1366px),
 screen and (max-height: 900px) {
 
-.card{
+    .card {
 
-    position: relative;
-    top: -100px;
+        position: relative;
+        top: -100px;
 
-}
+    }
 
-body {
+    body {
 
-    font-size: 10px;
+        font-size: 10px;
 
-}
+    }
 
 }
