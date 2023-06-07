@@ -28,12 +28,11 @@
                 <div class="card-header">
                     <h1 class="text-center mb-4">Crear Un Cargo</h1>
                     {{ error }} {% csrf_token %} {{ form|crispy }}
-                    <button class="buttong" id="guardar">Guardar</button>
-                    <a class="buttonv btn btn-danger" href="/" role="button" id="volver">Volver</a>
+                    <button class="buttong bg" id="guardar">Guardar</button>
+                    <a class="buttonv btv" href="/" role="button" id="volver">Volver</a>
                 </div>
                 <div class="card-body">
                     <ul id="columns" class="col-md-9 list-group-horizontal">
-                        
                         {% for cargo_nombre in cargos_nombre %}
                             <li>{{ cargo_nombre }}</li>
                         {% endfor %}
