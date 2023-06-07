@@ -561,14 +561,14 @@ screen and (max-height: 900px) {
 
     img.opmanguito {
 
-        width: 120px;
-        height: 120px;
+        width: 180px;
+        height: 180px;
         position: relative;
-        left: 50px;
+        left: 130px;
         top: 50px;
         transition: transform .7s ease-in-out;
     }
-
+    
     img.opmanguito:hover {
         animation: swings 1s ease;
         animation-iteration-count: 1;

@@ -572,7 +572,7 @@ screen and (max-height: 900px) {
 
   .grid {
     display: grid;
-    grid-template-columns: 350px 350px 400px;
+    grid-template-columns: 420px 420px 400px;
     grid-template-rows: 200px 200px 400px;
   }
 
