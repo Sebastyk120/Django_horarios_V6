@@ -24,7 +24,7 @@
                     <h1 class="text-center text-info">Editar Empleado <br> {{ empleado.nombre }}</h1>
                     {{ error }} {% csrf_token %} {% crispy form %}
                     <div class="d-grid gap-2 mx-auto" style="width: 635px">
-                        <a class="buttonv btn btn-danger" href="/empleados/" role="button" id="volver">Volver</a>
+                        <a class="buttonv btn btn-danger" href="{% url 'empleados' %}" role="button" id="volver">Volver</a>
                     </div>
                 </form>
             </div>
