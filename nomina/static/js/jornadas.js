@@ -50,13 +50,13 @@ const listJornadas = async (fechaInicio, fechaFin) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    // Obtén una referencia al DataTable
+
     const dataTable = $('#datatable_jornadas').DataTable();
 
-    // Borra todas las filas existentes
+
     dataTable.clear().draw();
 
-    // Agrega las nuevas filas al DataTable
+
     if (Array.isArray(data.todas_jornadas)) {
       data.todas_jornadas.forEach((todas_jornadas, index) => {
         dataTable.row.add([
@@ -95,7 +95,6 @@ const listJornadas = async (fechaInicio, fechaFin) => {
   }
 };
 
-// Agrega un evento al botón de filtrar para obtener las fechas seleccionadas y actualizar la tabla
 document.getElementById('filtrar-button').addEventListener('click', () => {
   const fechaInicio = document.getElementById('fecha-inicio').value;
   const fechaFin = document.getElementById('fecha-fin').value;
