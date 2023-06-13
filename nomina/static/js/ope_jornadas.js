@@ -42,7 +42,7 @@ const initDatatable = async () => {
 
 const listjornadas = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:8000/operaciones/lista/jornadas/");
+        const response = await fetch("http://127.0.0.1:8000/nomina/operaciones/lista/jornadas/");
         const data = await response.json();
         let content = ``;
         data.todas_jornadas.forEach((todas_jornadas, index) => {

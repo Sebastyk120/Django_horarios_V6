@@ -14,6 +14,8 @@ from .calc_horarios import Horarios
 from .forms import CrearjornadaForm, CrearempleadoForm, CrearfestivoForm, CrearcargoForm, OpeCrearjornadaForm
 from .models import Jornada, Empleados, Cargos, Festivos, OpeJornada
 from .resources import EmpleadosResource, JornadasResource, CargosResource, FestivosResourse, OpeJornadasResource
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -649,15 +651,18 @@ def eliminar_jornada(request, jornada_id):
                                                              'error': "Error De Datos"})
 
 
-@permission_required('nomina.view_jornada', raise_exception=True)
+@api_view(['GET'])
 @login_required
+@permission_required('nomina.view_jornada', raise_exception=True)
 def list_jornadas(request):
     data = {}
     try:
         dia_actual = datetime.today()
         fechas_dos_meses = dia_actual - timedelta(days=30)
+        fecha_inicio = request.GET.get('fecha_inicio')
+        fecha_fin = request.GET.get('fecha_fin')
         todas_jornadas = Jornada.objects.filter(inicio_jornada_global__range=[
-            fechas_dos_meses, dia_actual])
+            fecha_inicio, fecha_fin])
         registros = todas_jornadas.count()
         paginator = Paginator(todas_jornadas, registros)
         page_number = request.GET.get('page')
@@ -667,18 +672,13 @@ def list_jornadas(request):
             jornada_dict = {
                 'id': jornada.id,
                 'empleado_nombre': jornada.empleado.nombre,
-                'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',',
-                                                                                 '.') if jornada.empleado.cedula else None,
+                'empleado_cedula': format(jornada.empleado.cedula, ',d').replace(',', '.') if jornada.empleado.cedula else None,
                 'inicio_jornada_global': jornada.inicio_jornada_global.strftime('%d/%m/%Y Hora:%H:%M'),
                 'salida_jornada_global': jornada.salida_jornada_global.strftime('%d/%m/%Y  Hora:%H:%M'),
-                'inicio_descanso_global': jornada.inicio_descanso_global.strftime(
-                    '%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
-                'salida_descanso_global': jornada.salida_descanso_global.strftime(
-                    '%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
-                'inicio_descanso_global2': jornada.inicio_descanso_global2.strftime(
-                    '%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global2 else "-",
-                'salida_descanso_global2': jornada.salida_descanso_global2.strftime(
-                    '%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global2 else "-",
+                'inicio_descanso_global': jornada.inicio_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global else "-",
+                'salida_descanso_global': jornada.salida_descanso_global.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global else "-",
+                'inicio_descanso_global2': jornada.inicio_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.inicio_descanso_global2 else "-",
+                'salida_descanso_global2': jornada.salida_descanso_global2.strftime('%d/%m/%Y  Hora:%H:%M') if jornada.salida_descanso_global2 else "-",
                 'jornada_legal': jornada.jornada_legal,
                 'total_horas': jornada.total_horas,
                 'diurnas_totales': jornada.diurnas_totales,
@@ -693,9 +693,9 @@ def list_jornadas(request):
                 'user_id': jornada.user.username,
             }
             data['todas_jornadas'].append(jornada_dict)
-        return JsonResponse(data)
+        return Response(data)
     except Exception as e:
-        return JsonResponse({'error': str(e)})
+        return Response({'error': str(e)}, status=500)
 
 
 @permission_required('nomina.view_empleados', raise_exception=True)

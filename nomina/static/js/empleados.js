@@ -71,7 +71,7 @@ const initDatatable = async () => {
 
 const listempleados = async (page) => {
   const response = await fetch(
-    `http://127.0.0.1:8000/lista/empleados/?page=${page}`
+    `http://127.0.0.1:8000/nomina/lista/empleados/?page=${page}`
   );
   return response.json();
 };
