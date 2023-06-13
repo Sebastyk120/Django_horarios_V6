@@ -1,3 +1,45 @@
+let dataTable;
+let dataTableInitialized = false;
+
+const dataTableOptions = {
+    autoWidth: false,
+    processing: true,
+    processingIndicator: '<div class="spinner"></div>',
+    columnDefs: [
+        {
+            className: "centered",
+            targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+        },
+        {orderable: false, targets: [21]},
+        {searchable: false, targets: [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21]}
+    ],
+    paging: true,
+    pageLength: 50,
+    destroy: true,
+    language: {
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros en total)",
+        paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior",
+        },
+    },
+};
+const initDatatable = async () => {
+    if (dataTableInitialized) {
+        dataTable.destroy();
+    }
+    await listjornadas();
+    dataTable = $('#datatable_jornadas').DataTable(dataTableOptions);
+
+    dataTableInitialized = true;
+
+};
 const listJornadas = async (fechaInicio, fechaFin) => {
   try {
     let url = "http://127.0.0.1:8000/nomina/lista/jornadas/";
@@ -46,7 +88,7 @@ const listJornadas = async (fechaInicio, fechaFin) => {
         ]).draw(false);
       });
     } else {
-      console.error("La propiedad todas_jornadas no es un array válido");
+      console.error("Falla en el arreglo de Jornadas de Talento Humano");
     }
   } catch (ex) {
     alert(ex);
