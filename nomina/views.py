@@ -704,8 +704,9 @@ def empleados(request):
     return render(request, 'empleados.html')
 
 
-@permission_required('nomina.view_empleados', raise_exception=True)
+@api_view(['GET'])
 @login_required
+@permission_required('nomina.view_empleados', raise_exception=True)
 def list_empleados(request):
     data = {}
     try:
@@ -735,9 +736,9 @@ def list_empleados(request):
             data['empleados_count'] = todas_empleados.count()
             data['pages_count'] = paginator.num_pages
             data['current_page'] = empleados.number
-        return JsonResponse(data)
+        return Response(data)
     except Exception as e:
-        return JsonResponse({'error': str(e)})
+        return Response({'error': str(e)}, status=500)
 
 
 @permission_required('nomina.view_empleados', raise_exception=True)

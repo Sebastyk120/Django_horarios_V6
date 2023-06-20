@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nomina.apps.RegistroHorasConfig',
+    'general.apps.GeneralConfig',
     'crispy_forms',
     'crispy_bootstrap5',
     'import_export',
@@ -58,7 +59,10 @@ ROOT_URLCONF = 'Heavens_corp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'nomina/templates']
+        'DIRS': [
+            BASE_DIR / 'nomina/templates',
+            BASE_DIR / 'general/templates'
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
